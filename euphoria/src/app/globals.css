@@ -8,6 +8,8 @@
   --font-core-sans-c: var(--font-core-sans-c);
   --font-causten: var(--font-causten);
 
+  --color-label-primary: var(--label-primary);
+
   --color-background: var(--background);
   --color-background-primary: var(--background-primary);
   --color-background-secondary: var(--background-secondary);
@@ -47,6 +49,8 @@
   --background-tertiary: #f6f6f6;
   --background-quaternary: #8a33fd;
 
+  --label-primary: #3c4242;
+
   --button-primary: #8a33fd;
   --button-secondary: #3c4242;
   --button-tertiary: #fff;
@@ -72,6 +76,8 @@
   --background-secondary: #252525;
   --background-tertiary: #333;
   --background-quaternary: #6f28d9;
+
+  --label-primary: #cacccc;
 
   --button-primary: #7c40cb;
   --button-secondary: #cacccc;
