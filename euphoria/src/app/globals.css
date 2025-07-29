@@ -1,0 +1,99 @@
+@layer theme, base, components, utilities;
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-core-sans-c: var(--font-core-sans-c);
+  --font-causten: var(--font-causten);
+
+  --color-background: var(--background);
+  --color-background-primary: var(--background-primary);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: var(--background-tertiary);
+  --color-background-quaternary: var(--background-quaternary);
+  --color-foreground: var(--foreground);
+  --color-fade: var(--color-white-200);
+
+  --color-ring: var(--ring);
+  --color-border: var(--border);
+  --color-transparent: transparent;
+
+  /* Component Colors using root variables */
+  --color-button-primary: var(--button-primary);
+  --color-button-secondary: var(--button-secondary);
+  --color-button-tertiary: var(--button-tertiary);
+
+  --color-input-default: var(--input-default);
+  --color-input-primary: var(--input-primary);
+  --color-input-secondary: var(--input-secondary);
+  --color-input-placeholder: var(--input-placeholder);
+  --color-input-tertiary: var(--input-tertiary);
+  --color-input-quaternary: var(--input-quaternary);
+  --color-input-error: var(--input-error);
+  --color-input-fade: var(--input-fade);
+
+  --color-checkbox-primary: var(--checkbox-primary);
+  --color-checkbox-fill: var(--checkbox-fill);
+
+  --color-breadcrumb-primary: var(--breadcrumb-primary);
+  --color-breadcrumb-secondary: var(--breadcrumb-secondary);
+}
+
+:root {
+  --background-primary: #fff;
+  --background-secondary: #3c4242;
+  --background-tertiary: #f6f6f6;
+  --background-quaternary: #8a33fd;
+
+  --button-primary: #8a33fd;
+  --button-secondary: #3c4242;
+  --button-tertiary: #fff;
+
+  --input-default: #8a33fd;
+  --input-primary: #fff;
+  --input-secondary: #f6f6f6;
+  --input-placeholder: #807d7e;
+  --input-tertiary: #3c4242;
+  --input-quaternary: #edeef2;
+  --input-error: #ee1d52;
+  --input-fade: #d9d9d9;
+
+  --breadcrumb-primary: #807d7e;
+  --breadcrumb-secondary: #3c4242;
+
+  --checkbox-primary: #bebcbd;
+  --checkbox-fill: #3c4242;
+}
+
+.dark {
+  --background-primary: #1a1a1a;
+  --background-secondary: #252525;
+  --background-tertiary: #333;
+  --background-quaternary: #6f28d9;
+
+  --input-default: #6f28d9;
+  --input-primary: #1a1a1a;
+  --input-secondary: #252525;
+  --input-placeholder: #aaa;
+  --input-tertiary: #e4e5e8;
+  --input-quaternary: #555;
+  --input-error: #ff4f79;
+  --input-fade: #444;
+
+  --breadcrumb-primary: #807d7e;
+  --breadcrumb-secondary: #3c4242;
+
+  --checkbox-primary: #888;
+  --checkbox-fill: #e4e5e8;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background-primary;
+  }
+}
