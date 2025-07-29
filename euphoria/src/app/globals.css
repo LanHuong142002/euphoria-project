@@ -45,6 +45,23 @@
 
   --color-breadcrumb-primary: var(--breadcrumb-primary);
   --color-breadcrumb-secondary: var(--breadcrumb-secondary);
+
+  --color-toast-success-bg: var(--toast-success-bg);
+  --color-toast-success-text: var(--toast-success-text);
+  --color-toast-success-border: var(--toast-success-border);
+  --color-toast-description: var(--toast-description);
+
+  --color-toast-error-bg: var(--toast-error-bg);
+  --color-toast-error-text: var(--toast-error-text);
+  --color-toast-error-border: var(--toast-error-border);
+
+  --color-toast-warning-bg: var(--toast-warning-bg);
+  --color-toast-warning-text: var(--toast-warning-text);
+  --color-toast-warning-border: var(--toast-warning-border);
+
+  --color-toast-info-bg: var(--toast-info-bg);
+  --color-toast-info-text: var(--toast-info-text);
+  --color-toast-info-border: var(--toast-info-border);
 }
 
 :root {
@@ -77,6 +94,24 @@
 
   --checkbox-primary: #bebcbd;
   --checkbox-fill: #3c4242;
+
+  /* Toast Colors */
+  --toast-description: #6b7280;
+  --toast-success-bg: #f0fdf4;
+  --toast-success-text: #166534;
+  --toast-success-border: #22c55e;
+
+  --toast-error-bg: #fef2f2;
+  --toast-error-text: #dc2626;
+  --toast-error-border: #ef4444;
+
+  --toast-warning-bg: #fffbeb;
+  --toast-warning-text: #d97706;
+  --toast-warning-border: #f59e0b;
+
+  --toast-info-bg: #eff6ff;
+  --toast-info-text: #4d82f2;
+  --toast-info-border: #3b82f6;
 }
 
 .dark {
@@ -109,6 +144,24 @@
 
   --checkbox-primary: #888;
   --checkbox-fill: #e4e5e8;
+
+  /* Toast Colors - Dark Mode */
+  --toast-description: #cacccc;
+  --toast-success-bg: #052e16;
+  --toast-success-text: #4ade80;
+  --toast-success-border: #22c55e;
+
+  --toast-error-bg: #450a0a;
+  --toast-error-text: #f87171;
+  --toast-error-border: #ef4444;
+
+  --toast-warning-bg: #451a03;
+  --toast-warning-text: #fbbf24;
+  --toast-warning-border: #f59e0b;
+
+  --toast-info-bg: #0c4a6e;
+  --toast-info-text: #93c5fd;
+  --toast-info-border: #3b82f6;
 }
 
 @layer base {
@@ -118,4 +171,9 @@
   body {
     @apply bg-background-primary;
   }
+}
+
+/* Toast Description Colors */
+.toaster [data-sonner-toast] [data-description] {
+  color: var(--normal-description) !important;
 }
