@@ -39,6 +39,10 @@
   --color-checkbox-primary: var(--checkbox-primary);
   --color-checkbox-fill: var(--checkbox-fill);
 
+  --color-toggle-primary: var(--toggle-primary);
+  --color-toggle-fill: var(--toggle-fill);
+  --color-toggle-fill-hover: var(--toggle-fill-hover);
+
   --color-breadcrumb-primary: var(--breadcrumb-primary);
   --color-breadcrumb-secondary: var(--breadcrumb-secondary);
 }
@@ -67,6 +71,10 @@
   --breadcrumb-primary: #807d7e;
   --breadcrumb-secondary: #3c4242;
 
+  --toggle-primary: #bebcbd;
+  --toggle-fill: #3c4242;
+  --toggle-fill-hover: #fff;
+
   --checkbox-primary: #bebcbd;
   --checkbox-fill: #3c4242;
 }
@@ -94,6 +102,10 @@
 
   --breadcrumb-primary: #807d7e;
   --breadcrumb-secondary: #3c4242;
+
+  --toggle-primary: #bebcbd;
+  --toggle-fill: #cacccc;
+  --toggle-fill-hover: #3c4242;
 
   --checkbox-primary: #888;
   --checkbox-fill: #e4e5e8;
