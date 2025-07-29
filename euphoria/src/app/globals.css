@@ -73,6 +73,10 @@
   --background-tertiary: #333;
   --background-quaternary: #6f28d9;
 
+  --button-primary: #7c40cb;
+  --button-secondary: #cacccc;
+  --button-tertiary: #fff;
+
   --input-default: #6f28d9;
   --input-primary: #1a1a1a;
   --input-secondary: #252525;
