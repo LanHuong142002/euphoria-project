@@ -7,6 +7,9 @@ import localFont from 'next/font/local';
 // Constants
 import { BRAND, BASE_URL, FAVICON_URL, IMAGES } from '@/constants';
 
+// Components
+import { Toaster } from '@/ui/components';
+
 // Local Fonts
 const coreSansC = localFont({
   src: [
@@ -87,6 +90,7 @@ const RootLayout = ({
           `}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );
