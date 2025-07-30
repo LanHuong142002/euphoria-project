@@ -39,6 +39,7 @@
   --color-button-primary: var(--button-primary);
   --color-button-secondary: var(--button-secondary);
   --color-button-tertiary: var(--button-tertiary);
+  --color-button-icon: var(--button-icon);
 
   --color-input-default: var(--input-default);
   --color-input-primary: var(--input-primary);
@@ -105,10 +106,12 @@
 
   --badge-primary: #f6f6f6;
   --badge-secondary: #3c4242;
+  --badge-tertiary: #3c4242;
 
   --button-primary: #8a33fd;
   --button-secondary: #3c4242;
   --button-tertiary: #fff;
+  --button-icon: #f6f6f6;
 
   --input-default: #8a33fd;
   --input-primary: #fff;
@@ -161,6 +164,7 @@
 
   --badge-primary: #cacccc;
   --badge-secondary: #333;
+  --badge-tertiary: #cacccc;
 
   --dropdown-menu-bg: rgb(94, 93, 93);
   --dropdown-menu-primary: #cacccc;
@@ -176,6 +180,7 @@
   --button-primary: #7c40cb;
   --button-secondary: #cacccc;
   --button-tertiary: #fff;
+  --button-icon: #cacccc;
 
   --input-default: #6f28d9;
   --input-primary: #1a1a1a;
@@ -220,7 +225,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background-primary;
+    @apply !bg-background-primary;
   }
 }
 

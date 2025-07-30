@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs';
 import { Image } from '.';
 
 const meta = {
-  title: 'Components/Image',
+  title: 'Components/Common/Image',
   component: Image,
   parameters: {
     layout: 'centered',
