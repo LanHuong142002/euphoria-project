@@ -3,3 +3,4 @@ export * from './InputController';
 export * from './QuantitySelector';
 export * from './CartItem';
 export * from './ProductItem';
+export * from './ModalConfirm';
