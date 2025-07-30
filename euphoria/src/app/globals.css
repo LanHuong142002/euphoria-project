@@ -14,6 +14,9 @@
   --color-dropdown-menu-primary: var(--dropdown-menu-primary);
   --color-dropdown-menu-secondary: var(--dropdown-menu-secondary);
 
+  --color-quantity-selector-primary: var(--quantity-selector-primary);
+  --color-quantity-selector-secondary: var(--quantity-selector-secondary);
+
   --color-background: var(--background);
   --color-background-primary: var(--background-primary);
   --color-background-secondary: var(--background-secondary);
@@ -80,6 +83,9 @@
   --dropdown-menu-primary: #3c4242;
   --dropdown-menu-secondary: #f6f6f6;
 
+  --quantity-selector-primary: #f6f6f6;
+  --quantity-selector-secondary: #3c4242;
+
   --button-primary: #8a33fd;
   --button-secondary: #3c4242;
   --button-tertiary: #fff;
@@ -134,6 +140,9 @@
   --dropdown-menu-primary: #cacccc;
   --dropdown-menu-secondary: #252525;
 
+  --quantity-selector-primary: #cacccc;
+  --quantity-selector-secondary: #333;
+
   --button-primary: #7c40cb;
   --button-secondary: #cacccc;
   --button-tertiary: #fff;
@@ -181,7 +190,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background-primary;
+    @apply !bg-background-primary;
   }
 }
 
