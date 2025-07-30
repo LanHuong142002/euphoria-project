@@ -46,6 +46,10 @@
   --color-checkbox-primary: var(--checkbox-primary);
   --color-checkbox-fill: var(--checkbox-fill);
 
+  --color-cart-item-text: var(--cart-item-text);
+  --color-cart-item-placeholder: var(--cart-item-placeholder);
+  --color-cart-item-border: var(--cart-item-border);
+
   --color-toggle-primary: var(--toggle-primary);
   --color-toggle-fill: var(--toggle-fill);
   --color-toggle-fill-hover: var(--toggle-fill-hover);
@@ -85,6 +89,10 @@
 
   --quantity-selector-primary: #f6f6f6;
   --quantity-selector-secondary: #3c4242;
+
+  --cart-item-text: #3c4242;
+  --cart-item-placeholder: #807d7e;
+  --cart-item-border: #bebcbd;
 
   --button-primary: #8a33fd;
   --button-secondary: #3c4242;
@@ -140,6 +148,10 @@
   --dropdown-menu-primary: #cacccc;
   --dropdown-menu-secondary: #252525;
 
+  --cart-item-text: #cacccc;
+  --cart-item-placeholder: #a8a9a9;
+  --cart-item-border: #f6f6f6;
+
   --quantity-selector-primary: #cacccc;
   --quantity-selector-secondary: #333;
 
@@ -190,7 +202,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply !bg-background-primary;
+    @apply bg-background-primary;
   }
 }
 

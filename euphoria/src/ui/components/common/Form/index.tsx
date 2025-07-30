@@ -134,7 +134,7 @@ const FormDescription = ({ className, ...props }: ComponentProps<'p'>) => {
       data-slot="form-description"
       id={formDescriptionId}
       className={cn(
-        'mt-1 text-base text-medium text-input-placeholder',
+        'mt-1 font-causten text-base text-medium text-input-placeholder',
         className,
       )}
       {...props}
@@ -154,7 +154,7 @@ const FormMessage = ({ className, ...props }: ComponentProps<'p'>) => {
     <p
       data-slot="form-message"
       id={formMessageId}
-      className={cn('mt-1 text-base text-input-error', className)}
+      className={cn('mt-1 font-causten text-base text-input-error', className)}
       {...props}
     >
       {body}
