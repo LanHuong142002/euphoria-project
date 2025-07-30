@@ -8,3 +8,4 @@ export * from './Toast';
 export * from './Toggle';
 export * from './DropdownMenu';
 export * from './Image';
+export * from './Dialog';

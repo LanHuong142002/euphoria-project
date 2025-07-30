@@ -13,6 +13,9 @@
   --color-product-item-text: var(--product-item-text);
   --color-product-item-brand: var(--product-item-brand);
 
+  --color-dialog-primary: var(--dialog-primary);
+  --color-dialog-secondary: var(--dialog-secondary);
+
   --color-badge-primary: var(--badge-primary);
   --color-badge-secondary: var(--badge-secondary);
 
@@ -97,6 +100,9 @@
   --dropdown-menu-primary: #3c4242;
   --dropdown-menu-secondary: #f6f6f6;
 
+  --dialog-primary: #fff;
+  --dialog-secondary: #3c4242;
+
   --quantity-selector-primary: #f6f6f6;
   --quantity-selector-secondary: #3c4242;
 
@@ -165,6 +171,9 @@
   --badge-primary: #cacccc;
   --badge-secondary: #333;
   --badge-tertiary: #cacccc;
+
+  --dialog-primary: #3c4242;
+  --dialog-secondary: #cacccc;
 
   --dropdown-menu-bg: rgb(94, 93, 93);
   --dropdown-menu-primary: #cacccc;
