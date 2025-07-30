@@ -10,6 +10,10 @@
 
   --color-label-primary: var(--label-primary);
 
+  --color-dropdown-menu-bg: var(--dropdown-menu-bg);
+  --color-dropdown-menu-primary: var(--dropdown-menu-primary);
+  --color-dropdown-menu-secondary: var(--dropdown-menu-secondary);
+
   --color-background: var(--background);
   --color-background-primary: var(--background-primary);
   --color-background-secondary: var(--background-secondary);
@@ -72,6 +76,10 @@
 
   --label-primary: #3c4242;
 
+  --dropdown-menu-bg: #fff;
+  --dropdown-menu-primary: #3c4242;
+  --dropdown-menu-secondary: #f6f6f6;
+
   --button-primary: #8a33fd;
   --button-secondary: #3c4242;
   --button-tertiary: #fff;
@@ -121,6 +129,10 @@
   --background-quaternary: #6f28d9;
 
   --label-primary: #cacccc;
+
+  --dropdown-menu-bg: rgb(94, 93, 93);
+  --dropdown-menu-primary: #cacccc;
+  --dropdown-menu-secondary: #252525;
 
   --button-primary: #7c40cb;
   --button-secondary: #cacccc;
