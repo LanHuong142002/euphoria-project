@@ -10,6 +10,9 @@
 
   --color-label-primary: var(--label-primary);
 
+  --color-product-item-text: var(--product-item-text);
+  --color-product-item-brand: var(--product-item-brand);
+
   --color-badge-primary: var(--badge-primary);
   --color-badge-secondary: var(--badge-secondary);
 
@@ -86,6 +89,9 @@
 
   --label-primary: #3c4242;
 
+  --product-item-text: #3c4242;
+  --product-item-brand: #807d7e;
+
   --dropdown-menu-bg: #fff;
   --dropdown-menu-primary: #3c4242;
   --dropdown-menu-secondary: #f6f6f6;
@@ -149,6 +155,9 @@
   --background-quaternary: #6f28d9;
 
   --label-primary: #cacccc;
+
+  --product-item-text: #cacccc;
+  --product-item-brand: #a8a9a9;
 
   --badge-primary: #cacccc;
   --badge-secondary: #333;

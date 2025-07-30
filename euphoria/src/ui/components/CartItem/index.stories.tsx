@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
-import { CartItem } from './index';
+
+// Components
+import { CartItem } from '.';
+
+// Constants
+import { IMAGES } from '@/constants';
 
 const meta: Meta<typeof CartItem> = {
   title: 'Components/CartItem',
@@ -46,9 +51,7 @@ const defaultProduct = {
   color: 'Lavender',
   size: 'XXL',
   price: 119.0,
-  images: [
-    'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
-  ],
+  images: [IMAGES.MOCK_PRODUCT_IMAGE],
 };
 
 export const Default: Story = {
