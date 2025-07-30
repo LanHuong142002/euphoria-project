@@ -60,7 +60,7 @@ export const QuantitySelector = ({
         className={cn('p-1', quantity <= min && 'opacity-30')}
         aria-label="Decrease quantity"
       >
-        <Minus size={12} />
+        <Minus size={12} className="text-quantity-selector-secondary" />
       </Button>
 
       <span className="min-w-[2rem] text-center font-medium text-quantity-selector-secondary text-xs">
@@ -75,7 +75,7 @@ export const QuantitySelector = ({
         className={cn('p-1', quantity >= max && 'opacity-30')}
         aria-label="Increase quantity"
       >
-        <Plus size={12} />
+        <Plus size={12} className="text-quantity-selector-secondary" />
       </Button>
     </div>
   );

@@ -28,7 +28,7 @@ const buttonVariants = cva(
         light: 'text-button-tertiary border-button-tertiary',
         dark: 'text-button-secondary border-button-secondary',
         ghost: 'text-button-secondary',
-        icon: 'bg-background-tertiary',
+        icon: 'bg-button-icon',
       },
 
       font: {
