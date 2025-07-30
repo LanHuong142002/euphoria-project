@@ -10,6 +10,9 @@
 
   --color-label-primary: var(--label-primary);
 
+  --color-badge-primary: var(--badge-primary);
+  --color-badge-secondary: var(--badge-secondary);
+
   --color-dropdown-menu-bg: var(--dropdown-menu-bg);
   --color-dropdown-menu-primary: var(--dropdown-menu-primary);
   --color-dropdown-menu-secondary: var(--dropdown-menu-secondary);
@@ -94,6 +97,9 @@
   --cart-item-placeholder: #807d7e;
   --cart-item-border: #bebcbd;
 
+  --badge-primary: #f6f6f6;
+  --badge-secondary: #3c4242;
+
   --button-primary: #8a33fd;
   --button-secondary: #3c4242;
   --button-tertiary: #fff;
@@ -143,6 +149,9 @@
   --background-quaternary: #6f28d9;
 
   --label-primary: #cacccc;
+
+  --badge-primary: #cacccc;
+  --badge-secondary: #333;
 
   --dropdown-menu-bg: rgb(94, 93, 93);
   --dropdown-menu-primary: #cacccc;
