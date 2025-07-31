@@ -76,7 +76,7 @@ function DropdownMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        'relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none',
+        'relative flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none',
         'text-dropdown-menu-primary hover:bg-dropdown-menu-secondary hover:text-dropdown-menu-primary focus:bg-dropdown-menu-secondary',
         'data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8',
         'data-[variant=destructive]:text-input-error data-[variant=destructive]:hover:bg-input-error/10 data-[variant=destructive]:focus:bg-input-error/10',
