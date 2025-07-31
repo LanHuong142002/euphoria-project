@@ -51,7 +51,7 @@ export const Header = ({ session: serverSession }: HeaderProps) => {
           <Link
             href={ROUTES.HOME}
             className={cn(
-              'font-medium text-base sm:text-lg lg:text-[22px] transition-colors duration-300 hover:opacity-70 hidden sm:block',
+              'font-medium text-base sm:text-lg lg:text-[22px] transition-colors duration-300 hover:opacity-70 hidden lg:block',
               pathname === ROUTES.HOME
                 ? 'text-text-secondary'
                 : 'text-text-primary',
