@@ -3,15 +3,14 @@
 import { Control, FieldValues, FieldPath } from 'react-hook-form';
 
 // Components
+import { Input, InputProps } from '../common/Input';
 import {
   FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormMessage,
-  Input,
-  InputProps,
-} from '../common';
+} from '../common/Form';
 
 interface InputControllerProps<T extends FieldValues> {
   label?: string;

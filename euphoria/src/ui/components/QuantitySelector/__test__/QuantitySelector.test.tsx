@@ -1,5 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { QuantitySelector } from '../index';
+
+// Components
+import { QuantitySelector } from '..';
 
 describe('QuantitySelector', () => {
   it('Should render with default props', () => {

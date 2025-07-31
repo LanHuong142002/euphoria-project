@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
-import { Star } from 'lucide-react';
 
 // Components
 import { Badge } from '.';
+
+// Icons
+import { TrashIcon } from '@/ui/icons/TrashIcon';
 
 const meta: Meta<typeof Badge> = {
   title: 'Components/Common/Badge',
@@ -41,7 +43,7 @@ export const Outline: Story = {
 
 export const Icon: Story = {
   args: {
-    children: <Star size={16} />,
+    children: <TrashIcon width="16" height="16" />,
     variant: 'icon',
   },
 };

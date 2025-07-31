@@ -4,7 +4,7 @@ import { Minus, Plus } from 'lucide-react';
 import { ComponentProps, useState } from 'react';
 
 // Components
-import { Button } from '../common';
+import { Button } from '../common/Button';
 
 // Utils
 import { cn } from '@/utils';

@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 // Components
 import { ModalConfirm } from '..';
-import { Button } from '../../common';
+import { Button } from '../../common/Button';
 
 describe('ModalConfirm', () => {
   const Component = () => (

@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
-import { QuantitySelector } from './index';
+
+// Components
+import { QuantitySelector } from '.';
 
 const meta: Meta<typeof QuantitySelector> = {
   title: 'Components/QuantitySelector',

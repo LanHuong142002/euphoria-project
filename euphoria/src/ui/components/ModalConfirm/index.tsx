@@ -11,7 +11,7 @@ import {
   AlertDialogFooter,
   AlertDialogCancel,
   AlertDialogAction,
-} from '../common';
+} from '../common/Dialog';
 
 interface ModalConfirmProps {
   title: string;

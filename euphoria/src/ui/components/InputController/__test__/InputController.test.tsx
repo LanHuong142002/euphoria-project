@@ -6,7 +6,7 @@ import { z } from 'zod';
 
 // Components
 import { InputController } from '..';
-import { Form } from '../../common';
+import { Form } from '../../common/Form';
 
 // Component that renders InputController with form context
 const TestInputController = ({

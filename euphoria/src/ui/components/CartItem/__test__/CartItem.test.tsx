@@ -1,5 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { CartItem } from '../index';
+
+// Components
+import { CartItem } from '..';
 
 const mockProduct = {
   id: '1',
