@@ -1,9 +1,12 @@
-import { NextResponse, NextRequest } from 'next/server';
+import NextAuth from 'next-auth';
 
-export function middleware(request: NextRequest) {
-  return NextResponse.redirect(new URL('/', request.url));
-}
+// Config
+import { authConfig } from '@/config';
+
+export default NextAuth(authConfig).auth;
 
 export const config = {
-  matcher: '/about/:path*',
+  matcher: [
+    '/((?!api|favicon.ico|sitemap.xml|robots.txt|_next/static|.*\\.png$|.*\\.webp$|.*\\.svg$).*)',
+  ],
 };
