@@ -10,6 +10,7 @@
 
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
 
   --color-icon-primary: var(--icon-primary);
 
@@ -105,6 +106,7 @@
 
   --text-primary: #807d7e;
   --text-secondary: #3c4242;
+  --text-tertiary: #fff;
 
   --icon-primary: #807d7e;
 
@@ -188,6 +190,7 @@
 
   --text-primary: #a8a9a9;
   --text-secondary: #cacccc;
+  --text-tertiary: #3c4242;
 
   --icon-primary: #807d7e;
 
