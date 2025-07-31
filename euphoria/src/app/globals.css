@@ -8,6 +8,13 @@
   --font-core-sans-c: var(--font-core-sans-c);
   --font-causten: var(--font-causten);
 
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+
+  --color-icon-primary: var(--icon-primary);
+
+  --color-border-primary: var(--border-primary);
+
   --color-label-primary: var(--label-primary);
 
   --color-slider-primary: var(--slider-primary);
@@ -34,6 +41,7 @@
   --color-background-secondary: var(--background-secondary);
   --color-background-tertiary: var(--background-tertiary);
   --color-background-quaternary: var(--background-quaternary);
+  --color-background-fade: var(--background-fade);
   --color-foreground: var(--foreground);
   --color-fade: var(--color-white-200);
 
@@ -93,6 +101,14 @@
   --background-secondary: #3c4242;
   --background-tertiary: #f6f6f6;
   --background-quaternary: #8a33fd;
+  --background-fade: #666;
+
+  --text-primary: #807d7e;
+  --text-secondary: #3c4242;
+
+  --icon-primary: #807d7e;
+
+  --border-primary: #bebcbd;
 
   --label-primary: #3c4242;
 
@@ -168,6 +184,14 @@
   --background-secondary: #252525;
   --background-tertiary: #333;
   --background-quaternary: #6f28d9;
+  --background-fade: #bebcbd;
+
+  --text-primary: #a8a9a9;
+  --text-secondary: #cacccc;
+
+  --icon-primary: #807d7e;
+
+  --border-primary: rgb(94, 93, 93);
 
   --label-primary: #cacccc;
 
