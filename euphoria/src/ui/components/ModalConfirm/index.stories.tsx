@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs';
 
 // Components
 import { ModalConfirm } from '.';
-import { Button } from '../common';
+import { Button } from '../common/Button';
 
 const meta: Meta<typeof ModalConfirm> = {
   title: 'Components/ModalConfirm',

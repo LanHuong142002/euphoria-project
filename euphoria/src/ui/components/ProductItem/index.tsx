@@ -1,7 +1,8 @@
 import { ComponentProps } from 'react';
 
 // Components
-import { Image, Badge } from '../common';
+import { Image } from '../common/Image';
+import { Badge } from '../common/Badge';
 
 // Utils
 import { formatPrice } from '@/utils';

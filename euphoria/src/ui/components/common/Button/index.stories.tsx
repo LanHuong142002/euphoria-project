@@ -1,9 +1,11 @@
 import { fn } from '@storybook/test';
-import { HeartIcon } from 'lucide-react';
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
 // Components
 import { Button } from '.';
+
+// Icons
+import { TrashIcon } from '@/ui/icons/TrashIcon';
 
 const meta = {
   title: 'Components/Common/Button',
@@ -112,7 +114,7 @@ export const Ghost: Story = {
 
 export const Icon: Story = {
   args: {
-    children: <HeartIcon size={20} />,
+    children: <TrashIcon width="20" height="20" />,
     variant: 'primary',
     color: 'icon',
     size: 'icon',

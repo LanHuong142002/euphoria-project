@@ -3,11 +3,11 @@
 import { ComponentProps } from 'react';
 
 // Components
-import { Image } from '../common';
+import { Image } from '../common/Image';
 import { QuantitySelector } from '../QuantitySelector';
 
 // Icons
-import { TrashIcon } from '@/ui/icons';
+import { TrashIcon } from '@/ui/icons/TrashIcon';
 
 // Types
 import { ProductCart } from '@/types';

@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
-import { Toaster } from './index';
-import { useToast } from '@/hooks/useToast';
+
+// Components
+import { Toaster } from '.';
 import { Button } from '../Button';
+
+// Hooks
+import { useToast } from '@/hooks/useToast';
 
 const meta: Meta<typeof Toaster> = {
   title: 'Components/Common/Toast',

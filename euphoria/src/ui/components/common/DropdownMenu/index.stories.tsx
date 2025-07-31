@@ -1,12 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
-import {
-  ChevronDownIcon,
-  SettingsIcon,
-  UserIcon,
-  LogOutIcon,
-  PlusIcon,
-} from 'lucide-react';
 
+// Components
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -43,22 +37,18 @@ export const Default: Story = {
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-2 px-4 py-2 bg-button-primary text-button-tertiary rounded-md hover:opacity-90">
         Open Menu
-        <ChevronDownIcon className="size-4" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <UserIcon className="size-4" />
           Profile
           <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <SettingsIcon className="size-4" />
           Settings
           <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem variant="destructive">
-          <LogOutIcon className="size-4" />
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
@@ -72,18 +62,15 @@ export const WithGroups: Story = {
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-2 px-4 py-2 bg-button-primary text-button-tertiary rounded-md hover:opacity-90">
         Account Menu
-        <ChevronDownIcon className="size-4" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuGroup>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuItem>
-            <UserIcon className="size-4" />
             Profile
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <SettingsIcon className="size-4" />
             Settings
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -91,19 +78,14 @@ export const WithGroups: Story = {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuLabel>Team</DropdownMenuLabel>
+          <DropdownMenuItem>Invite users</DropdownMenuItem>
           <DropdownMenuItem>
-            <PlusIcon className="size-4" />
-            Invite users
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <PlusIcon className="size-4" />
             New Team
             <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem variant="destructive">
-          <LogOutIcon className="size-4" />
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
@@ -117,23 +99,13 @@ export const WithSubMenu: Story = {
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-2 px-4 py-2 bg-button-primary text-button-tertiary rounded-md hover:opacity-90">
         More Options
-        <ChevronDownIcon className="size-4" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>
-          <UserIcon className="size-4" />
-          Profile
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <SettingsIcon className="size-4" />
-          Settings
-        </DropdownMenuItem>
+        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem>Settings</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuSub>
-          <DropdownMenuSubTrigger>
-            <PlusIcon className="size-4" />
-            More tools
-          </DropdownMenuSubTrigger>
+          <DropdownMenuSubTrigger>More tools</DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
             <DropdownMenuItem>Save as...</DropdownMenuItem>
             <DropdownMenuItem>Export...</DropdownMenuItem>
@@ -141,10 +113,7 @@ export const WithSubMenu: Story = {
           </DropdownMenuSubContent>
         </DropdownMenuSub>
         <DropdownMenuSeparator />
-        <DropdownMenuItem variant="destructive">
-          <LogOutIcon className="size-4" />
-          Log out
-        </DropdownMenuItem>
+        <DropdownMenuItem variant="destructive">Log out</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   ),
@@ -155,24 +124,13 @@ export const DisabledItems: Story = {
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-2 px-4 py-2 bg-button-primary text-button-tertiary rounded-md hover:opacity-90">
         Actions
-        <ChevronDownIcon className="size-4" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>
-          <UserIcon className="size-4" />
-          Edit Profile
-        </DropdownMenuItem>
-        <DropdownMenuItem disabled>
-          <SettingsIcon className="size-4" />
-          Advanced Settings
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <PlusIcon className="size-4" />
-          Create New
-        </DropdownMenuItem>
+        <DropdownMenuItem>Edit Profile</DropdownMenuItem>
+        <DropdownMenuItem disabled>Advanced Settings</DropdownMenuItem>
+        <DropdownMenuItem>Create New</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem disabled variant="destructive">
-          <LogOutIcon className="size-4" />
           Delete Account
         </DropdownMenuItem>
       </DropdownMenuContent>

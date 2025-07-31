@@ -50,7 +50,7 @@ export const buttonVariants = cva(
       },
 
       fontSize: {
-        xs: 'text-xs font-medium',
+        xs: 'text-xs font-regular',
         sm: 'text-sm font-normal',
         base: 'text-base font-normal',
         md: 'text-base font-bold',
