@@ -8,3 +8,4 @@ export * from './messages';
 export * from './timing';
 export * from './auth';
 export * from './regex';
+export * from './components';
