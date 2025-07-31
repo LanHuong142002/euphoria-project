@@ -10,6 +10,9 @@
 
   --color-label-primary: var(--label-primary);
 
+  --color-slider-primary: var(--slider-primary);
+  --color-slider-range: var(--slider-range);
+
   --color-product-item-text: var(--product-item-text);
   --color-product-item-brand: var(--product-item-brand);
 
@@ -93,6 +96,9 @@
 
   --label-primary: #3c4242;
 
+  --slider-primary: #807d7e;
+  --slider-range: #8a33fd;
+
   --product-item-text: #3c4242;
   --product-item-brand: #807d7e;
 
@@ -164,6 +170,9 @@
   --background-quaternary: #6f28d9;
 
   --label-primary: #cacccc;
+
+  --slider-primary: #a8a9a9;
+  --slider-range: #6f28d9;
 
   --product-item-text: #cacccc;
   --product-item-brand: #a8a9a9;
