@@ -1,18 +1,33 @@
-export interface Product {
-  id: string;
+import { Category } from './category';
+
+export interface ProductAttributes {
   name: string;
   price: number;
   description: string;
   images: string[];
   brand: string;
   colors: string[];
-  categories: string[];
+  categories: Category[];
   sizes: string[];
   quantity: number;
 }
 
+export interface Product {
+  id: string;
+  attributes: ProductAttributes;
+}
+
 export interface ProductCart
-  extends Pick<Product, 'id' | 'name' | 'price' | 'images'> {
+  extends Pick<ProductAttributes, 'name' | 'price' | 'images'> {
+  id: string;
   color: string;
   size: string;
+}
+
+export interface ProductFilterParams {
+  category?: string;
+  priceFrom?: number;
+  priceTo?: number;
+  page?: number;
+  pageSize?: number;
 }
