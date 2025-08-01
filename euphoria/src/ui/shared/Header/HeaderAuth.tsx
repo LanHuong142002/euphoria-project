@@ -9,12 +9,11 @@ import { ROUTES } from '@/constants';
 // Components
 import { MobileMenu } from './MobileMenu';
 import { ToggleTheme } from './ToggleTheme';
+import { SearchInput } from '../SearchInput';
 import { UserDropdown } from './UserDropdown';
-import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
 
 // Icons
-import { SearchIcon } from '../../icons/SearchIcon';
 import { ShoppingCartIcon } from '../../icons/ShoppingCartIcon';
 
 interface HeaderAuthProps {
@@ -44,14 +43,7 @@ export const HeaderAuth = ({ user, logo }: HeaderAuthProps) => {
       <div className="hidden lg:block">
         {user ? (
           <div className="flex items-center gap-[132px]">
-            <Input
-              leftElement={<SearchIcon />}
-              onChange={() => {}}
-              placeholder="Search"
-              variant="tertiary"
-              size="md"
-              className="w-[267px] h-11"
-            />
+            <SearchInput />
             <div className="flex items-center gap-3">
               <ToggleTheme />
               <UserDropdown />
