@@ -1,3 +1,5 @@
+'use client';
+
 import { Loader2 } from 'lucide-react';
 import { Slot } from '@radix-ui/react-slot';
 import { ComponentProps, MouseEvent } from 'react';

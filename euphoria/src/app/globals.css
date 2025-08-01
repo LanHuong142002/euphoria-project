@@ -11,8 +11,11 @@
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
+  --color-text-quaternary: var(--text-quaternary);
+  --color-text-error: var(--text-error);
 
   --color-icon-primary: var(--icon-primary);
+  --color-icon-error: var(--icon-error);
 
   --color-border-primary: var(--border-primary);
 
@@ -107,8 +110,11 @@
   --text-primary: #807d7e;
   --text-secondary: #3c4242;
   --text-tertiary: #fff;
+  --text-quaternary: #000;
+  --text-error: #ef4444;
 
   --icon-primary: #807d7e;
+  --icon-error: #ef4444;
 
   --border-primary: #bebcbd;
 
@@ -191,8 +197,11 @@
   --text-primary: #a8a9a9;
   --text-secondary: #cacccc;
   --text-tertiary: #3c4242;
+  --text-quaternary: #fff;
+  --text-error: #dc2626;
 
   --icon-primary: #807d7e;
+  --icon-error: #dc2626;
 
   --border-primary: rgb(94, 93, 93);
 
