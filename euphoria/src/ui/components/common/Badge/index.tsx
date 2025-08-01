@@ -17,7 +17,7 @@ const badgeVariants = cva(
         destructive:
           'border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
         outline:
-          'text-badge-tertiary [a&]:hover:bg-accent [a&]:hover:text-accent-foreground',
+          'border-badge-tertiary text-badge-secondary [a&]:hover:bg-accent [a&]:hover:text-badge-secondary px-[35px] py-[7px] text-md font-medium font-causten rounded-lg min-w-[97px]',
         icon: 'border-transparent bg-badge-primary text-badge-secondary w-11 h-11 rounded-full',
       },
     },
