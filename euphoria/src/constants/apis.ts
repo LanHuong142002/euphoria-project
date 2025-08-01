@@ -12,10 +12,14 @@ export const API_ENDPOINT = {
 
   // Categories
   CATEGORIES: 'categories',
+
+  // Products
+  PRODUCTS: 'products',
 };
 
 export const QUERY_URL = {
   PRODUCTS: ({
+    name = '',
     category = '',
     priceFrom = 0,
     priceTo = 0,
@@ -26,6 +30,7 @@ export const QUERY_URL = {
       {
         populate: { categories: { fields: ['*'] } },
         filters: {
+          ...(name && { name: { $contains: name } }),
           ...(category && { categories: { name: { $eqi: category } } }),
           ...(priceFrom && priceTo && priceFrom <= priceTo
             ? { price: { $between: [priceFrom, priceTo] } }

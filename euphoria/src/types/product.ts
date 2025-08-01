@@ -1,3 +1,4 @@
+import { ApiPaginationResponse } from './api';
 import { Category } from './category';
 
 export interface ProductAttributes {
@@ -25,9 +26,13 @@ export interface ProductCart
 }
 
 export interface ProductFilterParams {
+  categoryName?: string;
+  name?: string;
   category?: string;
   priceFrom?: number;
   priceTo?: number;
   page?: number;
   pageSize?: number;
 }
+
+export type ProductResponse = ApiPaginationResponse<Product[]>;
