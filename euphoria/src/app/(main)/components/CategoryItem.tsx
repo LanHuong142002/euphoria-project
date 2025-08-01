@@ -1,9 +1,10 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-
 // Icons
 import { ChevronRightIcon } from '@/ui/icons/ChevronIcon';
+
+// Hooks
+import { useGetParams } from '@/hooks';
 
 // Utils
 import { cn } from '@/utils';
@@ -14,14 +15,13 @@ interface CategoryItemProps {
 }
 
 export const CategoryItem = ({ value, label }: CategoryItemProps) => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams.toString());
+  const { params, router } = useGetParams();
 
   const isActive = params.get('category') === value;
 
   const handleClick = () => {
     params.set('category', value);
+    params.set('categoryName', label);
     router.push(`?${params.toString()}`);
   };
 

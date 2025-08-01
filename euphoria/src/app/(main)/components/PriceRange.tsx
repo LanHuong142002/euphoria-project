@@ -1,6 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+// Constants
+import { TIMING } from '@/constants';
 
 // Components
 import {
@@ -12,18 +15,36 @@ import {
 import { Badge } from '@/ui/components/common/Badge';
 import { Slider } from '@/ui/components/common/Slider';
 
+// Hooks
+import { useDebounce, useGetParams } from '@/hooks';
+
 const MIN_PRICE = 0;
 const MAX_PRICE = 1000;
 
 export const PriceRange = () => {
-  const [priceRange, setPriceRange] = useState<number[]>([
-    MIN_PRICE,
-    MAX_PRICE,
-  ]);
+  const { params, router, searchParams } = useGetParams();
+  const priceFrom = Number(params.get('priceFrom')) || MIN_PRICE;
+  const priceTo = Number(params.get('priceTo')) || MAX_PRICE;
+
+  const [priceRange, setPriceRange] = useState<number[]>([priceFrom, priceTo]);
+  const debouncedPriceRange = useDebounce(priceRange, TIMING.DEBOUNCE_DELAY);
 
   const handlePriceRangeChange = (value: number[]) => {
     setPriceRange(value);
   };
+
+  // Update URL when debounced value changes
+  useEffect(() => {
+    if (
+      debouncedPriceRange[0] !== priceFrom ||
+      debouncedPriceRange[1] !== priceTo
+    ) {
+      const newParams = new URLSearchParams(searchParams.toString());
+      newParams.set('priceFrom', debouncedPriceRange[0].toString());
+      newParams.set('priceTo', debouncedPriceRange[1].toString());
+      router.push(`?${newParams.toString()}`);
+    }
+  }, [debouncedPriceRange, router, searchParams, priceFrom, priceTo]);
 
   return (
     <Accordion

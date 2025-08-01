@@ -31,7 +31,7 @@ export const Filter = () => {
   return (
     <div
       className={cn(
-        'w-full max-w-sm bg-background-primary border border-border-primary',
+        'w-full lg:max-w-sm bg-background-primary border border-border-primary',
       )}
     >
       <div className="hidden lg:block">
