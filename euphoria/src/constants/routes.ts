@@ -3,6 +3,7 @@ export const ROUTES = {
   LOGIN: '/login',
   CART: '/cart',
   CHECKOUT: '/checkout',
+  PRODUCT_DETAILS: (id: string) => `/products/${id}`,
 };
 
 export const PRIVATE_ROUTERS = [ROUTES.CART, ROUTES.CHECKOUT];
