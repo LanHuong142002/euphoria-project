@@ -29,14 +29,13 @@ export const PriceRange = () => {
     <Accordion
       type="single"
       collapsible
-      defaultValue="price"
-      className="w-full py-5 px-7.5"
+      className="w-full lg:py-2 lg:py-5 px-7.5"
     >
       <AccordionItem value="price" className="border-none">
-        <AccordionTrigger className="text-[22px] font-semibold text-text-primary hover:no-underline">
+        <AccordionTrigger className="text-[18px] lg:text-[22px] font-semibold text-text-primary hover:no-underline">
           Price
         </AccordionTrigger>
-        <AccordionContent className="pt-15 space-y-5">
+        <AccordionContent className="pt-5 lg:pt-15 space-y-5">
           <Slider
             min={MIN_PRICE}
             max={MAX_PRICE}
