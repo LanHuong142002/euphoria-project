@@ -12,7 +12,7 @@ import type { Session } from 'next-auth';
 import { signOut } from 'next-auth/react';
 
 // Constants
-import { IMAGES, ROUTES } from '@/constants';
+import { ROUTES } from '@/constants';
 
 // Components
 import {
@@ -22,16 +22,17 @@ import {
   SheetTrigger,
 } from '@/ui/components/common/Sheet';
 import { Image } from '@/ui/components/common/Image';
-import { Button } from '@/ui/components/common/Button';
 
 interface MobileMenuProps {
   session: Session | null;
   onRedirectLoginPage: () => void;
+  logo: string;
 }
 
 export const MobileMenu = ({
   session,
   onRedirectLoginPage,
+  logo,
 }: MobileMenuProps) => {
   const handleLogout = async () => {
     await signOut({ redirect: true, callbackUrl: ROUTES.LOGIN });
@@ -40,27 +41,18 @@ export const MobileMenu = ({
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button
-          color="icon"
-          size="icon"
-          variant="primary"
-          className="lg:hidden"
+        <MenuIcon
+          className="lg:hidden h-5 w-5 cursor-pointer"
           aria-label="Open menu"
-        >
-          <MenuIcon className="h-5 w-5" />
-        </Button>
+        />
       </SheetTrigger>
       <SheetContent side="left" className="w-[280px] sm:w-[350px] lg:hidden">
-        <SheetHeader>
+        <SheetHeader className="px-8 pt-4">
           <Link
             href={ROUTES.HOME}
-            className="w-[60px] h-[30px] sm:w-[75px] sm:h-[38px] lg:w-[90px] lg:h-[45px]"
+            className="w-[60px] h-[30px] sm:w-[75px] sm:h-[38px]"
           >
-            <Image
-              src={IMAGES.LOGO}
-              alt="logo"
-              classNameWrapper="w-full h-full"
-            />
+            <Image src={logo} alt="logo" classNameWrapper="w-full h-full" />
           </Link>
         </SheetHeader>
         <div className="flex flex-col gap-4 mt-6">

@@ -1,13 +1,14 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
 import type { Session } from 'next-auth';
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 
 // Constants
-import { IMAGES, ROUTES } from '@/constants';
+import { IMAGES, LOGO_URL, ROUTES } from '@/constants';
 
 // Components
 import { HeaderAuth } from './HeaderAuth';
@@ -21,8 +22,10 @@ interface HeaderProps {
 }
 
 export const Header = ({ session: serverSession }: HeaderProps) => {
-  const { data: clientSession, update } = useSession();
   const pathname = usePathname();
+  const { resolvedTheme } = useTheme();
+  const { data: clientSession, update } = useSession();
+  const [logo, setLogo] = useState<string>(IMAGES.LOGO);
 
   // Use client session if available, otherwise fall back to server session
   const session = clientSession || serverSession;
@@ -34,18 +37,20 @@ export const Header = ({ session: serverSession }: HeaderProps) => {
     }
   }, [serverSession, clientSession, update]);
 
+  useEffect(() => {
+    if (resolvedTheme) {
+      setLogo(LOGO_URL(resolvedTheme === 'dark'));
+    }
+  }, [resolvedTheme]);
+
   return (
-    <header className="flex justify-between items-center px-4 sm:px-6 lg:px-25 py-4 sm:py-6 lg:py-[34px] border border-border-primary">
+    <header className="flex justify-between items-center px-4 sm:px-6 lg:px-25 py-4 sm:py-6 lg:py-[34px] border-b border-border-primary">
       <div className="flex items-center gap-3 sm:gap-4 lg:gap-22.5">
         <Link
           href={ROUTES.HOME}
           className="w-[60px] h-[30px] sm:w-[75px] sm:h-[38px] lg:w-[90px] lg:h-[45px]"
         >
-          <Image
-            src={IMAGES.LOGO}
-            alt="logo"
-            classNameWrapper="w-full h-full"
-          />
+          <Image src={logo} alt="logo" classNameWrapper="w-full h-full" />
         </Link>
         {session && (
           <Link
@@ -61,7 +66,7 @@ export const Header = ({ session: serverSession }: HeaderProps) => {
           </Link>
         )}
       </div>
-      <HeaderAuth user={session} />
+      <HeaderAuth user={session} logo={logo} />
     </header>
   );
 };
