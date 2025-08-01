@@ -4,7 +4,6 @@ import { useState, useTransition } from 'react';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter, useSearchParams } from 'next/navigation';
 
 // Actions
 import { login } from '@/actions';
@@ -20,9 +19,11 @@ import { Button } from '@/ui/components/common/Button';
 import { InputController } from '@/ui/components/InputController';
 import { Form as FormComponent } from '@/ui/components/common/Form';
 
+// Hooks
+import { useGetParams } from '@/hooks';
+
 export const Form = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const { searchParams, router } = useGetParams();
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>();
 
