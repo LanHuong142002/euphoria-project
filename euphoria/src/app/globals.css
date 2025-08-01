@@ -12,9 +12,11 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
   --color-text-quaternary: var(--text-quaternary);
+  --color-text-quinary: var(--text-quinary);
   --color-text-error: var(--text-error);
 
   --color-icon-primary: var(--icon-primary);
+  --color-icon-secondary: var(--icon-secondary);
   --color-icon-error: var(--icon-error);
 
   --color-border-primary: var(--border-primary);
@@ -32,6 +34,7 @@
 
   --color-badge-primary: var(--badge-primary);
   --color-badge-secondary: var(--badge-secondary);
+  --color-badge-tertiary: var(--badge-tertiary);
 
   --color-dropdown-menu-bg: var(--dropdown-menu-bg);
   --color-dropdown-menu-primary: var(--dropdown-menu-primary);
@@ -111,9 +114,11 @@
   --text-secondary: #3c4242;
   --text-tertiary: #fff;
   --text-quaternary: #000;
+  --text-quinary: #8a8989;
   --text-error: #ef4444;
 
   --icon-primary: #807d7e;
+  --icon-secondary: #fff;
   --icon-error: #ef4444;
 
   --border-primary: #bebcbd;
@@ -142,7 +147,7 @@
 
   --badge-primary: #f6f6f6;
   --badge-secondary: #3c4242;
-  --badge-tertiary: #3c4242;
+  --badge-tertiary: #bebcbd;
 
   --button-primary: #8a33fd;
   --button-secondary: #3c4242;
@@ -198,9 +203,11 @@
   --text-secondary: #cacccc;
   --text-tertiary: #3c4242;
   --text-quaternary: #fff;
+  --text-quinary: #f6f6f6;
   --text-error: #dc2626;
 
   --icon-primary: #807d7e;
+  --icon-secondary: #fff;
   --icon-error: #dc2626;
 
   --border-primary: rgb(94, 93, 93);
@@ -214,8 +221,8 @@
   --product-item-brand: #a8a9a9;
 
   --badge-primary: #cacccc;
-  --badge-secondary: #333;
-  --badge-tertiary: #cacccc;
+  --badge-secondary: #fff;
+  --badge-tertiary: #f6f6f6;
 
   --dialog-primary: #3c4242;
   --dialog-secondary: #cacccc;
