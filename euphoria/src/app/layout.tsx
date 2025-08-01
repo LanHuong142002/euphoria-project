@@ -10,6 +10,9 @@ import { BRAND, BASE_URL, FAVICON_URL, IMAGES } from '@/constants';
 // Components
 import { Providers } from './providers';
 
+// Config
+import { auth } from '@/config';
+
 // Local Fonts
 const coreSansC = localFont({
   src: [
@@ -75,13 +78,15 @@ export const metadata: Metadata = {
   icons: FAVICON_URL,
 };
 
-const RootLayout = ({
+const RootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  const session = await auth();
+
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`
             ${coreSansC.variable}
@@ -89,7 +94,7 @@ const RootLayout = ({
             antialiased
           `}
       >
-        <Providers>{children}</Providers>
+        <Providers session={session}>{children}</Providers>
       </body>
     </html>
   );

@@ -64,10 +64,12 @@ function DropdownMenuGroup({
 function DropdownMenuItem({
   className,
   inset,
+  isActive,
   variant = 'default',
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.Item> & {
   inset?: boolean;
+  isActive?: boolean;
   variant?: 'default' | 'destructive';
 }) {
   return (
@@ -75,7 +77,9 @@ function DropdownMenuItem({
       data-slot="dropdown-menu-item"
       data-inset={inset}
       data-variant={variant}
+      data-active={isActive}
       className={cn(
+        isActive && 'bg-dropdown-menu-secondary text-dropdown-menu-primary',
         'relative flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none',
         'text-dropdown-menu-primary hover:bg-dropdown-menu-secondary hover:text-dropdown-menu-primary focus:bg-dropdown-menu-secondary',
         'data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8',

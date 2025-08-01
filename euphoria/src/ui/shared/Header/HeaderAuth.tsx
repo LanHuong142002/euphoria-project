@@ -8,6 +8,7 @@ import { ROUTES } from '@/constants';
 
 // Components
 import { MobileMenu } from './MobileMenu';
+import { ToggleTheme } from './ToggleTheme';
 import { UserDropdown } from './UserDropdown';
 import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
@@ -18,9 +19,10 @@ import { ShoppingCartIcon } from '../../icons/ShoppingCartIcon';
 
 interface HeaderAuthProps {
   user: Session | null;
+  logo: string;
 }
 
-export const HeaderAuth = ({ user }: HeaderAuthProps) => {
+export const HeaderAuth = ({ user, logo }: HeaderAuthProps) => {
   const { push } = useRouter();
 
   const handleRedirectLoginPage = () => {
@@ -36,6 +38,7 @@ export const HeaderAuth = ({ user }: HeaderAuthProps) => {
       <MobileMenu
         session={user}
         onRedirectLoginPage={handleRedirectLoginPage}
+        logo={logo}
       />
 
       <div className="hidden lg:block">
@@ -50,6 +53,7 @@ export const HeaderAuth = ({ user }: HeaderAuthProps) => {
               className="w-[267px] h-11"
             />
             <div className="flex items-center gap-3">
+              <ToggleTheme />
               <UserDropdown />
               <Button
                 color="icon"
