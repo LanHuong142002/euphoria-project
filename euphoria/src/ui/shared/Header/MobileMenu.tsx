@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import {
   MenuIcon,
-  ShoppingCartIcon,
   LogOutIcon,
   HomeIcon,
   LogInIcon,
@@ -49,11 +48,6 @@ const MENU_ITEMS = [
     label: 'Shop',
     href: ROUTES.HOME,
     icon: HomeIcon,
-  },
-  {
-    label: 'Cart',
-    href: ROUTES.CART,
-    icon: ShoppingCartIcon,
   },
 ];
 
@@ -168,9 +162,8 @@ export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
                     const isLastItem = index === MENU_THEME_ITEMS.length - 1;
 
                     return (
-                      <>
+                      <div key={`menu-theme-item-${label}`}>
                         <div
-                          key={label}
                           onClick={onClick}
                           className={cn(
                             'flex items-center gap-6 py-2 pl-3 text-md font-medium text-text-secondary hover:bg-background-tertiary transition-colors',
@@ -181,7 +174,7 @@ export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
                           {label}
                         </div>
                         {!isLastItem && <Separator />}
-                      </>
+                      </div>
                     );
                   },
                 )}

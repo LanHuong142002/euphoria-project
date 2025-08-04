@@ -29,20 +29,20 @@ export const getCart = async () =>
 export const addToCart = async (body: CartPayload) =>
   safeHttpRequest<Cart[]>(
     (token) =>
-      httpClient.post<ListCartResponse, CartPayload>({
+      httpClient.post<ListCartResponse, { data: CartPayload }>({
         endpoint: API_ENDPOINT.CART,
-        body,
+        body: { data: body },
         token,
       }),
     true,
   );
 
-export const updateCart = async (body: CartPayload) =>
+export const updateCartById = async (id: string, body: CartPayload) =>
   safeHttpRequest<Cart[]>(
     (token) =>
-      httpClient.put<ListCartResponse, CartPayload>({
-        endpoint: API_ENDPOINT.CART,
-        body,
+      httpClient.put<ListCartResponse, { data: CartPayload }>({
+        endpoint: `${API_ENDPOINT.CART}/${id}`,
+        body: { data: body },
         token,
       }),
     true,

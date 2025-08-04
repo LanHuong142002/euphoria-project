@@ -54,6 +54,7 @@
   --color-background-fade: var(--background-fade);
   --color-foreground: var(--foreground);
   --color-fade: var(--color-white-200);
+  --color-background-error: var(--background-error);
 
   --color-ring: var(--ring);
   --color-border: var(--border);
@@ -125,6 +126,7 @@
   --background-tertiary: #f6f6f6;
   --background-quaternary: #8a33fd;
   --background-fade: #666;
+  --background-error: #ef4444;
 
   --text-primary: #807d7e;
   --text-secondary: #3c4242;
@@ -230,6 +232,7 @@
   --background-tertiary: #333;
   --background-quaternary: #6f28d9;
   --background-fade: #bebcbd;
+  --background-error: #ef4444;
 
   --text-primary: #a8a9a9;
   --text-secondary: #cacccc;

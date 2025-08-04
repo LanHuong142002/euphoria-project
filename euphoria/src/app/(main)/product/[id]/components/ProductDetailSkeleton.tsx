@@ -30,36 +30,35 @@ export const ProductDetailSkeleton = () => (
         </div>
 
         {/* Product Info Skeleton */}
-        <div className="pl-4 lg:pl-[74px] py-7.5 space-y-4 lg:space-y-[35px]">
+        <div className="pl-4 lg:pl-[74px] py-9 space-y-4 lg:space-y-[34px]">
           {/* Desktop Breadcrumb Skeleton */}
           <div className="hidden lg:block">
             <div className="flex items-center gap-2">
-              <Skeleton className="h-4 w-12" />
-              <Skeleton className="h-4 w-4" />
-              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-5 w-12" />
+              <Skeleton className="h-5 w-4" />
+              <Skeleton className="h-5 w-20" />
             </div>
           </div>
 
           {/* Product Title Skeleton */}
           <div className="space-y-2">
-            <Skeleton className="h-10 w-3/4" />
-            <Skeleton className="h-8 w-1/2" />
+            <Skeleton className="h-14 w-3/4" />
           </div>
 
           {/* Size Selection Skeleton */}
-          <div className="space-y-3">
-            <Skeleton className="h-5 w-16" />
-            <div className="flex gap-2">
+          <div className="space-y-[30px]">
+            <Skeleton className="h-5 w-22" />
+            <div className="flex gap-5">
               {Array.from({ length: 5 }).map((_, index) => (
-                <Skeleton key={index} className="h-10 w-12 rounded-lg" />
+                <Skeleton key={index} className="h-9.5 w-9.5 rounded-lg" />
               ))}
             </div>
           </div>
 
           {/* Color Selection Skeleton */}
-          <div className="space-y-3">
-            <Skeleton className="h-5 w-20" />
-            <div className="flex gap-2">
+          <div className="space-y-[30px]">
+            <Skeleton className="h-6 w-30" />
+            <div className="flex gap-5">
               {Array.from({ length: 6 }).map((_, index) => (
                 <Skeleton key={index} className="h-8 w-8 rounded-full" />
               ))}
@@ -68,8 +67,8 @@ export const ProductDetailSkeleton = () => (
 
           {/* Add to Cart Button and Price Skeleton */}
           <div className="flex items-center gap-4">
-            <Skeleton className="h-12 w-32 rounded-lg" />
-            <Skeleton className="h-8 w-20 rounded-md" />
+            <Skeleton className="h-12 w-44 rounded-lg" />
+            <Skeleton className="h-12 w-30 rounded-md" />
           </div>
 
           {/* Separator */}
@@ -79,8 +78,8 @@ export const ProductDetailSkeleton = () => (
           <div className="grid grid-cols-2 gap-4">
             {Array.from({ length: 4 }).map((_, index) => (
               <div key={index} className="flex items-center gap-[15px]">
-                <Skeleton className="h-6 w-6 rounded-md" />
-                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-11 w-11 rounded-full" />
+                <Skeleton className="h-4 w-26" />
               </div>
             ))}
           </div>
@@ -98,16 +97,16 @@ export const ProductDetailSkeleton = () => (
     <div className="pl-4 lg:pl-0 container mx-auto mt-5 lg:mt-[100px]">
       <div className="flex items-stretch gap-[15px] mb-7.5">
         <Skeleton className="w-[6px] rounded-xl" />
-        <Skeleton className="h-8 w-48" />
+        <Skeleton className="h-10 w-56" />
       </div>
 
       <div className="space-y-7.5">
-        <Skeleton className="h-6 w-24" />
+        <Skeleton className="h-8 w-24" />
         <div className="space-y-3">
           <Skeleton className="h-4 w-full" />
-          <Skeleton className="h-4 w-3/4" />
-          <Skeleton className="h-4 w-5/6" />
-          <Skeleton className="h-4 w-2/3" />
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-full" />
         </div>
       </div>
     </div>
