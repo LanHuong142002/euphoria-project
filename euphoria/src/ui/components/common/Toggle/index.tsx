@@ -13,11 +13,13 @@ const toggleVariants = cva(
     variants: {
       variant: {
         default: 'bg-transparent border-2 border-toggle-primary',
+        circle: 'bg-transparent border-2 rounded-full',
         outline: 'border-2 border-toggle-primary bg-transparent',
       },
       size: {
-        sm: 'h-9.5 min-w-9.5 text-sm',
+        sm: 'h-9.5 w-9.5 text-sm',
         default: 'h-10 min-w-10 text-sm',
+        circle: 'h-5.5 min-w-5.5 p-0',
         lg: 'h-12 min-w-12 text-base',
         xl: 'h-14 min-w-14 text-lg',
       },

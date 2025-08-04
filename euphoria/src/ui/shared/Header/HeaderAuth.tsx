@@ -1,7 +1,5 @@
-'use client';
-
+import Link from 'next/link';
 import { Session } from 'next-auth';
-import { useRouter } from 'next/navigation';
 
 // Constants
 import { ROUTES } from '@/constants';
@@ -21,54 +19,40 @@ interface HeaderAuthProps {
   logo: string;
 }
 
-export const HeaderAuth = ({ user, logo }: HeaderAuthProps) => {
-  const { push } = useRouter();
+export const HeaderAuth = ({ user, logo }: HeaderAuthProps) => (
+  <div className="flex items-center gap-2 sm:gap-3">
+    <MobileMenu session={user} logo={logo} />
 
-  const handleRedirectLoginPage = () => {
-    push(ROUTES.LOGIN);
-  };
-
-  const handleRedirectCartPage = () => {
-    push(ROUTES.CART);
-  };
-
-  return (
-    <div className="flex items-center gap-2 sm:gap-3">
-      <MobileMenu
-        session={user}
-        onRedirectLoginPage={handleRedirectLoginPage}
-        logo={logo}
-      />
-
-      <div className="hidden lg:block">
-        {user ? (
-          <div className="flex items-center gap-[132px]">
-            <SearchInput />
-            <div className="flex items-center gap-3">
-              <ToggleTheme />
+    <div className="hidden lg:block">
+      <div className="flex items-center gap-[132px]">
+        <SearchInput />
+        <div className="flex items-center gap-3">
+          <ToggleTheme />
+          {user && (
+            <>
               <UserDropdown />
+              <Link href={ROUTES.CART}>
+                <Button color="icon" size="icon" variant="primary">
+                  <ShoppingCartIcon />
+                </Button>
+              </Link>
+            </>
+          )}
+
+          {!user && (
+            <Link href={ROUTES.LOGIN}>
               <Button
-                color="icon"
-                onClick={handleRedirectCartPage}
-                size="icon"
+                color="primary"
                 variant="primary"
+                fontSize="xs"
+                className="text-xs sm:text-sm"
               >
-                <ShoppingCartIcon />
+                Login
               </Button>
-            </div>
-          </div>
-        ) : (
-          <Button
-            color="primary"
-            onClick={handleRedirectLoginPage}
-            variant="primary"
-            fontSize="xs"
-            className="text-xs sm:text-sm"
-          >
-            Login
-          </Button>
-        )}
+            </Link>
+          )}
+        </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
