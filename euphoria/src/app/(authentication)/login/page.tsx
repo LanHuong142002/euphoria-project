@@ -10,31 +10,29 @@ import { FormSkeleton } from './components/FormSkeleton';
 import { ExternalLogin } from './components/ExternalLogin';
 import { Separator } from '@/ui/components/common/Separator';
 
-export default function LoginPage() {
-  return (
-    <div className="w-full flex-1 flex gap-[77px]">
-      <div className="w-1/2 flex-1 flex hidden lg:block">
-        <Image
-          src={IMAGES.ONBOARDING}
-          alt="logo"
-          className="object-cover"
-          classNameWrapper="w-full h-full"
-        />
-      </div>
-      <div className="container mx-auto lg:w-1/2 pt-15 pb-15 lg:pb-0">
-        <div className="w-[250px] lg:w-[568px] mx-auto">
-          <h1 className="font-core-sans-c text-[34px] font-bold">
-            Sign In Page
-          </h1>
-          <div className="pt-[56px] space-y-[50px]">
-            <ExternalLogin />
-            <Separator text="Or" />
-            <Suspense fallback={<FormSkeleton />}>
-              <Form />
-            </Suspense>
-          </div>
+const LoginPage = () => (
+  <div className="w-full flex-1 flex gap-[10px] xl:gap-[77px]">
+    <div className="xl:w-1/2 flex-1 flex hidden xl:block">
+      <Image
+        src={IMAGES.ONBOARDING}
+        alt="logo"
+        className="object-cover"
+        classNameWrapper="w-full h-full"
+      />
+    </div>
+    <div className="container mx-auto xl:w-1/2 pt-15 pb-15 lg:pb-0">
+      <div className="w-[300px] md:w-[400px] lg:w-[568px] mx-auto">
+        <h1 className="font-core-sans-c text-[34px] font-bold">Sign In Page</h1>
+        <div className="pt-[56px] space-y-[50px]">
+          <ExternalLogin />
+          <Separator text="Or" />
+          <Suspense fallback={<FormSkeleton />}>
+            <Form />
+          </Suspense>
         </div>
       </div>
     </div>
-  );
-}
+  </div>
+);
+
+export default LoginPage;
