@@ -33,6 +33,7 @@ export interface ProductFilterParams {
   priceTo?: number;
   page?: number;
   pageSize?: number;
+  limit?: number;
 }
 
 export type ProductListResponse = ApiPaginationResponse<Product[]>;
