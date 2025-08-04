@@ -25,6 +25,7 @@ import {
   SheetContent,
   SheetFooter,
   SheetHeader,
+  SheetTitle,
   SheetTrigger,
 } from '@/ui/components/common/Sheet';
 import {
@@ -57,8 +58,8 @@ const MENU_ITEMS = [
 ];
 
 interface MobileMenuProps {
-  session: Session | null;
   logo: string;
+  session: Session | null;
 }
 
 export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
@@ -109,6 +110,7 @@ export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
       </SheetTrigger>
       <SheetContent side="left" className="w-[280px] sm:w-[350px] lg:hidden">
         <SheetHeader className="px-8 pt-4">
+          <SheetTitle className="sr-only">Menu</SheetTitle>
           <Link
             href={ROUTES.HOME}
             className="w-[60px] h-[30px] sm:w-[75px] sm:h-[38px]"
@@ -120,14 +122,14 @@ export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
         {/* Menu */}
         <div className="flex flex-col gap-4 mt-6">
           <div className="px-8 w-full">
-            <SearchInput className="w-full" />
+            <SearchInput className="w-full" onClick={handleMenuClick} />
           </div>
           {MENU_ITEMS.map(({ label, href, icon: Icon }) => (
             <Link
               key={href}
               href={href}
               className={cn(
-                'flex items-center gap-6 px-8 py-3 text-lg font-medium text-text-secondary hover:bg-background-tertiary transition-colors',
+                'flex items-center gap-6 px-8 py-3 text-md font-medium text-text-secondary hover:bg-background-tertiary transition-colors',
                 pathname === href && 'bg-background-tertiary',
               )}
               onClick={handleMenuClick}
@@ -139,7 +141,7 @@ export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
 
           <button
             onClick={session ? handleLogout : handleRedirectLoginPage}
-            className="flex items-center gap-6 px-8 py-3 text-lg font-medium text-text-secondary hover:bg-background-tertiary transition-colors cursor-pointer"
+            className="flex items-center gap-6 px-8 py-3 text-md font-medium text-text-secondary hover:bg-background-tertiary transition-colors cursor-pointer"
           >
             {session ? (
               <LogOutIcon className="size-5 text-icon-primary" />
@@ -155,7 +157,7 @@ export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
               <AccordionTrigger>
-                <p className="text-lg font-medium text-text-secondary">
+                <p className="text-md font-medium text-text-secondary">
                   Change Theme
                 </p>
               </AccordionTrigger>
@@ -171,7 +173,7 @@ export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
                           key={label}
                           onClick={onClick}
                           className={cn(
-                            'flex items-center gap-6 py-2 pl-3 text-lg font-medium text-text-secondary hover:bg-background-tertiary transition-colors',
+                            'flex items-center gap-6 py-2 pl-3 text-md font-medium text-text-secondary hover:bg-background-tertiary transition-colors',
                             isActive && 'bg-background-tertiary',
                           )}
                         >

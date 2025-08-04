@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect, ChangeEvent } from 'react';
+import { useState, useCallback, ChangeEvent, KeyboardEvent } from 'react';
 
 // Constants
 import { TIMING } from '@/constants';
@@ -8,65 +8,65 @@ import { TIMING } from '@/constants';
 // Components
 import { Input } from '@/ui/components/common/Input';
 import { SearchIcon } from '@/ui/icons/SearchIcon';
+import { SearchDropdown } from './SearchDropdown';
 
 // Hooks
-import { useDebounce, useGetParams } from '@/hooks';
+import { useDebounce } from '@/hooks';
 
 // Utils
 import { cn } from '@/utils';
 
 interface SearchInputProps {
   className?: string;
+  onClick?: () => void;
 }
 
-export const SearchInput = ({ className }: SearchInputProps) => {
-  const { params, router } = useGetParams();
-  const [search, setSearch] = useState(params.get('name') || '');
-  const [hasInteracted, setHasInteracted] = useState(false);
+export const SearchInput = ({ className, onClick }: SearchInputProps) => {
+  const [search, setSearch] = useState<string>('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const debouncedSearch = useDebounce(search, TIMING.DEBOUNCE_DELAY);
 
   const handleSearchChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-    setHasInteracted(true);
+    const value = e.target.value;
+    setSearch(value);
+    setIsDropdownOpen(true);
   }, []);
 
-  const updateURLParams = useCallback(
-    (searchTerm: string) => {
-      const newParams = new URLSearchParams();
-
-      if (searchTerm.trim()) {
-        newParams.set('name', searchTerm);
-      } else {
-        newParams.delete('name');
-      }
-
-      router.push(`?${newParams.toString()}`);
-    },
-    [router],
-  );
-
-  const handleSearch = useCallback(
-    (searchTerm: string) => {
-      updateURLParams(searchTerm);
-    },
-    [updateURLParams],
-  );
-
-  useEffect(() => {
-    if (hasInteracted) {
-      handleSearch(debouncedSearch);
+  const handleKeyDown = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Escape') {
+      setIsDropdownOpen(false);
     }
-  }, [debouncedSearch, handleSearch, hasInteracted]);
+  }, []);
+
+  const handleInputFocus = useCallback(() => {
+    if (search.trim()) {
+      setIsDropdownOpen(true);
+    }
+  }, [search]);
+
+  const handleDropdownClose = useCallback(() => {
+    setIsDropdownOpen(false);
+    onClick?.();
+  }, [onClick]);
 
   return (
-    <Input
-      leftElement={<SearchIcon />}
-      value={search}
-      onChange={handleSearchChange}
-      placeholder="Search"
-      variant="tertiary"
-      size="md"
-      className={cn('w-[267px] h-11', className)}
-    />
+    <div className="relative">
+      <Input
+        leftElement={<SearchIcon />}
+        value={search}
+        onChange={handleSearchChange}
+        onKeyDown={handleKeyDown}
+        onFocus={handleInputFocus}
+        placeholder="Search"
+        variant="tertiary"
+        size="md"
+        className={cn('w-[267px] h-11', className)}
+      />
+      <SearchDropdown
+        searchTerm={debouncedSearch}
+        isOpen={isDropdownOpen}
+        onClose={handleDropdownClose}
+      />
+    </div>
   );
 };
