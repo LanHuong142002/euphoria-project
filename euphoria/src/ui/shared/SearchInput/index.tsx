@@ -22,10 +22,12 @@ interface SearchInputProps {
 export const SearchInput = ({ className }: SearchInputProps) => {
   const { params, router } = useGetParams();
   const [search, setSearch] = useState(params.get('name') || '');
+  const [hasInteracted, setHasInteracted] = useState(false);
   const debouncedSearch = useDebounce(search, TIMING.DEBOUNCE_DELAY);
 
   const handleSearchChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
+    setHasInteracted(true);
   }, []);
 
   const updateURLParams = useCallback(
@@ -51,8 +53,10 @@ export const SearchInput = ({ className }: SearchInputProps) => {
   );
 
   useEffect(() => {
-    handleSearch(debouncedSearch);
-  }, [debouncedSearch, handleSearch]);
+    if (hasInteracted) {
+      handleSearch(debouncedSearch);
+    }
+  }, [debouncedSearch, handleSearch, hasInteracted]);
 
   return (
     <Input

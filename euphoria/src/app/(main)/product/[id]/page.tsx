@@ -18,10 +18,12 @@ export const generateMetadata = async ({
   const { id } = await params;
 
   const product = await getProductById(id);
+  const { attributes } = product.data || {};
+  const { name = '', description = '' } = attributes || {};
 
   return {
-    title: `${product.data.attributes.name} - Euphoria`,
-    description: product.data.attributes.description,
+    title: `${name} - Euphoria`,
+    description,
   };
 };
 
