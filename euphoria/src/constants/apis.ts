@@ -17,7 +17,7 @@ export const API_ENDPOINT = {
   PRODUCTS: 'products',
 
   // Cart
-  CART: 'cart',
+  CART: 'carts',
 };
 
 export const QUERY_URL = {

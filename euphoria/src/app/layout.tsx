@@ -93,6 +93,7 @@ const RootLayout = async ({
             ${causten.variable}
             antialiased
           `}
+        suppressHydrationWarning
       >
         <Providers session={session}>{children}</Providers>
       </body>

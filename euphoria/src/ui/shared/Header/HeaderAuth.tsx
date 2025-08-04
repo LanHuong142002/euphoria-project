@@ -12,7 +12,7 @@ import { UserDropdown } from './UserDropdown';
 import { Button } from '../../components/common/Button';
 
 // Icons
-import { ShoppingCartIcon } from '../../icons/ShoppingCartIcon';
+import { CartTotal } from './CartTotal';
 
 interface HeaderAuthProps {
   user: Session | null;
@@ -21,6 +21,11 @@ interface HeaderAuthProps {
 
 export const HeaderAuth = ({ user, logo }: HeaderAuthProps) => (
   <div className="flex items-center gap-2 sm:gap-3">
+    {user && (
+      <div className="lg:hidden pr-4">
+        <CartTotal />
+      </div>
+    )}
     <MobileMenu session={user} logo={logo} />
 
     <div className="hidden lg:block">
@@ -31,11 +36,7 @@ export const HeaderAuth = ({ user, logo }: HeaderAuthProps) => (
           {user && (
             <>
               <UserDropdown />
-              <Link href={ROUTES.CART}>
-                <Button color="icon" size="icon" variant="primary">
-                  <ShoppingCartIcon />
-                </Button>
-              </Link>
+              <CartTotal />
             </>
           )}
 

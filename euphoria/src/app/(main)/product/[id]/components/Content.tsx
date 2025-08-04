@@ -37,6 +37,7 @@ export const Content = async ({ id }: ContentProps) => {
     <div className="pb-[100px]">
       <div className="relative">
         <ProductDetailAction
+          id={id}
           images={images}
           name={name}
           price={price}
