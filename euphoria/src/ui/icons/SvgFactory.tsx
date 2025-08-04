@@ -12,8 +12,8 @@ export const SvgFactory = forwardRef<SVGSVGElement, SvgFactoryProps>(
     <svg
       ref={ref}
       className={cn(className)}
-      width={width || size}
-      height={height || size}
+      width={width ?? size}
+      height={height ?? size}
       {...props}
     >
       {children}
