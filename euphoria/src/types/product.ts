@@ -8,7 +8,7 @@ export interface ProductAttributes {
   images: string[];
   brand: string;
   colors: string[];
-  categories: Category[];
+  category: { data: Category };
   sizes: string[];
   quantity: number;
 }
@@ -35,4 +35,5 @@ export interface ProductFilterParams {
   pageSize?: number;
 }
 
-export type ProductResponse = ApiPaginationResponse<Product[]>;
+export type ProductListResponse = ApiPaginationResponse<Product[]>;
+export type ProductResponse = ApiPaginationResponse<Product>;

@@ -28,10 +28,10 @@ export const QUERY_URL = {
   }: ProductFilterParams) =>
     QueryString.stringify(
       {
-        populate: { categories: { fields: ['*'] } },
+        populate: { category: { fields: ['*'] } },
         filters: {
           ...(name && { name: { $contains: name } }),
-          ...(category && { categories: { name: { $eqi: category } } }),
+          ...(category && { category: { name: { $eqi: category } } }),
           ...(priceFrom && priceTo && priceFrom <= priceTo
             ? { price: { $between: [priceFrom, priceTo] } }
             : {}),
