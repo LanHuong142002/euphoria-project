@@ -12,7 +12,7 @@ import { API_ENDPOINT, QUERY_URL } from '@/constants';
 import {
   Product,
   ProductFilterParams,
-  ProductListResponse,
+  ListProductResponse,
   ProductResponse,
 } from '@/types';
 
@@ -20,11 +20,11 @@ export const getProducts = async (params: ProductFilterParams) =>
   safeHttpRequest<Product[]>(() => {
     const endpoint = `${API_ENDPOINT.PRODUCTS}${QUERY_URL.PRODUCTS(params)}`;
 
-    return httpClient.get<ProductListResponse>({
+    return httpClient.get<ListProductResponse>({
       endpoint,
       options: {
         next: {
-          tags: [API_ENDPOINT.PRODUCTS],
+          tags: [endpoint],
         },
       },
     });
@@ -38,7 +38,7 @@ export const getProductById = async (id: string) =>
       endpoint,
       options: {
         next: {
-          tags: [`${API_ENDPOINT.PRODUCTS}/${id}?populate[category][fields]=*`],
+          tags: [endpoint],
         },
       },
     });
