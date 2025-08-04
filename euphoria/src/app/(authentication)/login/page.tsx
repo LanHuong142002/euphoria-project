@@ -12,8 +12,8 @@ import { Separator } from '@/ui/components/common/Separator';
 
 export default function LoginPage() {
   return (
-    <div className="w-full flex-1 flex">
-      <div className="w-1/2 flex-1 flex">
+    <div className="w-full flex-1 flex gap-[77px]">
+      <div className="w-1/2 flex-1 flex hidden lg:block">
         <Image
           src={IMAGES.ONBOARDING}
           alt="logo"
@@ -21,8 +21,8 @@ export default function LoginPage() {
           classNameWrapper="w-full h-full"
         />
       </div>
-      <div className="w-1/2 pt-15">
-        <div className="w-[568px] mx-auto">
+      <div className="container mx-auto lg:w-1/2 pt-15 pb-15 lg:pb-0">
+        <div className="w-[250px] lg:w-[568px] mx-auto">
           <h1 className="font-core-sans-c text-[34px] font-bold">
             Sign In Page
           </h1>

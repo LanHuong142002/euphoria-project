@@ -82,7 +82,7 @@ export const Form = () => {
             color="primary"
             variant="primary"
             fontSize="xs"
-            className="text-xs sm:text-sm"
+            className="text-xs sm:text-sm w-full lg:w-auto"
             isLoading={isPending}
           >
             Sign In

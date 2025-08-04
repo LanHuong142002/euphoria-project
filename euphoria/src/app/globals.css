@@ -17,9 +17,12 @@
 
   --color-icon-primary: var(--icon-primary);
   --color-icon-secondary: var(--icon-secondary);
+  --color-icon-tertiary: var(--icon-tertiary);
   --color-icon-error: var(--icon-error);
 
   --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+  --color-border-tertiary: var(--border-tertiary);
 
   --color-label-primary: var(--label-primary);
 
@@ -101,6 +104,19 @@
   --color-toast-info-bg: var(--toast-info-bg);
   --color-toast-info-text: var(--toast-info-text);
   --color-toast-info-border: var(--toast-info-border);
+
+  --color-product-color-purple: #8434e1;
+  --color-product-color-black: #252525;
+  --color-product-color-red: #f35528;
+  --color-product-color-orange: #f16f2b;
+  --color-product-color-navy: #345eff;
+  --color-product-color-white: #f4f1f1;
+  --color-product-color-broom: #d67e3b;
+  --color-product-color-green: #48bc4e;
+  --color-product-color-yellow: #fdc761;
+  --color-product-color-grey: #e4e5e8;
+  --color-product-color-pink: #e08d9d;
+  --color-product-color-blue: #3fdeff;
 }
 
 :root {
@@ -119,9 +135,12 @@
 
   --icon-primary: #807d7e;
   --icon-secondary: #fff;
+  --icon-tertiary: #3c4242;
   --icon-error: #ef4444;
 
   --border-primary: #bebcbd;
+  --border-secondary: #3f4646;
+  --border-tertiary: rgb(223, 223, 223);
 
   --label-primary: #3c4242;
 
@@ -190,6 +209,19 @@
   --toast-info-bg: #eff6ff;
   --toast-info-text: #4d82f2;
   --toast-info-border: #3b82f6;
+
+  --color-product-color-purple: #8434e1;
+  --color-product-color-black: #252525;
+  --color-product-color-red: #f35528;
+  --color-product-color-orange: #f16f2b;
+  --color-product-color-navy: #345eff;
+  --color-product-color-white: #fff;
+  --color-product-color-broom: #d67e3b;
+  --color-product-color-green: #48bc4e;
+  --color-product-color-yellow: #fdc761;
+  --color-product-color-grey: #e4e5e8;
+  --color-product-color-pink: #e08d9d;
+  --color-product-color-blue: #3fdeff;
 }
 
 .dark {
@@ -208,9 +240,12 @@
 
   --icon-primary: #807d7e;
   --icon-secondary: #fff;
+  --icon-tertiary: #fff;
   --icon-error: #dc2626;
 
   --border-primary: rgb(94, 93, 93);
+  --border-secondary: #cacccc;
+  --border-tertiary: rgb(223, 223, 223);
 
   --label-primary: #cacccc;
 
@@ -220,7 +255,7 @@
   --product-item-text: #cacccc;
   --product-item-brand: #a8a9a9;
 
-  --badge-primary: #cacccc;
+  --badge-primary: rgb(94, 93, 93);
   --badge-secondary: #fff;
   --badge-tertiary: #f6f6f6;
 
