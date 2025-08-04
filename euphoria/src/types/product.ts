@@ -36,5 +36,5 @@ export interface ProductFilterParams {
   limit?: number;
 }
 
-export type ProductListResponse = ApiPaginationResponse<Product[]>;
+export type ListProductResponse = ApiPaginationResponse<Product[]>;
 export type ProductResponse = ApiPaginationResponse<Product>;
