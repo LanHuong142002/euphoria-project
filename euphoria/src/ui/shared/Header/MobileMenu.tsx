@@ -1,15 +1,20 @@
 'use client';
 
+import { useState } from 'react';
 import {
   MenuIcon,
   ShoppingCartIcon,
   LogOutIcon,
   HomeIcon,
   LogInIcon,
+  Sun,
+  Moon,
+  Cog,
 } from 'lucide-react';
 import Link from 'next/link';
 import type { Session } from 'next-auth';
 import { signOut } from 'next-auth/react';
+import { usePathname, useRouter } from 'next/navigation';
 
 // Constants
 import { ROUTES } from '@/constants';
@@ -18,28 +23,84 @@ import { ROUTES } from '@/constants';
 import {
   Sheet,
   SheetContent,
+  SheetFooter,
   SheetHeader,
   SheetTrigger,
 } from '@/ui/components/common/Sheet';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/ui/components/common/Accordion';
+import { SearchInput } from '../SearchInput';
 import { Image } from '@/ui/components/common/Image';
+import { Separator } from '@/ui/components/common/Separator';
+
+// Hooks
+import { useChangeTheme } from '@/hooks';
+
+// Utils
+import { cn } from '@/utils';
+
+const MENU_ITEMS = [
+  {
+    label: 'Shop',
+    href: ROUTES.HOME,
+    icon: HomeIcon,
+  },
+  {
+    label: 'Cart',
+    href: ROUTES.CART,
+    icon: ShoppingCartIcon,
+  },
+];
 
 interface MobileMenuProps {
   session: Session | null;
-  onRedirectLoginPage: () => void;
   logo: string;
 }
 
-export const MobileMenu = ({
-  session,
-  onRedirectLoginPage,
-  logo,
-}: MobileMenuProps) => {
+export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
+  const { push } = useRouter();
+  const pathname = usePathname();
+  const { onThemeLight, onThemeDark, onThemeSystem, theme } = useChangeTheme();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleMenuClick = () => {
+    setIsOpen(false);
+  };
+
   const handleLogout = async () => {
+    handleMenuClick();
     await signOut({ redirect: true, callbackUrl: ROUTES.LOGIN });
   };
 
+  const handleRedirectLoginPage = () => {
+    handleMenuClick();
+    push(ROUTES.LOGIN);
+  };
+
+  const MENU_THEME_ITEMS = [
+    {
+      label: 'Light',
+      onClick: onThemeLight,
+      icon: Sun,
+    },
+    {
+      label: 'Dark',
+      onClick: onThemeDark,
+      icon: Moon,
+    },
+    {
+      label: 'System',
+      onClick: onThemeSystem,
+      icon: Cog,
+    },
+  ];
+
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <MenuIcon
           className="lg:hidden h-5 w-5 cursor-pointer"
@@ -55,25 +116,29 @@ export const MobileMenu = ({
             <Image src={logo} alt="logo" classNameWrapper="w-full h-full" />
           </Link>
         </SheetHeader>
-        <div className="flex flex-col gap-4 mt-6">
-          <Link
-            href={ROUTES.HOME}
-            className="flex items-center gap-6 px-8 py-3 text-lg font-medium text-text-secondary hover:bg-background-tertiary transition-colors"
-          >
-            <HomeIcon className="size-5 text-icon-primary" />
-            Shop
-          </Link>
 
-          <Link
-            href={ROUTES.CART}
-            className="flex items-center gap-6 px-8 py-3 text-lg font-medium text-text-secondary hover:bg-background-tertiary transition-colors"
-          >
-            <ShoppingCartIcon className="size-5 text-icon-primary" />
-            Cart
-          </Link>
+        {/* Menu */}
+        <div className="flex flex-col gap-4 mt-6">
+          <div className="px-8 w-full">
+            <SearchInput className="w-full" />
+          </div>
+          {MENU_ITEMS.map(({ label, href, icon: Icon }) => (
+            <Link
+              key={href}
+              href={href}
+              className={cn(
+                'flex items-center gap-6 px-8 py-3 text-lg font-medium text-text-secondary hover:bg-background-tertiary transition-colors',
+                pathname === href && 'bg-background-tertiary',
+              )}
+              onClick={handleMenuClick}
+            >
+              <Icon className="size-5 text-icon-primary" />
+              {label}
+            </Link>
+          ))}
 
           <button
-            onClick={session ? handleLogout : onRedirectLoginPage}
+            onClick={session ? handleLogout : handleRedirectLoginPage}
             className="flex items-center gap-6 px-8 py-3 text-lg font-medium text-text-secondary hover:bg-background-tertiary transition-colors cursor-pointer"
           >
             {session ? (
@@ -84,6 +149,44 @@ export const MobileMenu = ({
             {session ? 'Log out' : 'Login'}
           </button>
         </div>
+
+        {/* Change Theme */}
+        <SheetFooter className="pb-8">
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>
+                <p className="text-lg font-medium text-text-secondary">
+                  Change Theme
+                </p>
+              </AccordionTrigger>
+              <AccordionContent className="pl-7">
+                {MENU_THEME_ITEMS.map(
+                  ({ label, onClick, icon: Icon }, index) => {
+                    const isActive = theme === label.toLowerCase();
+                    const isLastItem = index === MENU_THEME_ITEMS.length - 1;
+
+                    return (
+                      <>
+                        <div
+                          key={label}
+                          onClick={onClick}
+                          className={cn(
+                            'flex items-center gap-6 py-2 pl-3 text-lg font-medium text-text-secondary hover:bg-background-tertiary transition-colors',
+                            isActive && 'bg-background-tertiary',
+                          )}
+                        >
+                          <Icon className="size-5 text-icon-primary" />
+                          {label}
+                        </div>
+                        {!isLastItem && <Separator />}
+                      </>
+                    );
+                  },
+                )}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   );

@@ -12,7 +12,14 @@ import { SearchIcon } from '@/ui/icons/SearchIcon';
 // Hooks
 import { useDebounce, useGetParams } from '@/hooks';
 
-export const SearchInput = () => {
+// Utils
+import { cn } from '@/utils';
+
+interface SearchInputProps {
+  className?: string;
+}
+
+export const SearchInput = ({ className }: SearchInputProps) => {
   const { params, router } = useGetParams();
   const [search, setSearch] = useState(params.get('name') || '');
   const debouncedSearch = useDebounce(search, TIMING.DEBOUNCE_DELAY);
@@ -55,7 +62,7 @@ export const SearchInput = () => {
       placeholder="Search"
       variant="tertiary"
       size="md"
-      className="w-[267px] h-11"
+      className={cn('w-[267px] h-11', className)}
     />
   );
 };

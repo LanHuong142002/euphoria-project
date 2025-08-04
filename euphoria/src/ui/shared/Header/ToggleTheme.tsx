@@ -1,6 +1,5 @@
 'use client';
 
-import { useTheme } from 'next-themes';
 import { Sun, Moon } from 'lucide-react';
 
 // Components
@@ -12,20 +11,11 @@ import {
 } from '@/ui/components/common/DropdownMenu';
 import { Button } from '@/ui/components/common/Button';
 
+// Hooks
+import { useChangeTheme } from '@/hooks';
+
 export const ToggleTheme = () => {
-  const { setTheme, theme } = useTheme();
-
-  const handleThemeLight = () => {
-    setTheme('light');
-  };
-
-  const handleThemeDark = () => {
-    setTheme('dark');
-  };
-
-  const handleThemeSystem = () => {
-    setTheme('system');
-  };
+  const { onThemeLight, onThemeDark, onThemeSystem, theme } = useChangeTheme();
 
   return (
     <DropdownMenu>
@@ -37,19 +27,13 @@ export const ToggleTheme = () => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end">
-        <DropdownMenuItem
-          onClick={handleThemeLight}
-          isActive={theme === 'light'}
-        >
+        <DropdownMenuItem onClick={onThemeLight} isActive={theme === 'light'}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={handleThemeDark} isActive={theme === 'dark'}>
+        <DropdownMenuItem onClick={onThemeDark} isActive={theme === 'dark'}>
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={handleThemeSystem}
-          isActive={theme === 'system'}
-        >
+        <DropdownMenuItem onClick={onThemeSystem} isActive={theme === 'system'}>
           System
         </DropdownMenuItem>
       </DropdownMenuContent>
