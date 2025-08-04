@@ -12,6 +12,7 @@ export const IMAGES = {
   FALLBACK_URL: '/images/default-fallback.webp',
   LOGO: '/images/logo.png',
   LOGO_DARK: '/images/logo-dark.png',
+  CART_EMPTY: '/images/cart-empty.png',
 };
 
 export const IMAGE_DETAILS = {
@@ -22,5 +23,9 @@ export const IMAGE_DETAILS = {
   NOT_FOUND: {
     src: IMAGES.NOT_FOUND,
     alt: 'A 404 error page',
+  },
+  CART_EMPTY: {
+    src: IMAGES.CART_EMPTY,
+    alt: 'A cart empty image',
   },
 };
