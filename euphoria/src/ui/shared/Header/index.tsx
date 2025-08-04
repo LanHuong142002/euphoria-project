@@ -53,19 +53,17 @@ export const Header = ({ session: serverSession }: HeaderProps) => {
           >
             <Image src={logo} alt="logo" classNameWrapper="w-full h-full" />
           </Link>
-          {session && (
-            <Link
-              href={ROUTES.HOME}
-              className={cn(
-                'font-medium text-base sm:text-lg lg:text-[22px] transition-colors duration-300 hover:opacity-70 hidden lg:block',
-                pathname === ROUTES.HOME
-                  ? 'text-text-secondary'
-                  : 'text-text-primary',
-              )}
-            >
-              Shop
-            </Link>
-          )}
+          <Link
+            href={ROUTES.HOME}
+            className={cn(
+              'font-medium text-base sm:text-lg lg:text-[22px] transition-colors duration-300 hover:opacity-70 hidden lg:block',
+              pathname === ROUTES.HOME
+                ? 'text-text-secondary'
+                : 'text-text-primary',
+            )}
+          >
+            Shop
+          </Link>
         </div>
         <HeaderAuth user={session} logo={logo} />
       </div>

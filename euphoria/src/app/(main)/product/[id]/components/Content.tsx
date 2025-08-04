@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation';
+
 // Actions
 import { getProductById } from '@/actions';
 
@@ -13,6 +15,12 @@ interface ContentProps {
 
 export const Content = async ({ id }: ContentProps) => {
   const product = await getProductById(id);
+
+  // Check if product exists
+  if (Array.isArray(product.data) && product.data.length === 0) {
+    notFound();
+  }
+
   const { attributes } = product.data;
   const {
     name = '',
@@ -21,8 +29,9 @@ export const Content = async ({ id }: ContentProps) => {
     description = '',
     images = [],
     price = 0,
-  } = attributes;
-  const { name: categoryName = '' } = attributes.category.data.attributes;
+  } = attributes || {};
+  const { name: categoryName = '' } =
+    attributes?.category?.data?.attributes || {};
 
   return (
     <div className="pb-[100px]">
