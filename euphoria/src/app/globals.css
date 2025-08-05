@@ -160,7 +160,7 @@
 
   --dropdown-menu-bg: #fff;
   --dropdown-menu-primary: #3c4242;
-  --dropdown-menu-secondary: #bebcbd;
+  --dropdown-menu-secondary: #f6f6f6;
 
   --dialog-primary: #fff;
   --dialog-secondary: #3c4242;
@@ -274,9 +274,9 @@
   --dialog-primary: #3c4242;
   --dialog-secondary: #cacccc;
 
-  --dropdown-menu-bg: rgb(94, 93, 93);
+  --dropdown-menu-bg: #1a1a1a;
   --dropdown-menu-primary: #cacccc;
-  --dropdown-menu-secondary: #252525;
+  --dropdown-menu-secondary: #333;
 
   --cart-item-text: #cacccc;
   --cart-item-placeholder: #a8a9a9;
