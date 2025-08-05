@@ -17,7 +17,7 @@ interface SearchItemProps {
 export const SearchItem = ({ product, onClose }: SearchItemProps) => (
   <Link
     href={ROUTES.PRODUCT_DETAILS(product.id)}
-    className="flex items-center gap-3 px-4 py-3 hover:bg-background-secondary transition-colors"
+    className="flex items-center gap-3 px-4 py-3 text-text-secondary hover:bg-background-secondary hover:text-text-tertiary transition-colors"
     onClick={onClose}
   >
     <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
@@ -29,7 +29,7 @@ export const SearchItem = ({ product, onClose }: SearchItemProps) => (
       />
     </div>
     <div className="flex-1 min-w-0">
-      <p className="font-causten text-sm font-medium truncate text-text-secondary">
+      <p className="font-causten text-sm font-medium truncate">
         {product.attributes.name}
       </p>
       <p className="font-causten text-sm text-text-primary">
