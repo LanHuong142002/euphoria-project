@@ -13,6 +13,7 @@ export const IMAGES = {
   LOGO: '/images/logo.png',
   LOGO_DARK: '/images/logo-dark.png',
   CART_EMPTY: '/images/cart-empty.png',
+  ORDER_SUCCESS: '/images/order-success.png',
 };
 
 export const IMAGE_DETAILS = {
@@ -26,6 +27,10 @@ export const IMAGE_DETAILS = {
   },
   CART_EMPTY: {
     src: IMAGES.CART_EMPTY,
-    alt: 'A cart empty image',
+    alt: 'Sad empty shopping cart and box illustration with the text',
+  },
+  ORDER_SUCCESS: {
+    src: IMAGES.ORDER_SUCCESS,
+    alt: 'Happy woman checking her phone with an order confirmation',
   },
 };
