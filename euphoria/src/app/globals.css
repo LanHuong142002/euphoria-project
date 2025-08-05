@@ -19,6 +19,7 @@
   --color-icon-secondary: var(--icon-secondary);
   --color-icon-tertiary: var(--icon-tertiary);
   --color-icon-error: var(--icon-error);
+  --color-icon-success: var(--icon-success);
 
   --color-border-primary: var(--border-primary);
   --color-border-secondary: var(--border-secondary);
@@ -139,6 +140,7 @@
   --icon-secondary: #fff;
   --icon-tertiary: #3c4242;
   --icon-error: #ef4444;
+  --icon-success: #48bc4e;
 
   --border-primary: #bebcbd;
   --border-secondary: #3f4646;
@@ -245,6 +247,7 @@
   --icon-secondary: #fff;
   --icon-tertiary: #fff;
   --icon-error: #dc2626;
+  --icon-success: #48bc4e;
 
   --border-primary: rgb(94, 93, 93);
   --border-secondary: #cacccc;

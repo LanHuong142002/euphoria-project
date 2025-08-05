@@ -42,7 +42,6 @@ interface CartContextType {
   removeItem: (id: string) => Promise<void>;
   addItem: (payload: CartPayload) => Promise<void>;
   updateItem: (id: string, payload: CartPayload) => Promise<void>;
-  updateItemImmediate: (id: string, payload: CartPayload) => Promise<void>;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -63,8 +62,52 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const debouncedUpdateRef = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
   );
+
   const { totalItems, totalPrice } = calculateCartTotals(cart);
   const isCartEmpty = !cart || cart.length === 0;
+
+  /**
+   * Handle cart error
+   *
+   * @param error - The error to handle
+   * @returns void
+   */
+  const handleCartError = useCallback(
+    (error: string | null) => {
+      if (error) {
+        setError(error);
+        errorToast({ title: 'Error', description: error });
+        return;
+      }
+    },
+    [errorToast],
+  );
+
+  /**
+   * Set cart item in local state
+   *
+   * @param payload - The payload to set the cart item
+   * @param id - The id of the cart item to set
+   * @returns void
+   */
+  const handleSetCartQuantity = useCallback(
+    (payload: CartPayload, id: string) => {
+      setCart((prevCart) =>
+        prevCart.map((item) =>
+          item.id === id
+            ? {
+                ...item,
+                attributes: {
+                  ...item.attributes,
+                  quantity: payload.quantity,
+                },
+              }
+            : item,
+        ),
+      );
+    },
+    [],
+  );
 
   /**
    * Load cart data
@@ -97,46 +140,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     [hasInitialized],
   );
 
-  /**
-   * Helper function to handle cart actions
-   *
-   * @param action - The action to perform
-   * @param successMessage - The message to display on success
-   * @returns void
-   */
-  const handleCartAction = useCallback(
-    async (
-      action: () => Promise<{ data?: Cart[] | Cart; error: string | null }>,
-      successMessage?: string,
-    ) => {
-      startTransition(async () => {
-        setError(null);
-        const { data, error } = await action();
-
-        if (error) {
-          setError(error);
-          errorToast({ title: 'Error', description: error });
-          return;
-        }
-
-        if (data) {
-          if (Array.isArray(data)) {
-            setCart(data);
-          } else {
-            // If we get a single cart item, refresh the entire cart to get the latest state
-            await loadCart(true);
-          }
-        }
-
-        if (successMessage) {
-          success({ title: 'Success', description: successMessage });
-        }
-        router.refresh();
-      });
-    },
-    [errorToast, loadCart, router, success],
-  );
-
   const fetchCart = useCallback(() => loadCart(), [loadCart]);
   const refreshCart = useCallback(() => {
     setHasInitialized(false);
@@ -144,7 +147,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   }, [loadCart]);
 
   /**
-   * Update cart item with debouncing
+   * Update cart item with debouncing - doesn't trigger loading states
    *
    * @param id - The id of the cart item to update
    * @param payload - The payload to update the cart item
@@ -159,24 +162,24 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
       // Set new timeout for debounced update
       debouncedUpdateRef.current = setTimeout(async () => {
-        await handleCartAction(() => updateCartById(id, payload));
+        startTransition(async () => {
+          setError(null);
+          const { data, error } = await updateCartById(id, payload);
+
+          handleCartError(error);
+
+          if (data) {
+            if (Array.isArray(data)) {
+              setCart(data);
+            } else {
+              // For single item updates, update the specific item in local state
+              handleSetCartQuantity(payload, id);
+            }
+          }
+        });
       }, 500);
     },
-    [handleCartAction],
-  );
-
-  /**
-   * Update cart item immediately (for quantity changes)
-   *
-   * @param id - The id of the cart item to update
-   * @param payload - The payload to update the cart item
-   * @returns void
-   */
-  const updateItemImmediate = useCallback(
-    async (id: string, payload: CartPayload) => {
-      await handleCartAction(() => updateCartById(id, payload));
-    },
-    [handleCartAction],
+    [handleCartError, handleSetCartQuantity],
   );
 
   /**
@@ -199,16 +202,57 @@ export const CartProvider = ({ children }: CartProviderProps) => {
           quantity: getItemQuantity(existingItem) + 1,
         };
 
-        // Use immediate update instead of debounced update for add operations
-        await handleCartAction(() =>
-          updateCartById(existingItem.id, updatedPayload),
-        );
+        startTransition(async () => {
+          setError(null);
+          const { data, error } = await updateCartById(
+            existingItem.id,
+            updatedPayload,
+          );
+
+          handleCartError(error);
+
+          if (data) {
+            if (Array.isArray(data)) {
+              setCart(data);
+            } else {
+              handleSetCartQuantity(updatedPayload, existingItem.id);
+            }
+          }
+          success({ title: 'Success', description: 'Item updated in cart' });
+          router.refresh();
+        });
       } else {
         // Add new item if it doesn't exist
-        await handleCartAction(() => addToCart(payload), 'Item added to cart');
+        startTransition(async () => {
+          setError(null);
+          const { data, error } = await addToCart(payload);
+
+          handleCartError(error);
+
+          if (data) {
+            if (Array.isArray(data)) {
+              setCart(data);
+            } else {
+              // For single item, add it to local state directly
+              // Make sure the data has the correct structure
+              const newItem = data as Cart;
+              setCart((prevCart) => [...prevCart, newItem]);
+            }
+          }
+          success({ title: 'Success', description: 'Item added to cart' });
+          router.refresh();
+        });
       }
     },
-    [hasInitialized, fetchCart, handleCartAction, cart],
+    [
+      cart,
+      fetchCart,
+      handleCartError,
+      handleSetCartQuantity,
+      hasInitialized,
+      router,
+      success,
+    ],
   );
 
   /**
@@ -224,11 +268,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
         const { error } = await deleteCart(id);
 
-        if (error) {
-          setError(error);
-          errorToast({ title: 'Error', description: error });
-          return;
-        }
+        handleCartError(error);
 
         // Remove item from local state
         setCart((prevCart) => prevCart.filter((item) => item.id !== id));
@@ -236,7 +276,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         router.refresh();
       });
     },
-    [errorToast, success, router, startTransition],
+    [handleCartError, success, router],
   );
 
   /**
@@ -270,7 +310,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       refreshCart,
       addItem,
       updateItem,
-      updateItemImmediate,
       removeItem,
       clearCart,
     }),
@@ -285,7 +324,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       refreshCart,
       addItem,
       updateItem,
-      updateItemImmediate,
       removeItem,
       clearCart,
     ],
