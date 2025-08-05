@@ -17,7 +17,7 @@ interface SearchItemProps {
 export const SearchItem = ({ product, onClose }: SearchItemProps) => (
   <Link
     href={ROUTES.PRODUCT_DETAILS(product.id)}
-    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+    className="flex items-center gap-3 px-4 py-3 hover:bg-background-secondary transition-colors"
     onClick={onClose}
   >
     <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">

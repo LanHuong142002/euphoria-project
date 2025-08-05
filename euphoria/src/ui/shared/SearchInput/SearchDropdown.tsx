@@ -93,7 +93,7 @@ export const SearchDropdown = ({
     <div
       ref={dropdownRef}
       className={cn(
-        'absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto',
+        'absolute top-full left-0 right-0 mt-1 bg-background-primary border border-border-primary rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto',
         className,
       )}
     >

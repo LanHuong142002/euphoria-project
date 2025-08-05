@@ -15,6 +15,8 @@
   --color-text-quinary: var(--text-quinary);
   --color-text-error: var(--text-error);
 
+  --color-skeleton-primary: var(--skeleton-primary);
+
   --color-icon-primary: var(--icon-primary);
   --color-icon-secondary: var(--icon-secondary);
   --color-icon-tertiary: var(--icon-tertiary);
@@ -129,6 +131,8 @@
   --background-fade: #666;
   --background-error: #ef4444;
 
+  --skeleton-primary: #3c4242;
+
   --text-primary: #807d7e;
   --text-secondary: #3c4242;
   --text-tertiary: #fff;
@@ -235,6 +239,8 @@
   --background-quaternary: #6f28d9;
   --background-fade: #bebcbd;
   --background-error: #ef4444;
+
+  --skeleton-primary: #bebcbd;
 
   --text-primary: #a8a9a9;
   --text-secondary: #cacccc;
