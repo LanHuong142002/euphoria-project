@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { Metadata } from 'next';
 
 // Constants
 import { IMAGES } from '@/constants';
@@ -9,6 +10,10 @@ import { Image } from '@/ui/components/common/Image';
 import { FormSkeleton } from './components/FormSkeleton';
 import { ExternalLogin } from './components/ExternalLogin';
 import { Separator } from '@/ui/components/common/Separator';
+
+export const metadata: Metadata = {
+  title: 'Login',
+};
 
 const LoginPage = () => (
   <div className="w-full flex-1 flex gap-[10px] xl:gap-[77px]">
