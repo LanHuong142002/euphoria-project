@@ -7,4 +7,5 @@ export interface User {
 
 export interface UserSession extends User {
   jwt: string;
+  isAuthenticated: boolean;
 }

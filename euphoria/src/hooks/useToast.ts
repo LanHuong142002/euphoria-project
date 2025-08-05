@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { toast } from 'sonner';
 
 // Types
@@ -12,7 +13,7 @@ import { getToastStyles } from '@/utils';
  * @returns The toast hook
  */
 export const useToast = () => {
-  const showToast = (type: ToastType, options: ToastOptions) => {
+  const showToast = useCallback((type: ToastType, options: ToastOptions) => {
     const { title, description, action } = options;
     const styles = getToastStyles(type);
 
@@ -41,12 +42,32 @@ export const useToast = () => {
       default:
         return toast(title, toastOptions);
     }
-  };
+  }, []);
+
+  const error = useCallback(
+    (options: ToastOptions) => showToast('error', options),
+    [showToast],
+  );
+
+  const warning = useCallback(
+    (options: ToastOptions) => showToast('warning', options),
+    [showToast],
+  );
+
+  const info = useCallback(
+    (options: ToastOptions) => showToast('info', options),
+    [showToast],
+  );
+
+  const success = useCallback(
+    (options: ToastOptions) => showToast('success', options),
+    [showToast],
+  );
 
   return {
-    success: (options: ToastOptions) => showToast('success', options),
-    error: (options: ToastOptions) => showToast('error', options),
-    warning: (options: ToastOptions) => showToast('warning', options),
-    info: (options: ToastOptions) => showToast('info', options),
+    success,
+    error,
+    warning,
+    info,
   };
 };
