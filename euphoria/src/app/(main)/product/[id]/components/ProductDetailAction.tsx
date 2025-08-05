@@ -1,6 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+// Constants
+import { ROUTES } from '@/constants';
 
 // Components
 import { SelectSize } from './SelectSize';
@@ -45,6 +49,7 @@ const PRODUCT_BADGES = [
 
 interface ProductDetailActionProps {
   price: number;
+  isAuthenticated: boolean;
   id: string;
   name: string;
   categoryName: string;
@@ -61,8 +66,10 @@ export const ProductDetailAction = ({
   sizes,
   colors,
   categoryName,
+  isAuthenticated,
 }: ProductDetailActionProps) => {
   const { addItem } = useCart();
+  const { replace } = useRouter();
 
   const [selectedSize, setSelectedSize] = useState<string>(sizes[0]);
   const [selectedColor, setSelectedColor] = useState<string>(colors[0]);
@@ -81,6 +88,11 @@ export const ProductDetailAction = ({
   };
 
   const handleAddToCart = () => {
+    if (!isAuthenticated) {
+      replace(`${ROUTES.LOGIN}?backTo=${ROUTES.PRODUCT_DETAILS(id)}`);
+      return;
+    }
+
     addItem({
       product: id,
       size: selectedSize,

@@ -8,6 +8,9 @@ import { getProductById } from '@/actions';
 import { Content } from './components/Content';
 import { ProductDetailSkeleton } from './components/ProductDetailSkeleton';
 
+// Utils
+import { getUserFromSession } from '@/utils';
+
 interface Props {
   params: Promise<{ id: string }>;
 }
@@ -22,17 +25,18 @@ export const generateMetadata = async ({
   const { name = '', description = '' } = attributes || {};
 
   return {
-    title: `${name} - Euphoria`,
+    title: name,
     description,
   };
 };
 
 const ProductPage = async ({ params }: Props) => {
   const { id } = await params;
+  const { isAuthenticated } = await getUserFromSession();
 
   return (
     <Suspense fallback={<ProductDetailSkeleton />}>
-      <Content id={id} />
+      <Content id={id} isAuthenticated={isAuthenticated} />
     </Suspense>
   );
 };

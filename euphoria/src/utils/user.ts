@@ -9,6 +9,7 @@ import { UserSession } from '@/types';
 
 export const getUserFromSession = async (): Promise<Required<UserSession>> => {
   const session = await auth();
+  const isAuthenticated = !!session?.user;
 
-  return { ...INIT_USER_SESSION, ...session?.user };
+  return { ...INIT_USER_SESSION, ...session?.user, isAuthenticated };
 };

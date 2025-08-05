@@ -11,9 +11,10 @@ import { cn } from '@/utils';
 
 interface ContentProps {
   id: string;
+  isAuthenticated: boolean;
 }
 
-export const Content = async ({ id }: ContentProps) => {
+export const Content = async ({ id, isAuthenticated }: ContentProps) => {
   const product = await getProductById(id);
 
   // Check if product exists
@@ -44,6 +45,7 @@ export const Content = async ({ id }: ContentProps) => {
           sizes={sizes}
           colors={colors}
           categoryName={categoryName}
+          isAuthenticated={isAuthenticated}
         />
 
         <div className="absolute top-0 left-0 w-full h-full z-[-2] hidden lg:flex">

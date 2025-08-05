@@ -6,4 +6,5 @@ export const INIT_USER_SESSION: UserSession = {
   name: '',
   username: '',
   jwt: '',
+  isAuthenticated: false,
 };
