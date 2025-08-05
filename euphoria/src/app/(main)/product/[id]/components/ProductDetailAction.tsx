@@ -18,6 +18,9 @@ import { TruckIcon } from '@/ui/icons/TruckIcon';
 import { ReturnIcon } from '@/ui/icons/ReturnIcon';
 import { ShoppingCartIcon } from '@/ui/icons/ShoppingCartIcon';
 
+// Contexts
+import { useCart } from '@/contexts';
+
 // Utils
 import { cn } from '@/utils';
 
@@ -41,15 +44,17 @@ const PRODUCT_BADGES = [
 ];
 
 interface ProductDetailActionProps {
-  images: string[];
-  name: string;
   price: number;
+  id: string;
+  name: string;
+  categoryName: string;
   sizes: string[];
   colors: string[];
-  categoryName: string;
+  images: string[];
 }
 
 export const ProductDetailAction = ({
+  id,
   images,
   name,
   price,
@@ -57,6 +62,8 @@ export const ProductDetailAction = ({
   colors,
   categoryName,
 }: ProductDetailActionProps) => {
+  const { addItem } = useCart();
+
   const [selectedSize, setSelectedSize] = useState<string>(sizes[0]);
   const [selectedColor, setSelectedColor] = useState<string>(colors[0]);
   const [selectedImage, setSelectedImage] = useState<number>(0);
@@ -71,6 +78,15 @@ export const ProductDetailAction = ({
 
   const handleImageChange = (index: number) => {
     setSelectedImage(index);
+  };
+
+  const handleAddToCart = () => {
+    addItem({
+      product: id,
+      size: selectedSize,
+      color: selectedColor,
+      quantity: 1,
+    });
   };
 
   return (
@@ -152,7 +168,7 @@ export const ProductDetailAction = ({
         <div className="flex items-center gap-4">
           <Button
             color="primary"
-            onClick={() => {}}
+            onClick={handleAddToCart}
             variant="primary"
             disabled={!selectedSize || !selectedColor}
           >

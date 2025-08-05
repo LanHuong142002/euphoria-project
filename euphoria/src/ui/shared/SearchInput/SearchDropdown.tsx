@@ -80,7 +80,7 @@ export const SearchDropdown = ({
 
     const timeoutId = setTimeout(fetchProducts, 300);
     return () => clearTimeout(timeoutId);
-  }, [searchTerm]);
+  }, [searchTerm, errorToast]);
 
   if (
     !isOpen ||
