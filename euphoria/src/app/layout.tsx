@@ -60,7 +60,10 @@ const causten = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || ''),
-  title: BRAND.name,
+  title: {
+    default: BRAND.name,
+    template: `%s | ${BRAND.name}`,
+  },
   description: BRAND.description,
   openGraph: {
     title: BRAND.name,
@@ -92,6 +95,7 @@ const RootLayout = async ({
             ${coreSansC.variable}
             ${causten.variable}
             antialiased
+            overflow-y-scroll
           `}
         suppressHydrationWarning
       >

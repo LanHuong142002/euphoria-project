@@ -24,10 +24,11 @@ export const CartItemRow = ({
 }: CartItemRowProps) => {
   const { attributes } = item;
   const { product, color = '', size = '' } = attributes || {};
+  const productData = product?.data || {};
   const {
     id: productId,
-    attributes: { name: productName = '', images = [] },
-  } = product?.data || {};
+    attributes: { name: productName = '', images = [] } = {},
+  } = productData;
 
   const itemPrice = getItemPrice(item);
   const itemQuantity = getItemQuantity(item);
