@@ -15,20 +15,22 @@ import {
 
 interface ModalConfirmProps {
   title: string;
+  isOpen?: boolean;
   description: string;
+  trigger?: ReactNode;
   onCancel?: () => void;
-  onContinue: () => void;
-  trigger: ReactNode;
+  onConfirm: () => void;
 }
 
 export const ModalConfirm = ({
-  trigger,
+  isOpen,
   title,
   description,
+  trigger,
   onCancel,
-  onContinue,
+  onConfirm,
 }: ModalConfirmProps) => (
-  <AlertDialog>
+  <AlertDialog open={isOpen}>
     <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
 
     <AlertDialogContent>
@@ -39,7 +41,7 @@ export const ModalConfirm = ({
 
       <AlertDialogFooter>
         <AlertDialogCancel onClick={onCancel}>Cancel</AlertDialogCancel>
-        <AlertDialogAction onClick={onContinue}>Continue</AlertDialogAction>
+        <AlertDialogAction onClick={onConfirm}>Confirm</AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>
   </AlertDialog>

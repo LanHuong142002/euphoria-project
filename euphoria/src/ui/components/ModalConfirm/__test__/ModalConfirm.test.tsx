@@ -11,8 +11,8 @@ describe('ModalConfirm', () => {
       trigger={<Button variant="outline">Alert Dialog</Button>}
       title="Are you absolutely sure?"
       description="This action cannot be undone. This will permanently delete your account and remove your data from our servers."
-      onCancel={() => {}}
-      onContinue={() => {}}
+      onCancel={jest.fn()}
+      onConfirm={jest.fn()}
     />
   );
 
@@ -63,7 +63,7 @@ describe('ModalConfirm', () => {
     await user.click(triggerButton);
 
     const cancelButton = screen.getByRole('button', { name: 'Cancel' });
-    const continueButton = screen.getByRole('button', { name: 'Continue' });
+    const continueButton = screen.getByRole('button', { name: 'Confirm' });
 
     expect(cancelButton).toBeInTheDocument();
     expect(continueButton).toBeInTheDocument();
@@ -104,7 +104,7 @@ describe('ModalConfirm', () => {
     expect(screen.getByText('Are you absolutely sure?')).toBeInTheDocument();
 
     // Click continue
-    const continueButton = screen.getByRole('button', { name: 'Continue' });
+    const continueButton = screen.getByRole('button', { name: 'Confirm' });
     await user.click(continueButton);
 
     // Verify modal is closed

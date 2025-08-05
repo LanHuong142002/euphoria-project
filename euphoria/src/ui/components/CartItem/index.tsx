@@ -18,9 +18,10 @@ import { cn, formatPrice } from '@/utils';
 export interface CartItemProps extends Omit<ComponentProps<'div'>, 'onChange'> {
   product: ProductCart;
   quantity?: number;
-  onQuantityChange?: (quantity: number) => void;
-  onRemove?: () => void;
   disabled?: boolean;
+  hasBorder?: boolean;
+  onRemove?: () => void;
+  onQuantityChange?: (quantity: number) => void;
 }
 
 export const CartItem = ({
@@ -29,6 +30,7 @@ export const CartItem = ({
   onQuantityChange,
   onRemove,
   disabled = false,
+  hasBorder = true,
   className,
   ...props
 }: CartItemProps) => {
@@ -37,7 +39,8 @@ export const CartItem = ({
   return (
     <div
       className={cn(
-        'relative grid grid-cols-1 md:grid-cols-6 items-start md:items-center gap-4 py-12.5 border-b border-cart-item-border px-4 md:pr-6.5 md:pl-2',
+        'relative grid grid-cols-1 md:grid-cols-6 items-start md:items-center gap-4 py-12.5 px-4 md:pr-6.5 md:pl-2',
+        hasBorder && 'border-b border-cart-item-border',
         disabled && 'opacity-50',
         className,
       )}
@@ -67,6 +70,7 @@ export const CartItem = ({
           {/* Quantity */}
           <div className="md:hidden">
             <QuantitySelector
+              defaultValue={quantity}
               min={1}
               max={99}
               onChange={onQuantityChange}
@@ -86,6 +90,7 @@ export const CartItem = ({
       {/* Quantity - Desktop only */}
       <div className="hidden md:flex justify-center">
         <QuantitySelector
+          defaultValue={quantity}
           min={1}
           max={99}
           onChange={onQuantityChange}
@@ -105,6 +110,7 @@ export const CartItem = ({
           onClick={onRemove}
           disabled={disabled}
           aria-label="Remove item from cart"
+          className="cursor-pointer"
         >
           <TrashIcon />
         </button>

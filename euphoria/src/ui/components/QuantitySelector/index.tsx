@@ -13,6 +13,7 @@ export interface QuantitySelectorProps
   extends Omit<ComponentProps<'div'>, 'onChange'> {
   min?: number;
   max?: number;
+  defaultValue?: number;
   disabled?: boolean;
   onChange?: (value: number) => void;
 }
@@ -20,12 +21,13 @@ export interface QuantitySelectorProps
 export const QuantitySelector = ({
   min = 1,
   max = 99,
+  defaultValue = 1,
   onChange,
   disabled = false,
   className,
   ...props
 }: QuantitySelectorProps) => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(defaultValue || 1);
 
   const handleDecrease = () => {
     if (disabled || quantity <= min) return;
