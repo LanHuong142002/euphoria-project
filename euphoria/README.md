@@ -81,6 +81,14 @@ Make sure you install packages with correct version below:
 - **Note:**
   - Please add `.env` into root of project source code, refer `.env.sample`.
 
+```
+NEXT_PUBLIC_BASE_URL=http://localhost:3000/
+NEXT_PUBLIC_BASE_API=https://elegant-cow-347675fa15.strapiapp.com/api/
+CLERK_SECRET_KEY=sk_test_gLc04rs5UDKBEk5C0V4O3DmIimGzHoQaaGhuWSe8Vf
+NEXT_PUBLIC_PREVIEW_IMAGE=https://i.ibb.co/60tYQfPD/banner.png
+AUTH_SECRET="mCFc2gSNCt/bAKoblMbG3pPlyu1rR57ITTMbX+hxOlE="
+```
+
 ### Build and Run app
 
 | Command            | Action                                     | Port                  |
@@ -100,7 +108,6 @@ Make sure you install packages with correct version below:
 ├── README.md                       # README file
 ├── .husky                          # Husky configuration
 ├── .storybook                      # Storybook folder
-├── .vscode                         # VSCode configuration
 ├── public                          # Public assets folder
 ├── src
 │   ├── actions                     # Next.js actions
@@ -108,16 +115,14 @@ Make sure you install packages with correct version below:
 │   ├── config                      # Contain app configuration
 │   ├── constants                   # App constants
 │   ├── contexts                    # App contexts
-│   ├── hocs                        # Hocs
+│   ├── hooks                       # Custom hooks
 │   ├── schema                      # Contain schema validation
 │   ├── services                    # Handle data with API: GET, POST, PUT, DELETE
 │   ├── types                       # Type definitions
 │   ├── ui                          # Folder contain ui of app
 │       ├── components              # React components
-│       ├── layouts                 # React components for app layout
-│       ├── sections                # Sections of the app
-│       ├── icons                   # Icons folder
-│       ├── themes                  # Custom themes styles
+│       ├── icons                   # Icons of the app
+│       ├── shared                  # React components shared
 │   ├── utils                       # Utilities folder
 │   ├── middlewares.ts              # Next.js middleware
 ├── .eslintrc.json                  # ESLint configuration
