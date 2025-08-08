@@ -1,5 +1,5 @@
 // Config
-import { auth } from '@/config';
+import { auth } from '@/config/auth';
 
 // Constants
 import { INIT_USER_SESSION } from '@/constants';
