@@ -30,18 +30,25 @@ export const UserDropdown = () => {
           color="icon"
           size="icon"
           variant="primary"
-          aria-label="Click user profile"
+          aria-label="User account menu"
+          aria-haspopup="menu"
+          aria-expanded={false}
         >
-          <UserIcon />
+          <UserIcon aria-hidden="true" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent
+        align="end"
+        role="menu"
+        aria-label="User account options"
+      >
         <DropdownMenuItem
           variant="destructive"
           onClick={handleLogout}
-          aria-label="Click logout"
+          role="menuitem"
+          aria-label="Sign out of your account"
         >
-          <LogOutIcon className="size-4" />
+          <LogOutIcon className="size-4" aria-hidden="true" />
           Log out
         </DropdownMenuItem>
       </DropdownMenuContent>

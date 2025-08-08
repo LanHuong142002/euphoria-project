@@ -26,6 +26,7 @@ export const ToggleTheme = () => {
           variant="primary"
           aria-label="Toggle theme menu"
           aria-haspopup="menu"
+          aria-expanded={false}
         >
           <Sun
             className="text-icon-primary size-5 scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"
@@ -38,10 +39,12 @@ export const ToggleTheme = () => {
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" role="menu" aria-label="Theme options">
         <DropdownMenuItem
           onClick={onThemeLight}
           isActive={theme === 'light'}
+          role="menuitemradio"
+          aria-checked={theme === 'light'}
           aria-label="Switch to light theme"
         >
           Light
@@ -49,6 +52,8 @@ export const ToggleTheme = () => {
         <DropdownMenuItem
           onClick={onThemeDark}
           isActive={theme === 'dark'}
+          role="menuitemradio"
+          aria-checked={theme === 'dark'}
           aria-label="Switch to dark theme"
         >
           Dark
@@ -56,6 +61,8 @@ export const ToggleTheme = () => {
         <DropdownMenuItem
           onClick={onThemeSystem}
           isActive={theme === 'system'}
+          role="menuitemradio"
+          aria-checked={theme === 'system'}
           aria-label="Use system theme preference"
         >
           System

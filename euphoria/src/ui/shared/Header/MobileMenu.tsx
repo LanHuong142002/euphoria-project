@@ -8,7 +8,7 @@ import { signOut } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
 
 // Constants
-import { ROUTES, MENU_ITEMS } from '@/constants';
+import { ROUTES, MENU_ITEMS, BRAND } from '@/constants';
 
 // Components
 import {
@@ -83,6 +83,7 @@ export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <button
+          type="button"
           className="lg:hidden h-5 w-5 cursor-pointer"
           aria-label="Open navigation menu"
         >
@@ -91,58 +92,82 @@ export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
       </SheetTrigger>
       <SheetContent side="left" className="w-[280px] sm:w-[350px] lg:hidden">
         <SheetHeader className="px-8 pt-4">
-          <SheetTitle className="sr-only">Menu</SheetTitle>
+          <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
           <Link
             href={ROUTES.HOME}
             className="w-[60px] h-[30px] sm:w-[75px] sm:h-[38px]"
+            aria-label={`${BRAND.name} logo - Go to homepage`}
+            onClick={handleMenuClick}
           >
-            <Image src={logo} alt="logo" classNameWrapper="w-full h-full" />
+            <Image
+              src={logo}
+              alt={`${BRAND.name} logo`}
+              classNameWrapper="w-full h-full"
+            />
           </Link>
         </SheetHeader>
 
         {/* Menu */}
-        <div className="flex flex-col gap-4 mt-6">
-          <div className="px-8 w-full">
-            <SearchInput className="w-full" onClick={handleMenuClick} />
-          </div>
-          {MENU_ITEMS.map(({ label, href, icon: Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              className={cn(
-                'flex items-center gap-6 px-8 py-3 text-md font-medium text-text-secondary hover:bg-background-tertiary transition-colors',
-                pathname === href && 'bg-background-tertiary',
-              )}
-              onClick={handleMenuClick}
-            >
-              <Icon className="size-5 text-icon-primary" />
-              {label}
-            </Link>
-          ))}
+        <nav role="navigation" aria-label="Mobile navigation menu">
+          <div className="flex flex-col gap-4 mt-6">
+            <div className="px-8 w-full">
+              <SearchInput className="w-full" onClick={handleMenuClick} />
+            </div>
+            {MENU_ITEMS.map(({ label, href, icon: Icon }) => (
+              <Link
+                key={href}
+                href={href}
+                className={cn(
+                  'flex items-center gap-6 px-8 py-3 text-md font-medium text-text-secondary hover:bg-background-tertiary transition-colors',
+                  pathname === href && 'bg-background-tertiary',
+                )}
+                onClick={handleMenuClick}
+                aria-current={pathname === href ? 'page' : undefined}
+                aria-label={`Navigate to ${label}`}
+              >
+                <Icon className="size-5 text-icon-primary" aria-hidden="true" />
+                {label}
+              </Link>
+            ))}
 
-          <button
-            onClick={session ? handleLogout : handleRedirectLoginPage}
-            className="flex items-center gap-6 px-8 py-3 text-md font-medium text-text-secondary hover:bg-background-tertiary transition-colors cursor-pointer"
-          >
-            {session ? (
-              <LogOutIcon className="size-5 text-icon-primary" />
-            ) : (
-              <LogInIcon className="size-5 text-icon-primary" />
-            )}
-            {session ? 'Log out' : 'Login'}
-          </button>
-        </div>
+            <button
+              type="button"
+              onClick={session ? handleLogout : handleRedirectLoginPage}
+              className="flex items-center gap-6 px-8 py-3 text-md font-medium text-text-secondary hover:bg-background-tertiary transition-colors cursor-pointer"
+              aria-label={
+                session ? 'Sign out of your account' : 'Sign in to your account'
+              }
+            >
+              {session ? (
+                <LogOutIcon
+                  className="size-5 text-icon-primary"
+                  aria-hidden="true"
+                />
+              ) : (
+                <LogInIcon
+                  className="size-5 text-icon-primary"
+                  aria-hidden="true"
+                />
+              )}
+              {session ? 'Log out' : 'Login'}
+            </button>
+          </div>
+        </nav>
 
         {/* Change Theme */}
         <SheetFooter className="pb-8">
           <Accordion type="single" collapsible>
-            <AccordionItem value="item-1">
-              <AccordionTrigger>
+            <AccordionItem value="theme-settings">
+              <AccordionTrigger aria-label="Theme settings">
                 <Typography fontWeight="medium" color="secondary">
                   Change Theme
                 </Typography>
               </AccordionTrigger>
-              <AccordionContent className="pl-7">
+              <AccordionContent
+                className="pl-7"
+                role="radiogroup"
+                aria-label="Theme options"
+              >
                 {MENU_THEME_ITEMS.map(
                   ({ label, onClick, icon: Icon }, index) => {
                     const isActive = theme === label.toLowerCase();
@@ -151,21 +176,26 @@ export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
                     return (
                       <div key={`menu-theme-item-${label}`}>
                         <button
+                          type="button"
                           onClick={onClick}
                           className={cn(
-                            'flex items-center gap-6 py-2 pl-3 text-md font-medium text-text-secondary hover:bg-background-tertiary transition-colors',
+                            'flex items-center gap-6 py-2 pl-3 text-md font-medium text-text-secondary hover:bg-background-tertiary transition-colors w-full',
                             isActive && 'bg-background-tertiary',
                           )}
-                          aria-pressed={isActive}
-                          aria-label={`Set theme to ${label.toLowerCase()}`}
+                          role="radio"
+                          aria-checked={isActive}
+                          aria-label={`Set theme to ${label.toLowerCase()}${isActive ? ' (currently selected)' : ''}`}
                         >
                           <Icon
                             className="size-5 text-icon-primary"
                             aria-hidden="true"
                           />
                           {label}
+                          {isActive && (
+                            <span className="sr-only">(current theme)</span>
+                          )}
                         </button>
-                        {!isLastItem && <Separator />}
+                        {!isLastItem && <Separator aria-hidden="true" />}
                       </div>
                     );
                   },

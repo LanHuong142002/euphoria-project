@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 // Constants
 import { ROUTES } from '@/constants';
@@ -17,30 +17,45 @@ import { useCart } from '@/contexts';
 
 export const CartTotal = () => {
   const { cart } = useCart();
+  const router = useRouter();
+
+  const goToCart = () => {
+    router.push(ROUTES.CART);
+  };
 
   return (
-    <Link href={ROUTES.CART} className="relative">
+    <div className="relative">
       <Button
         color="icon"
         size="icon"
         variant="primary"
         className="w-8 h-8 lg:w-11 lg:h-11 p-2"
-        aria-label="Click to navigate to the cart page"
+        onClick={goToCart}
+        tabIndex={-1}
+        aria-label={
+          cart.length > 0
+            ? `Shopping cart with ${cart.length} item${cart.length === 1 ? '' : 's'}`
+            : 'Shopping cart (empty)'
+        }
       >
-        <ShoppingCartIcon />
+        <ShoppingCartIcon aria-hidden="true" />
       </Button>
       {cart.length > 0 && (
-        <div className="absolute -top-4 -right-3 lg:-top-2 lg:-right-2 bg-background-error rounded-full w-5 h-5 lg:w-6 lg:h-6 flex items-center justify-center">
+        <div
+          className="absolute -top-2 -right-2 lg:-top-2 lg:-right-2 bg-background-error rounded-full w-5 h-5 lg:w-6 lg:h-6 flex items-center justify-center"
+          aria-hidden="true"
+        >
           <Typography
             as="span"
             color="tertiary"
             fontSize="xs"
             className="lg:text-sm"
+            aria-label={`${cart.length} item${cart.length === 1 ? '' : 's'} in cart`}
           >
             {cart.length}
           </Typography>
         </div>
       )}
-    </Link>
+    </div>
   );
 };

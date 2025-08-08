@@ -22,16 +22,23 @@ interface HeaderAuthProps {
 export const HeaderAuth = ({ user, logo }: HeaderAuthProps) => (
   <div className="flex items-center gap-2 sm:gap-3">
     {user && (
-      <div className="lg:hidden pr-4">
+      <div className="lg:hidden pr-4" aria-label="Mobile cart access">
         <CartTotal />
       </div>
     )}
     <MobileMenu session={user} logo={logo} />
 
-    <div className="hidden lg:block">
+    <div
+      className="hidden lg:block"
+      aria-label="Desktop navigation and user controls"
+    >
       <div className="flex items-center gap-[132px]">
         <SearchInput />
-        <div className="flex items-center gap-3">
+        <div
+          className="flex items-center gap-3"
+          role="group"
+          aria-label="User actions"
+        >
           <ToggleTheme />
           {user && (
             <>
@@ -41,7 +48,7 @@ export const HeaderAuth = ({ user, logo }: HeaderAuthProps) => (
           )}
 
           {!user && (
-            <Link href={ROUTES.LOGIN}>
+            <Link href={ROUTES.LOGIN} aria-label="Sign in to your account">
               <Button
                 color="primary"
                 variant="primary"
