@@ -152,6 +152,7 @@ export const CartItem = ({
         className="absolute top-1/2 -translate-y-1/2 right-6 md:static md:flex md:justify-end md:items-center md:mt-2"
       >
         <button
+          type="button"
           onClick={onRemove}
           disabled={disabled}
           aria-label="Remove item from cart"

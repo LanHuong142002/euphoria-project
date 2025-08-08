@@ -107,6 +107,7 @@ export const ProductDetailAction = ({
 
             return (
               <button
+                type="button"
                 key={index}
                 aria-pressed={isSelected}
                 aria-controls="main-product-image"

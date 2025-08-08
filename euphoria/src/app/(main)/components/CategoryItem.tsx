@@ -27,6 +27,7 @@ export const CategoryItem = ({ value, label }: CategoryItemProps) => {
 
   return (
     <button
+      type="button"
       key={value}
       onClick={handleClick}
       className={cn(

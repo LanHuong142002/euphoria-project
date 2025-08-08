@@ -34,6 +34,7 @@ export const SelectColors = ({
 
         return (
           <button
+            type="button"
             key={`color-${color}`}
             onClick={handleColorChange}
             className={cn(
