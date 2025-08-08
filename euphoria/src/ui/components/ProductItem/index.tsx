@@ -3,6 +3,7 @@ import { ComponentProps } from 'react';
 // Components
 import { Image } from '../common/Image';
 import { Badge } from '../common/Badge';
+import { Typography } from '../common/Typography';
 
 // Utils
 import { formatPrice } from '@/utils';
@@ -22,27 +23,41 @@ export const ProductItem = ({
   image,
   ...props
 }: ProductItemProps) => (
-  <div className="w-[282px] flex-shrink-0" {...props}>
+  <article
+    className="w-[282px] flex-shrink-0"
+    {...props}
+    aria-label={`Product: ${name} by ${brand}`}
+  >
     <div className="relative w-full h-[370px] rounded-xl overflow-hidden">
       <Image
         src={image}
-        alt={name}
+        alt={`Image of ${name} by ${brand}`}
         className="object-cover"
         classNameWrapper="w-full h-full"
       />
     </div>
     <div className="flex pt-7.5">
       <div className="flex-1 min-w-0">
-        <p className="font-semibold font-causten text-product-item-text text-md truncate">
+        <Typography
+          fontWeight="semibold"
+          className="text-product-item-text truncate"
+        >
           {name}
-        </p>
-        <p className="font-medium font-causten text-product-item-brand text-sm truncate">
+        </Typography>
+        <Typography
+          fontWeight="medium"
+          fontSize="sm"
+          className="text-product-item-brand truncate"
+          aria-label={`Brand: ${brand}`}
+        >
           {brand}
-        </p>
+        </Typography>
       </div>
       <div className="flex justify-between items-center ml-2">
-        <Badge variant="default">{formatPrice(price)}</Badge>
+        <Badge variant="default" aria-label={`Price: ${formatPrice(price)}`}>
+          {formatPrice(price)}
+        </Badge>
       </div>
     </div>
-  </div>
+  </article>
 );

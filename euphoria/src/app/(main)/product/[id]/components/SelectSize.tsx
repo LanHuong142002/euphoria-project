@@ -1,5 +1,6 @@
 // Components
 import { Toggle } from '@/ui/components/common/Toggle';
+import { Typography } from '@/ui/components/common/Typography';
 
 interface SelectSizeProps {
   sizes: string[];
@@ -13,11 +14,11 @@ export const SelectSize = ({
   onSizeChange,
 }: SelectSizeProps) => (
   <div className="space-y-[25px]">
-    <p className="text-lg font-semibold font-causten text-text-secondary">
+    <Typography fontWeight="semibold" fontSize="lg" color="secondary">
       Select Size
-    </p>
+    </Typography>
 
-    <div className="flex gap-5">
+    <div className="flex gap-5" role="radiogroup" aria-required="true">
       {sizes.map((size: string) => {
         const handleSizeChange = () => {
           onSizeChange(size);
@@ -26,10 +27,12 @@ export const SelectSize = ({
         return (
           <Toggle
             key={`size-${size}`}
-            pressed={selectedSize === size}
             onPressedChange={handleSizeChange}
             size="sm"
             variant="default"
+            role="radio"
+            aria-checked={selectedSize === size}
+            aria-label={`Size ${size.toUpperCase()}`}
           >
             {size.toUpperCase()}
           </Toggle>

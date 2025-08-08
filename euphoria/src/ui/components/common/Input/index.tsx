@@ -90,7 +90,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               </Label>
             )}
             {showPasswordToggle && (
-              <div
+              <button
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                aria-pressed={showPassword}
                 onClick={togglePassword}
                 className="flex items-center justify-end gap-2 text-input-placeholder hover:opacity-70 cursor-pointer"
               >
@@ -100,7 +102,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                   <EyeOff className="h-4 w-4" />
                 )}
                 {showPassword ? 'Hide' : 'Show'}
-              </div>
+              </button>
             )}
           </div>
         )}
@@ -111,6 +113,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             id={id}
             type={inputType}
             data-slot="input"
+            aria-invalid={!!error}
             className={cn(
               inputVariants({
                 variant: error ? 'error' : variant,

@@ -9,6 +9,7 @@ import { IMAGE_DETAILS, ROUTES } from '@/constants';
 import { ClearCart } from './components/ClearCart';
 import { Image } from '@/ui/components/common/Image';
 import { Button } from '@/ui/components/common/Button';
+import { Typography } from '@/ui/components/common/Typography';
 
 // Utils
 import { cn } from '@/utils';
@@ -26,16 +27,19 @@ const OrderSuccessPage = async ({ searchParams }: Props) => {
 
   return (
     <div className="flex flex-1 items-center justify-center bg-background-primary">
-      <div
+      {/* Desktop */}
+      <section
         className={cn(
           'relative overflow-hidden flex-shrink-0',
           'w-[500px] h-[364px] md:w-[715px] md:h-[520px]',
           'hidden sm:block',
         )}
+        aria-labelledby="order-success-title"
       >
         <Image
           src={IMAGE_DETAILS.ORDER_SUCCESS.src}
-          alt={IMAGE_DETAILS.ORDER_SUCCESS.alt}
+          alt=""
+          role="presentation"
           className="object-cover"
           classNameWrapper="w-full h-full"
           priority
@@ -47,9 +51,17 @@ const OrderSuccessPage = async ({ searchParams }: Props) => {
             'absolute top-1/2 right-[40px] md:right-[85px]',
           )}
         >
-          <h1 className="text-2xl md:text-3xl text-center font-core-sans-c text-text-secondary font-bold">
+          <Typography
+            id="order-success-title"
+            as="h1"
+            fontFamily="coreSans"
+            fontWeight="bold"
+            fontSize="2xl"
+            color="secondary"
+            className="text-center"
+          >
             Your Order is Confirmed
-          </h1>
+          </Typography>
           <Link href={ROUTES.HOME}>
             <Button
               variant="primary"
@@ -60,13 +72,24 @@ const OrderSuccessPage = async ({ searchParams }: Props) => {
             </Button>
           </Link>
         </div>
-      </div>
+      </section>
 
+      {/* Mobile */}
       <div className="flex flex-col items-center justify-center max-w-[195px] gap-[30px] sm:hidden">
-        <CircleCheckBig className="size-30 text-icon-success" />
-        <h1 className="text-2xl md:text-3xl text-center font-core-sans-c text-text-secondary font-bold">
+        <CircleCheckBig
+          className="size-30 text-icon-success"
+          aria-hidden="true"
+        />
+        <Typography
+          as="h1"
+          fontFamily="coreSans"
+          fontWeight="bold"
+          fontSize="2xl"
+          color="secondary"
+          className="text-center md:text-3xl"
+        >
           Your Order is Confirmed
-        </h1>
+        </Typography>
         <Link href={ROUTES.HOME}>
           <Button
             variant="primary"

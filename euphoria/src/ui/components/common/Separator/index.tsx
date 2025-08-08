@@ -3,6 +3,9 @@
 import { ComponentProps } from 'react';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 
+// Components
+import { Typography } from '../Typography';
+
 // Utils
 import { cn } from '@/utils';
 
@@ -31,9 +34,14 @@ function Separator({
           )}
           {...props}
         />
-        <span className="px-[25px] text-background-fade text-sm font-medium whitespace-nowrap">
+        <Typography
+          as="span"
+          className="px-[25px] text-background-fade whitespace-nowrap"
+          fontSize="sm"
+          fontWeight="medium"
+        >
           {text}
-        </span>
+        </Typography>
         <SeparatorPrimitive.Root
           data-slot="separator"
           decorative={decorative}

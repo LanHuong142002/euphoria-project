@@ -22,13 +22,17 @@ import { Product } from '@/types/product';
 import { cn } from '@/utils';
 
 export interface FilterProps {
+  className?: string;
   products: Product[];
   onFilterChange: (filteredProducts: Product[]) => void;
-  className?: string;
 }
 
-export const Filter = () => {
-  return (
+export const Filter = () => (
+  <aside
+    className="w-full lg:w-1/4"
+    role="complementary"
+    aria-label="Product filters"
+  >
     <div
       className={cn(
         'w-full lg:max-w-sm bg-background-primary border border-border-primary',
@@ -73,5 +77,5 @@ export const Filter = () => {
 
       <PriceRange />
     </div>
-  );
-};
+  </aside>
+);

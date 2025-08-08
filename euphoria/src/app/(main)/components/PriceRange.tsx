@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 // Constants
-import { TIMING } from '@/constants';
+import { PRODUCT_PRICE_RANGE, TIMING } from '@/constants';
 
 // Components
 import {
@@ -18,13 +18,10 @@ import { Slider } from '@/ui/components/common/Slider';
 // Hooks
 import { useDebounce, useGetParams } from '@/hooks';
 
-const MIN_PRICE = 0;
-const MAX_PRICE = 1000;
-
 export const PriceRange = () => {
   const { params, router, searchParams } = useGetParams();
-  const priceFrom = Number(params.get('priceFrom')) || MIN_PRICE;
-  const priceTo = Number(params.get('priceTo')) || MAX_PRICE;
+  const priceFrom = Number(params.get('priceFrom')) || PRODUCT_PRICE_RANGE.MIN;
+  const priceTo = Number(params.get('priceTo')) || PRODUCT_PRICE_RANGE.MAX;
 
   const [priceRange, setPriceRange] = useState<number[]>([priceFrom, priceTo]);
   const debouncedPriceRange = useDebounce(priceRange, TIMING.DEBOUNCE_DELAY);
@@ -58,8 +55,8 @@ export const PriceRange = () => {
         </AccordionTrigger>
         <AccordionContent className="pt-5 lg:pt-15 space-y-5">
           <Slider
-            min={MIN_PRICE}
-            max={MAX_PRICE}
+            min={PRODUCT_PRICE_RANGE.MIN}
+            max={PRODUCT_PRICE_RANGE.MAX}
             value={priceRange}
             onRangeChange={handlePriceRangeChange}
             className="w-full"

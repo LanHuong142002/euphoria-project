@@ -1,5 +1,8 @@
 import { CircleAlert, Frown } from 'lucide-react';
 
+// Components
+import { Typography } from '@/ui/components/common/Typography';
+
 interface ListEmptyProps {
   isError?: boolean;
   description: string;
@@ -12,11 +15,17 @@ export const ListEmpty = ({ description, isError }: ListEmptyProps) => (
     ) : (
       <Frown size={60} className="text-icon-primary" />
     )}
-    <p className="font-core-sans-c text-[34px] text-text-primary font-bold pt-3.5">
-      Oops...<span className="font-causten">!</span>
-    </p>
-    <p className="font-causten text-center text-md text-text-primary font-medium">
+    <Typography
+      fontFamily="coreSans"
+      fontWeight="bold"
+      fontSize="34px"
+      className="pt-3.5"
+    >
+      Oops...
+      <Typography as="span">!</Typography>
+    </Typography>
+    <Typography fontWeight="medium" className="text-center">
       {description}
-    </p>
+    </Typography>
   </div>
 );

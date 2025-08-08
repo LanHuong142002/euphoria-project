@@ -11,7 +11,7 @@ import { BRAND, BASE_URL, FAVICON_URL, IMAGES } from '@/constants';
 import { Providers } from './providers';
 
 // Config
-import { auth } from '@/config';
+import { auth } from '@/config/auth';
 
 // Local Fonts
 const coreSansC = localFont({

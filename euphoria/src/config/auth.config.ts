@@ -1,7 +1,8 @@
 import type { NextAuthConfig } from 'next-auth';
 
 // Constants
-import { AUTH_ROUTERS, PRIVATE_ROUTERS, ROUTES, TIMING } from '../constants';
+import { TIMING } from '@/constants/timing';
+import { AUTH_ROUTERS, PRIVATE_ROUTERS, ROUTES } from '@/constants/routes';
 
 // Types
 import { UserSession } from '../types';

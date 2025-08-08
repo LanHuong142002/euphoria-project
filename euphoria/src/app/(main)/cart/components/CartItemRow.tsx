@@ -1,7 +1,7 @@
 'use client';
 
 // Components
-import { CartItem } from '@/ui/components/CartItem';
+import { CartItem, CartItemProps } from '@/ui/components/CartItem';
 
 // Types
 import { Cart } from '@/types';
@@ -9,7 +9,9 @@ import { Cart } from '@/types';
 // Utils
 import { getItemPrice, getItemQuantity } from '@/utils';
 
-interface CartItemRowProps {
+interface CartItemRowProps
+  extends Omit<CartItemProps, 'onQuantityChange' | 'product'> {
+  ariaRowIndex: number;
   item: Cart;
   cart: Cart[];
   onRemoveItem: (id: string) => void;
@@ -21,6 +23,8 @@ export const CartItemRow = ({
   cart,
   onQuantityChange,
   onRemoveItem,
+  role,
+  ariaRowIndex,
 }: CartItemRowProps) => {
   const { attributes } = item;
   const { product, color = '', size = '' } = attributes || {};
@@ -57,6 +61,8 @@ export const CartItemRow = ({
       onQuantityChange={handleQuantityChange}
       onRemove={handleRemoveItem}
       hasBorder={!isLastItem}
+      ariaRowIndex={ariaRowIndex}
+      role={role}
     />
   );
 };

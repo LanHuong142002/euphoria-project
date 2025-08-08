@@ -8,6 +8,7 @@ import { ROUTES } from '@/constants';
 
 // Components
 import { Button } from '@/ui/components/common/Button';
+import { Typography } from '@/ui/components/common/Typography';
 
 interface ErrorProps {
   reset: () => void;
@@ -19,15 +20,36 @@ export const Error = ({ reset }: ErrorProps) => {
   };
 
   return (
-    <div className="flex flex-1 justify-center items-center">
+    <section
+      className="flex flex-1 justify-center items-center"
+      aria-labelledby="error-heading"
+    >
       <div className="max-w-[460px] flex flex-col items-center">
-        <CircleAlert size={150} className="text-icon-error" />
-        <h1 className="font-core-sans-c text-[34px] text-text-error font-bold pt-3.5 pb-2.5">
-          Oops...<span className="font-causten">!</span>
-        </h1>
-        <p className="font-causten text-center text-md text-text-primary font-medium">
+        <CircleAlert
+          size={150}
+          className="text-icon-error"
+          aria-hidden="true"
+        />
+        <Typography
+          as="h1"
+          id="error-heading"
+          fontFamily="coreSans"
+          fontWeight="bold"
+          fontSize="34px"
+          color="error"
+          className="pt-3.5 pb-2.5"
+        >
+          Oops...
+          <Typography as="span">!</Typography>
+        </Typography>
+        <Typography
+          fontFamily="coreSans"
+          fontWeight="medium"
+          className="text-center"
+          role="status"
+        >
           Something went wrong!
-        </p>
+        </Typography>
         <div className="flex flex-col gap-2">
           <Button
             color="primary"
@@ -35,6 +57,7 @@ export const Error = ({ reset }: ErrorProps) => {
             fontSize="xs"
             className="font-bold mt-10.5"
             onClick={handleReset}
+            aria-label="Try loading the page again"
           >
             Try again
           </Button>
@@ -43,6 +66,6 @@ export const Error = ({ reset }: ErrorProps) => {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

@@ -5,9 +5,7 @@ import { getProductById } from '@/actions';
 
 // Components
 import { ProductDetailAction } from './ProductDetailAction';
-
-// Utils
-import { cn } from '@/utils';
+import { Typography } from '@/ui/components/common/Typography';
 
 interface ContentProps {
   id: string;
@@ -36,7 +34,7 @@ export const Content = async ({ id, isAuthenticated }: ContentProps) => {
 
   return (
     <div className="pb-[100px]">
-      <div className="relative">
+      <div className="relative" aria-labelledby="product-details">
         <ProductDetailAction
           id={id}
           images={images}
@@ -48,34 +46,50 @@ export const Content = async ({ id, isAuthenticated }: ContentProps) => {
           isAuthenticated={isAuthenticated}
         />
 
-        <div className="absolute top-0 left-0 w-full h-full z-[-2] hidden lg:flex">
+        <div
+          className="absolute top-0 left-0 w-full h-full z-[-2] hidden lg:flex"
+          aria-hidden="true"
+        >
           <div className="bg-background-tertiary w-1/2 h-full" />
           <div className="w-1/2 h-full" />
         </div>
       </div>
 
       {/* Product Description */}
-      <div className="pl-4 lg:pl-0 container mx-auto mt-5 lg:mt-[100px]">
+      <div
+        className="pl-4 lg:pl-0 container mx-auto mt-5 lg:mt-[100px]"
+        aria-labelledby="product-description-heading"
+      >
         <div className="flex items-stretch gap-[15px] mb-7.5">
-          <div className="w-[6px] bg-background-quaternary rounded-xl" />
-          <p className="text-[28px] font-bold text-text-secondary font-core-sans-c">
+          <div
+            className="w-[6px] bg-background-quaternary rounded-xl"
+            aria-hidden="true"
+          />
+          <Typography
+            as="h2"
+            id="product-description-heading"
+            fontFamily="coreSans"
+            fontWeight="bold"
+            fontSize="28px"
+            color="secondary"
+          >
             Product Description
-          </p>
+          </Typography>
         </div>
 
         <div className="space-y-7.5">
-          <p
-            className={cn(
-              'text-lg font-causten font-medium text-text-secondary',
-              'underline decoration-border-primary decoration-[1.4px] underline-offset-[18px]',
-            )}
+          <Typography
+            fontWeight="medium"
+            fontSize="lg"
+            color="secondary"
+            className="underline decoration-border-primary decoration-[1.4px] underline-offset-[18px]"
           >
             Description
-          </p>
+          </Typography>
 
-          <p className="text-text-primary font-causten font-light">
+          <Typography fontWeight="light" className="leading-relaxed">
             {description}
-          </p>
+          </Typography>
         </div>
       </div>
     </div>

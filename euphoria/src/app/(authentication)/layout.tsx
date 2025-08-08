@@ -10,7 +10,9 @@ import {
 import { cn } from '@/utils';
 
 const Layout = ({ children }: { children: ReactNode }) => (
-  <div
+  <main
+    id="main-content"
+    role="main"
     className={cn(
       'flex flex-col',
       SCREEN_HEIGHT_WITH_HEADER_MOBILE,
@@ -18,7 +20,7 @@ const Layout = ({ children }: { children: ReactNode }) => (
     )}
   >
     {children}
-  </div>
+  </main>
 );
 
 export default Layout;

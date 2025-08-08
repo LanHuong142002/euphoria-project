@@ -1,3 +1,8 @@
+import { CardIcon } from '@/ui/icons/CardIcon';
+import { ReturnIcon } from '@/ui/icons/ReturnIcon';
+import { ShirtIcon } from '@/ui/icons/ShirtIcon';
+import { TruckIcon } from '@/ui/icons/TruckIcon';
+
 export const PRODUCT_SIZES = ['S', 'M', 'L', 'XL', 'XXL'];
 export const PRODUCT_COLORS = [
   {
@@ -83,5 +88,29 @@ export const PRODUCT_COLORS = [
     border: 'border-product-color-blue',
     color: '#3fdeff',
     label: 'Blue',
+  },
+];
+
+export const PRODUCT_PRICE_RANGE = {
+  MIN: 0,
+  MAX: 1000,
+};
+
+export const PRODUCT_BADGES = [
+  {
+    name: 'Secure payment',
+    icon: CardIcon,
+  },
+  {
+    name: 'Size & Fit',
+    icon: ShirtIcon,
+  },
+  {
+    name: 'Free shipping',
+    icon: TruckIcon,
+  },
+  {
+    name: 'Free Shipping & Returns',
+    icon: ReturnIcon,
   },
 ];
