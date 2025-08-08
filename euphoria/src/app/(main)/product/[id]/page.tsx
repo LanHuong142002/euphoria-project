@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
 
 // Actions
 import { getProductById } from '@/actions';
@@ -23,6 +24,10 @@ export const generateMetadata = async ({
   const product = await getProductById(id);
   const { attributes } = product.data || {};
   const { name = '', description = '' } = attributes || {};
+
+  if (!/^\d+$/.test(id)) {
+    notFound();
+  }
 
   return {
     title: name,
