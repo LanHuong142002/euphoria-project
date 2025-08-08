@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 // Components
 import { Filter } from './components/Filter';
 import { ProductList } from './components/ProductList';
+import { Typography } from '@/ui/components/common/Typography';
 import { ProductListSkeleton } from './components/ProductListSkeleton';
 
 // Types
@@ -24,11 +25,16 @@ const MainPage = async ({
 
         <div className="w-full lg:w-3/4 p-6 lg:p-12.5">
           <div className="max-w-[900px] mx-auto">
-            <h1 className="text-[22px] font-semibold text-text-secondary">
+            <Typography
+              as="h1"
+              fontWeight="semibold"
+              fontSize="22px"
+              color="secondary"
+            >
               {params?.categoryName
                 ? `${params.categoryName} Clothing`
                 : 'All Products'}
-            </h1>
+            </Typography>
 
             <Suspense fallback={<ProductListSkeleton />}>
               <ProductList searchParams={searchParams} />

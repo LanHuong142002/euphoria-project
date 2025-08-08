@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 
 // Components
 import { Toggle } from '..';
+import { Typography } from '../../Typography';
 
 describe('Toggle component', () => {
   test('Should render toggle with children', () => {
@@ -116,7 +117,7 @@ describe('Toggle component', () => {
   test('Should render with different content types', () => {
     render(
       <Toggle>
-        <span>Icon</span>
+        <Typography as="span">Icon</Typography>
         Text
       </Toggle>,
     );

@@ -1,6 +1,9 @@
 // Constants
 import { PRODUCT_COLORS } from '@/constants';
 
+// Components
+import { Typography } from '@/ui/components/common/Typography';
+
 // Utils
 import { cn } from '@/utils';
 
@@ -16,9 +19,9 @@ export const SelectColors = ({
   onColorChange,
 }: SelectColorsProps) => (
   <div className="space-y-[25px]">
-    <p className="text-lg font-semibold font-causten text-text-secondary">
+    <Typography fontWeight="semibold" fontSize="lg" color="secondary">
       Colors Available
-    </p>
+    </Typography>
 
     <div className="flex gap-5">
       {colors.map((color: string) => {

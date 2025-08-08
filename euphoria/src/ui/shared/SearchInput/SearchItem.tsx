@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 // Components
 import { Image } from '@/ui/components/common/Image';
+import { Typography } from '@/ui/components/common/Typography';
 
 // Constants
 import { ROUTES } from '@/constants';
@@ -29,12 +30,12 @@ export const SearchItem = ({ product, onClose }: SearchItemProps) => (
       />
     </div>
     <div className="flex-1 min-w-0">
-      <p className="font-causten text-sm font-medium truncate">
+      <Typography fontWeight="medium" fontSize="sm" className="truncate">
         {product.attributes.name}
-      </p>
-      <p className="font-causten text-sm text-text-primary">
+      </Typography>
+      <Typography fontWeight="medium" fontSize="sm">
         ${product.attributes.price.toFixed(2)}
-      </p>
+      </Typography>
     </div>
   </Link>
 );

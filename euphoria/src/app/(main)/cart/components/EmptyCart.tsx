@@ -6,6 +6,7 @@ import { IMAGE_DETAILS, ROUTES } from '@/constants';
 // Components
 import { Button } from '@/ui/components/common/Button';
 import { Image } from '@/ui/components/common/Image';
+import { Typography } from '@/ui/components/common/Typography';
 
 export const EmptyCart = () => (
   <div className="flex flex-1 flex-col items-center justify-center gap-[50px] bg-background-tertiary">
@@ -19,12 +20,22 @@ export const EmptyCart = () => (
     </div>
 
     <div className="space-y-3 text-center">
-      <h1 className="font-core-sans-c text-xl md:text-[34px] font-bold text-text-quaternary">
-        Your cart is empty and sad <span className="font-causten">:(</span>
-      </h1>
-      <p className="font-core-sans-c text-text-primary text-md">
-        Add something to make it happy<span className="font-causten">!</span>
-      </p>
+      <Typography
+        as="h1"
+        fontFamily="coreSans"
+        fontWeight="bold"
+        fontSize="xl"
+        color="quaternary"
+        className="md:text-[34px]"
+      >
+        Your cart is empty and sad
+        <Typography as="span">:(</Typography>
+      </Typography>
+
+      <Typography fontFamily="coreSans">
+        Add something to make it happy
+        <Typography as="span">!</Typography>
+      </Typography>
     </div>
 
     <Link href={ROUTES.HOME}>

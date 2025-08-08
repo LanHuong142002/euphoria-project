@@ -36,6 +36,7 @@ import {
 import { SearchInput } from '../SearchInput';
 import { Image } from '@/ui/components/common/Image';
 import { Separator } from '@/ui/components/common/Separator';
+import { Typography } from '@/ui/components/common/Typography';
 
 // Hooks
 import { useChangeTheme } from '@/hooks';
@@ -151,9 +152,9 @@ export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
               <AccordionTrigger>
-                <p className="text-md font-medium text-text-secondary">
+                <Typography fontWeight="medium" color="secondary">
                   Change Theme
-                </p>
+                </Typography>
               </AccordionTrigger>
               <AccordionContent className="pl-7">
                 {MENU_THEME_ITEMS.map(
