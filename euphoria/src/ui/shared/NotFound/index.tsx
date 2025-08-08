@@ -18,7 +18,8 @@ import {
 import { cn } from '@/utils';
 
 export const NotFound = () => (
-  <div
+  <section
+    aria-labelledby="not-found-heading"
     className={cn(
       'flex justify-center items-center',
       SCREEN_HEIGHT_WITH_HEADER_AND_FOOTER_MOBILE,
@@ -36,6 +37,7 @@ export const NotFound = () => (
       </div>
       <Typography
         as="h1"
+        id="not-found-heading"
         fontFamily="coreSans"
         fontWeight="bold"
         fontSize="34px"
@@ -48,7 +50,7 @@ export const NotFound = () => (
         </Typography>{' '}
         Page not found
       </Typography>
-      <Typography fontWeight="medium" className="text-center">
+      <Typography fontWeight="medium" className="text-center" role="status">
         The page you are looking for might have been removed or temporarily
         unavailable.
       </Typography>
@@ -63,5 +65,5 @@ export const NotFound = () => (
         </Button>
       </Link>
     </div>
-  </div>
+  </section>
 );

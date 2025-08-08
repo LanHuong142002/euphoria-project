@@ -26,12 +26,21 @@ export const UserDropdown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button color="icon" size="icon" variant="primary">
+        <Button
+          color="icon"
+          size="icon"
+          variant="primary"
+          aria-label="Click user profile"
+        >
           <UserIcon />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem variant="destructive" onClick={handleLogout}>
+        <DropdownMenuItem
+          variant="destructive"
+          onClick={handleLogout}
+          aria-label="Click logout"
+        >
           <LogOutIcon className="size-4" />
           Log out
         </DropdownMenuItem>

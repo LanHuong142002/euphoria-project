@@ -68,20 +68,31 @@ export const Content = () => {
       </div>
 
       <div>
-        {/* Cart Items Header */}
-        <TableHeader />
+        <div
+          role="table"
+          aria-label="Cart items"
+          aria-rowcount={cart.length + 1}
+        >
+          {/* Cart Items Header */}
+          <TableHeader />
 
-        {/* Cart Items */}
-        <div className="container mx-auto pt-5 pb-25">
-          {cart.map((item) => (
-            <CartItemRow
-              key={`cart-item-${item.id}`}
-              item={item}
-              cart={cart}
-              onQuantityChange={handleQuantityChange}
-              onRemoveItem={handleOpenModal}
-            />
-          ))}
+          {/* Cart Items */}
+          <div className="container mx-auto pt-5 pb-25" role="rowgroup">
+            {cart.map((item, index) => (
+              <div
+                key={`cart-item-${item.id}`}
+                role="row"
+                aria-rowindex={index + 2}
+              >
+                <CartItemRow
+                  item={item}
+                  cart={cart}
+                  onQuantityChange={handleQuantityChange}
+                  onRemoveItem={handleOpenModal}
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Order Summary */}

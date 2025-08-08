@@ -23,7 +23,7 @@ export const SelectColors = ({
       Colors Available
     </Typography>
 
-    <div className="flex gap-5">
+    <div className="flex gap-5" role="radiogroup" aria-required="true">
       {colors.map((color: string) => {
         const isSelected = selectedColor === color;
         const { border, value } =
@@ -40,7 +40,10 @@ export const SelectColors = ({
               'w-7.5 h-7.5 rounded-full border-2 transition-all duration-200 inset-shadow-sm',
               isSelected ? `${border} p-1` : 'border-border-tertiary p-0',
             )}
-            title={color}
+            role="radio"
+            aria-checked={isSelected}
+            aria-label={`Select ${color} color`}
+            title={`${color} ${isSelected ? '(selected)' : ''}`}
           >
             <div className={cn('w-full h-full rounded-full', value)} />
           </button>

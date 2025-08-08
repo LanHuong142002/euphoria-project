@@ -40,8 +40,15 @@ export const ModalConfirm = ({
       </AlertDialogHeader>
 
       <AlertDialogFooter>
-        <AlertDialogCancel onClick={onCancel}>Cancel</AlertDialogCancel>
-        <AlertDialogAction onClick={onConfirm}>Confirm</AlertDialogAction>
+        <AlertDialogCancel
+          onClick={onCancel}
+          aria-label="Cancel and close dialog"
+        >
+          Cancel
+        </AlertDialogCancel>
+        <AlertDialogAction onClick={onConfirm} aria-label="Confirm action">
+          Confirm
+        </AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>
   </AlertDialog>

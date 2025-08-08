@@ -20,11 +20,19 @@ export const Error = ({ reset }: ErrorProps) => {
   };
 
   return (
-    <div className="flex flex-1 justify-center items-center">
+    <section
+      className="flex flex-1 justify-center items-center"
+      aria-labelledby="error-heading"
+    >
       <div className="max-w-[460px] flex flex-col items-center">
-        <CircleAlert size={150} className="text-icon-error" />
+        <CircleAlert
+          size={150}
+          className="text-icon-error"
+          aria-hidden="true"
+        />
         <Typography
           as="h1"
+          id="error-heading"
           fontFamily="coreSans"
           fontWeight="bold"
           fontSize="34px"
@@ -38,6 +46,7 @@ export const Error = ({ reset }: ErrorProps) => {
           fontFamily="coreSans"
           fontWeight="medium"
           className="text-center"
+          role="status"
         >
           Something went wrong!
         </Typography>
@@ -48,6 +57,7 @@ export const Error = ({ reset }: ErrorProps) => {
             fontSize="xs"
             className="font-bold mt-10.5"
             onClick={handleReset}
+            aria-label="Try loading the page again"
           >
             Try again
           </Button>
@@ -56,6 +66,6 @@ export const Error = ({ reset }: ErrorProps) => {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

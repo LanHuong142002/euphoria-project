@@ -19,11 +19,13 @@ const MainPage = async ({
   return (
     <div className="container mx-auto">
       <div className="flex flex-col lg:flex-row pt-5 lg:pt-0">
-        <div className="w-full lg:w-1/4">
-          <Filter />
-        </div>
+        <Filter />
 
-        <div className="w-full lg:w-3/4 p-6 lg:p-12.5">
+        <section
+          className="w-full lg:w-3/4 p-6 lg:p-12.5"
+          role="main"
+          aria-labelledby="page-title"
+        >
           <div className="max-w-[900px] mx-auto">
             <Typography
               as="h1"
@@ -40,7 +42,7 @@ const MainPage = async ({
               <ProductList searchParams={searchParams} />
             </Suspense>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );
