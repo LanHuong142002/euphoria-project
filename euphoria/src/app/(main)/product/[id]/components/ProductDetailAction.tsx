@@ -168,43 +168,38 @@ export const ProductDetailAction = ({
           {name}
         </Typography>
 
-        <div
-          aria-label="Product customization and purchase"
-          className="space-y-4 lg:space-y-[35px]"
-        >
-          <SelectSize
-            sizes={sizes}
-            selectedSize={selectedSize}
-            onSizeChange={handleSizeChange}
-          />
+        <SelectSize
+          sizes={sizes}
+          selectedSize={selectedSize}
+          onSizeChange={handleSizeChange}
+        />
 
-          <SelectColors
-            colors={colors}
-            selectedColor={selectedColor}
-            onColorChange={handleColorChange}
-          />
+        <SelectColors
+          colors={colors}
+          selectedColor={selectedColor}
+          onColorChange={handleColorChange}
+        />
 
-          <div className="flex items-center gap-4">
-            <Button
-              color="primary"
-              onClick={handleAddToCart}
-              variant="primary"
-              disabled={!selectedSize || !selectedColor}
-            >
-              <ShoppingCartIcon
-                className="stroke-icon-secondary"
-                aria-hidden="true"
-              />
-              Add to cart
-            </Button>
-            <Badge
-              variant="outline"
-              className="font-bold text-lg"
-              aria-label={`Price: $${price.toFixed(2)}`}
-            >
-              ${price.toFixed(2)}
-            </Badge>
-          </div>
+        <div className="flex items-center gap-4">
+          <Button
+            color="primary"
+            onClick={handleAddToCart}
+            variant="primary"
+            disabled={!selectedSize || !selectedColor}
+          >
+            <ShoppingCartIcon
+              className="stroke-icon-secondary"
+              aria-hidden="true"
+            />
+            Add to cart
+          </Button>
+          <Badge
+            variant="outline"
+            className="font-bold text-lg"
+            aria-label={`Price: $${price.toFixed(2)}`}
+          >
+            ${price.toFixed(2)}
+          </Badge>
         </div>
 
         <Separator aria-hidden="true" />

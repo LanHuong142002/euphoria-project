@@ -56,33 +56,30 @@ export const Form = () => {
         aria-label="Sign in form"
         noValidate
       >
-        <fieldset className="space-y-7.5" disabled={isPending}>
-          <legend className="sr-only">Login credentials</legend>
-          <InputController
-            name="email"
-            control={form.control}
-            label="User name or email address"
-            placeholder="Enter your email"
-            inputProps={{
-              id: 'username',
-              autoComplete: 'username',
-              'aria-describedby': error ? 'login-error' : undefined,
-            }}
-          />
-          <InputController
-            name="password"
-            inputProps={{
-              id: 'password',
-              type: 'password',
-              showPasswordToggle: true,
-              autoComplete: 'current-password',
-              'aria-describedby': error ? 'login-error' : undefined,
-            }}
-            control={form.control}
-            label="Password"
-            placeholder="Enter your password"
-          />
-        </fieldset>
+        <InputController
+          name="email"
+          control={form.control}
+          label="User name or email address"
+          placeholder="Enter your email"
+          inputProps={{
+            id: 'username',
+            autoComplete: 'username',
+            'aria-describedby': error ? 'login-error' : undefined,
+          }}
+        />
+        <InputController
+          name="password"
+          inputProps={{
+            id: 'password',
+            type: 'password',
+            showPasswordToggle: true,
+            autoComplete: 'current-password',
+            'aria-describedby': error ? 'login-error' : undefined,
+          }}
+          control={form.control}
+          label="Password"
+          placeholder="Enter your password"
+        />
 
         {error && (
           <div

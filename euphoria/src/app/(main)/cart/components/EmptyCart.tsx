@@ -9,7 +9,10 @@ import { Image } from '@/ui/components/common/Image';
 import { Typography } from '@/ui/components/common/Typography';
 
 export const EmptyCart = () => (
-  <div className="flex flex-1 flex-col items-center justify-center gap-[50px] bg-background-tertiary">
+  <section
+    className="flex flex-1 flex-col items-center justify-center gap-[50px] bg-background-tertiary"
+    aria-labelledby="cart-empty-title"
+  >
     <div className="w-[347px] h-[227px] lg:w-[447px] lg:h-[327px] flex justify-center">
       <Image
         src={IMAGE_DETAILS.CART_EMPTY.src}
@@ -21,6 +24,7 @@ export const EmptyCart = () => (
 
     <div className="space-y-3 text-center">
       <Typography
+        id="cart-empty-title"
         as="h1"
         fontFamily="coreSans"
         fontWeight="bold"
@@ -47,5 +51,5 @@ export const EmptyCart = () => (
         Continue Shopping
       </Button>
     </Link>
-  </div>
+  </section>
 );
