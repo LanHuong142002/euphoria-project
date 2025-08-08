@@ -50,29 +50,45 @@ export const Form = () => {
 
   return (
     <FormComponent {...form}>
-      <form className="space-y-7.5" onSubmit={form.handleSubmit(handleSubmit)}>
-        <div className="space-y-7.5">
-          <InputController
-            name="email"
-            control={form.control}
-            label="User name or email address"
-            placeholder="Enter your email"
-          />
-          <InputController
-            name="password"
-            inputProps={{
-              type: 'password',
-              showPasswordToggle: true,
-            }}
-            control={form.control}
-            label="Password"
-            placeholder="Enter your password"
-          />
-        </div>
+      <form
+        className="space-y-7.5"
+        onSubmit={form.handleSubmit(handleSubmit)}
+        aria-label="Sign in form"
+        noValidate
+      >
+        <InputController
+          name="email"
+          control={form.control}
+          label="User name or email address"
+          placeholder="Enter your email"
+          inputProps={{
+            id: 'username',
+            autoComplete: 'username',
+            'aria-describedby': error ? 'login-error' : undefined,
+          }}
+        />
+        <InputController
+          name="password"
+          inputProps={{
+            id: 'password',
+            type: 'password',
+            showPasswordToggle: true,
+            autoComplete: 'current-password',
+            'aria-describedby': error ? 'login-error' : undefined,
+          }}
+          control={form.control}
+          label="Password"
+          placeholder="Enter your password"
+        />
 
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md">
-            {error}
+          <div
+            id="login-error"
+            role="alert"
+            aria-live="assertive"
+            className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md"
+          >
+            <strong>Error:</strong> {error}
           </div>
         )}
 
@@ -84,6 +100,7 @@ export const Form = () => {
             fontSize="xs"
             className="text-xs sm:text-sm w-full lg:w-auto"
             isLoading={isPending}
+            aria-describedby={error ? 'login-error' : undefined}
           >
             Sign In
           </Button>

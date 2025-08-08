@@ -7,6 +7,7 @@ import { ROUTES } from '@/constants';
 
 // Components
 import { Button } from '../../components/common/Button';
+import { Typography } from '../../components/common/Typography';
 
 // Icons
 import { ShoppingCartIcon } from '../../icons/ShoppingCartIcon';
@@ -24,14 +25,20 @@ export const CartTotal = () => {
         size="icon"
         variant="primary"
         className="w-8 h-8 lg:w-11 lg:h-11 p-2"
+        aria-label="Click to navigate to the cart page"
       >
         <ShoppingCartIcon />
       </Button>
       {cart.length > 0 && (
         <div className="absolute -top-4 -right-3 lg:-top-2 lg:-right-2 bg-background-error rounded-full w-5 h-5 lg:w-6 lg:h-6 flex items-center justify-center">
-          <span className="text-text-tertiary text-xs lg:text-sm">
+          <Typography
+            as="span"
+            color="tertiary"
+            fontSize="xs"
+            className="lg:text-sm"
+          >
             {cart.length}
-          </span>
+          </Typography>
         </div>
       )}
     </Link>

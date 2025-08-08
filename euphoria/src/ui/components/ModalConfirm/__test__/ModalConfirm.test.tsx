@@ -62,8 +62,12 @@ describe('ModalConfirm', () => {
     const triggerButton = screen.getByRole('button', { name: 'Alert Dialog' });
     await user.click(triggerButton);
 
-    const cancelButton = screen.getByRole('button', { name: 'Cancel' });
-    const continueButton = screen.getByRole('button', { name: 'Confirm' });
+    const cancelButton = screen.getByRole('button', {
+      name: 'Cancel and close dialog',
+    });
+    const continueButton = screen.getByRole('button', {
+      name: 'Confirm action',
+    });
 
     expect(cancelButton).toBeInTheDocument();
     expect(continueButton).toBeInTheDocument();
@@ -81,7 +85,9 @@ describe('ModalConfirm', () => {
     expect(screen.getByText('Are you absolutely sure?')).toBeInTheDocument();
 
     // Click cancel
-    const cancelButton = screen.getByRole('button', { name: 'Cancel' });
+    const cancelButton = screen.getByRole('button', {
+      name: 'Cancel and close dialog',
+    });
     await user.click(cancelButton);
 
     // Verify modal is closed
@@ -104,7 +110,9 @@ describe('ModalConfirm', () => {
     expect(screen.getByText('Are you absolutely sure?')).toBeInTheDocument();
 
     // Click continue
-    const continueButton = screen.getByRole('button', { name: 'Confirm' });
+    const continueButton = screen.getByRole('button', {
+      name: 'Confirm action',
+    });
     await user.click(continueButton);
 
     // Verify modal is closed

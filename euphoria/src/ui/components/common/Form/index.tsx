@@ -15,6 +15,7 @@ import {
 
 // Components
 import { Label } from '../Label';
+import { Typography } from '../Typography';
 
 // Utils
 import { cn } from '@/utils';
@@ -126,39 +127,50 @@ function FormControl({ ...props }: ComponentProps<typeof Slot>) {
   );
 }
 
-const FormDescription = ({ className, ...props }: ComponentProps<'p'>) => {
+const FormDescription = ({
+  className,
+  children,
+  ...props
+}: Omit<ComponentProps<'p'>, 'color'>) => {
   const { formDescriptionId } = useFormField();
 
   return (
-    <p
+    <Typography
       data-slot="form-description"
       id={formDescriptionId}
-      className={cn(
-        'mt-1 font-causten text-base text-medium text-input-placeholder',
-        className,
-      )}
+      fontSize="base"
+      fontWeight="medium"
+      className={cn('mt-1 text-input-placeholder', className)}
       {...props}
-    />
+    >
+      {children}
+    </Typography>
   );
 };
 
-const FormMessage = ({ className, ...props }: ComponentProps<'p'>) => {
+const FormMessage = ({
+  className,
+  children,
+  ...props
+}: Omit<ComponentProps<'p'>, 'color'>) => {
   const { error, formMessageId } = useFormField();
-  const body = error ? String(error?.message ?? '') : props.children;
+  const body = error ? String(error?.message ?? '') : children;
 
   if (!body) {
     return null;
   }
 
   return (
-    <p
+    <Typography
       data-slot="form-message"
       id={formMessageId}
-      className={cn('mt-1 font-causten text-base text-input-error', className)}
+      fontSize="base"
+      fontWeight="medium"
+      className={cn('mt-1 text-input-error', className)}
       {...props}
     >
       {body}
-    </p>
+    </Typography>
   );
 };
 

@@ -24,6 +24,7 @@ export const Image = memo(
     blurDataURL,
     className,
     classNameWrapper,
+    sizes,
     ...props
   }: OptimizedImageProps) => {
     const [imgSrc, setImgSrc] = useState<string | undefined>(src);
@@ -49,6 +50,9 @@ export const Image = memo(
           fill
           src={imgSrc || fallbackSrc}
           alt={alt}
+          sizes={
+            sizes || '(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'
+          }
           onError={handleError}
           onLoad={handleLoad}
           placeholder="blur"

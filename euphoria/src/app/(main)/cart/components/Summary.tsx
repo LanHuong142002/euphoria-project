@@ -8,6 +8,7 @@ import { ROUTES } from '@/constants';
 // Components
 import { Button } from '@/ui/components/common/Button';
 import { Separator } from '@/ui/components/common/Separator';
+import { Typography } from '@/ui/components/common/Typography';
 
 // Hooks
 import { useToast } from '@/hooks';
@@ -47,19 +48,47 @@ export const Summary = ({ totalPrice }: SummaryProps) => {
     <div className="bg-background-tertiary px-4 lg:px-0">
       <div className="container mx-auto pt-10 pb-12.5">
         <div className="space-y-[15px]">
-          {LIST_ITEMS.map((item) => (
-            <div
-              key={item.label}
-              className="flex justify-between text-text-secondary text-lg lg:text-[22px] font-causten font-normal"
-            >
-              <span>{item.label}</span>
-              <span className="font-medium">${item.value}</span>
+          {LIST_ITEMS.map(({ label, value }) => (
+            <div key={label} className="flex justify-between">
+              <Typography
+                as="span"
+                fontSize="lg"
+                className="lg:text-[22px]"
+                color="secondary"
+              >
+                {label}
+              </Typography>
+              <Typography
+                as="span"
+                fontWeight="medium"
+                fontSize="lg"
+                className="lg:text-[22px]"
+                color="secondary"
+              >
+                ${value}
+              </Typography>
             </div>
           ))}
 
-          <div className="flex justify-between text-text-secondary text-lg lg:text-[22px] font-causten font-bold pt-[25px]">
-            <span>Grand Total</span>
-            <span>${grandTotal.toFixed(2)}</span>
+          <div className="flex justify-between pt-[25px]">
+            <Typography
+              as="span"
+              fontSize="lg"
+              fontWeight="bold"
+              className="lg:text-[22px]"
+              color="secondary"
+            >
+              Grand Total
+            </Typography>
+            <Typography
+              as="span"
+              fontSize="lg"
+              fontWeight="bold"
+              className="lg:text-[22px]"
+              color="secondary"
+            >
+              ${grandTotal.toFixed(2)}
+            </Typography>
           </div>
         </div>
 

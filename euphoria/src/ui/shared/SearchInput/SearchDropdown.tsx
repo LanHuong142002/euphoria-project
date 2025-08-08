@@ -92,6 +92,9 @@ export const SearchDropdown = ({
   return (
     <div
       ref={dropdownRef}
+      id="search-dropdown"
+      role="listbox"
+      aria-label="Search results"
       className={cn(
         'absolute top-full left-0 right-0 mt-1 bg-background-primary border border-border-primary rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto',
         className,
@@ -110,7 +113,11 @@ export const SearchDropdown = ({
           ))}
         </div>
       ) : searchTerm.length >= 2 ? (
-        <div className="font-causten px-4 py-3 text-sm text-text-primary">
+        <div
+          className="font-causten px-4 py-3 text-sm text-text-primary"
+          role="status"
+          aria-live="polite"
+        >
           No products found for &quot;{searchTerm}&quot;
         </div>
       ) : null}

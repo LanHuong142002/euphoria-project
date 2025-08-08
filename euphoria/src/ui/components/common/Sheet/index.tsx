@@ -4,6 +4,10 @@ import { ComponentProps } from 'react';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
 
+// Components
+import { Typography } from '../Typography';
+
+// Utils
 import { cn } from '@/utils';
 
 function Sheet({ ...props }: ComponentProps<typeof SheetPrimitive.Root>) {
@@ -70,9 +74,14 @@ function SheetContent({
         {...props}
       >
         {children}
-        <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
-          <XIcon className="size-4" />
-          <span className="sr-only">Close</span>
+        <SheetPrimitive.Close
+          className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none"
+          aria-label="Close menu"
+        >
+          <XIcon className="size-4" aria-hidden="true" />
+          <Typography as="span" className="sr-only">
+            Close
+          </Typography>
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>
     </SheetPortal>

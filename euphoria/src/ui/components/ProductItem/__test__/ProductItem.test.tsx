@@ -17,15 +17,17 @@ describe('ProductItem', () => {
   it('Should render with all product details', () => {
     render(<ProductItem {...mockProduct} />);
 
-    expect(screen.getByText('Leaves Pattern White Dress')).toBeInTheDocument();
-    expect(screen.getByText("paypal's Brand")).toBeInTheDocument();
+    expect(screen.getByText(mockProduct.name)).toBeInTheDocument();
+    expect(screen.getByText(mockProduct.brand)).toBeInTheDocument();
     expect(screen.getByText('$77.00')).toBeInTheDocument();
   });
 
   it('Should render product image with correct alt text', () => {
     render(<ProductItem {...mockProduct} />);
 
-    const image = screen.getByAltText('Leaves Pattern White Dress');
+    const image = screen.getByAltText(
+      `Image of ${mockProduct.name} by ${mockProduct.brand}`,
+    );
     expect(image).toBeInTheDocument();
     // Next.js Image component transforms the src, so we just check it exists
     expect(image).toHaveAttribute('src');

@@ -5,6 +5,7 @@ import { ComponentProps, useState } from 'react';
 
 // Components
 import { Button } from '../common/Button';
+import { Typography } from '../common/Typography';
 
 // Utils
 import { cn } from '@/utils';
@@ -47,6 +48,8 @@ export const QuantitySelector = ({
 
   return (
     <div
+      role="group"
+      aria-label="Quantity selector"
       className={cn(
         'inline-flex items-center justify-center gap rounded-xl bg-quantity-selector-primary py-2.5 px-4.5',
         disabled && 'opacity-50 cursor-default',
@@ -62,12 +65,23 @@ export const QuantitySelector = ({
         className={cn('p-1', quantity <= min && 'opacity-30')}
         aria-label="Decrease quantity"
       >
-        <Minus size={12} className="text-quantity-selector-secondary" />
+        <Minus
+          size={12}
+          className="text-quantity-selector-secondary"
+          aria-hidden="true"
+        />
       </Button>
 
-      <span className="min-w-[2rem] text-center font-medium text-quantity-selector-secondary text-xs">
+      <Typography
+        as="span"
+        fontWeight="medium"
+        fontSize="xs"
+        aria-live="polite"
+        aria-label={`Current quantity: ${quantity}`}
+        className="min-w-[2rem] text-center text-quantity-selector-secondary"
+      >
         {quantity}
-      </span>
+      </Typography>
 
       <Button
         onClick={handleIncrease}
@@ -77,7 +91,11 @@ export const QuantitySelector = ({
         className={cn('p-1', quantity >= max && 'opacity-30')}
         aria-label="Increase quantity"
       >
-        <Plus size={12} className="text-quantity-selector-secondary" />
+        <Plus
+          size={12}
+          className="text-quantity-selector-secondary"
+          aria-hidden="true"
+        />
       </Button>
     </div>
   );
