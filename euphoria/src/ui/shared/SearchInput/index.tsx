@@ -52,12 +52,17 @@ export const SearchInput = ({ className, onClick }: SearchInputProps) => {
   return (
     <div className="relative">
       <Input
-        leftElement={<SearchIcon />}
+        leftElement={<SearchIcon aria-hidden="true" />}
         value={search}
         onChange={handleSearchChange}
         onKeyDown={handleKeyDown}
         onFocus={handleInputFocus}
         placeholder="Search"
+        aria-label="Search for products"
+        aria-expanded={isDropdownOpen}
+        aria-haspopup="listbox"
+        role="combobox"
+        aria-autocomplete="list"
         variant="tertiary"
         size="md"
         className={cn('w-[267px] h-11', className)}

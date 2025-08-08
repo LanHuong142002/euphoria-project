@@ -118,6 +118,8 @@ export const Button = ({
   return (
     <Comp
       data-slot="button"
+      aria-disabled={isLoading || props.disabled}
+      aria-busy={isLoading as boolean}
       className={cn(
         buttonVariants({
           variant,
@@ -131,7 +133,9 @@ export const Button = ({
       onClick={handleClick}
       {...props}
     >
-      {isLoading && <Loader2 className="animate-spin" size={20} />}
+      {isLoading && (
+        <Loader2 className="animate-spin" size={20} aria-hidden="true" />
+      )}
       {props.children}
     </Comp>
   );

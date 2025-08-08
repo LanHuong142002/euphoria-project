@@ -34,7 +34,7 @@ export const Content = async ({ id, isAuthenticated }: ContentProps) => {
 
   return (
     <div className="pb-[100px]">
-      <div className="relative">
+      <div className="relative" aria-labelledby="product-details">
         <ProductDetailAction
           id={id}
           images={images}
@@ -46,17 +46,28 @@ export const Content = async ({ id, isAuthenticated }: ContentProps) => {
           isAuthenticated={isAuthenticated}
         />
 
-        <div className="absolute top-0 left-0 w-full h-full z-[-2] hidden lg:flex">
+        <div
+          className="absolute top-0 left-0 w-full h-full z-[-2] hidden lg:flex"
+          aria-hidden="true"
+        >
           <div className="bg-background-tertiary w-1/2 h-full" />
           <div className="w-1/2 h-full" />
         </div>
       </div>
 
       {/* Product Description */}
-      <div className="pl-4 lg:pl-0 container mx-auto mt-5 lg:mt-[100px]">
+      <div
+        className="pl-4 lg:pl-0 container mx-auto mt-5 lg:mt-[100px]"
+        aria-labelledby="product-description-heading"
+      >
         <div className="flex items-stretch gap-[15px] mb-7.5">
-          <div className="w-[6px] bg-background-quaternary rounded-xl" />
+          <div
+            className="w-[6px] bg-background-quaternary rounded-xl"
+            aria-hidden="true"
+          />
           <Typography
+            as="h2"
+            id="product-description-heading"
             fontFamily="coreSans"
             fontWeight="bold"
             fontSize="28px"
@@ -68,6 +79,7 @@ export const Content = async ({ id, isAuthenticated }: ContentProps) => {
 
         <div className="space-y-7.5">
           <Typography
+            as="h3"
             fontWeight="medium"
             fontSize="lg"
             color="secondary"
@@ -76,7 +88,9 @@ export const Content = async ({ id, isAuthenticated }: ContentProps) => {
             Description
           </Typography>
 
-          <Typography fontWeight="light">{description}</Typography>
+          <Typography fontWeight="light" className="leading-relaxed">
+            {description}
+          </Typography>
         </div>
       </div>
     </div>

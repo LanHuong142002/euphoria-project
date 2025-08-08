@@ -78,8 +78,10 @@ function DropdownMenuItem({
 }) {
   return (
     <DropdownMenuPrimitive.Item
+      role="menuitemradio"
       data-slot="dropdown-menu-item"
       data-inset={inset}
+      aria-checked={isActive}
       data-variant={variant}
       data-active={isActive}
       className={cn(

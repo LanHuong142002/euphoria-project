@@ -98,10 +98,12 @@ export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <MenuIcon
+        <button
           className="lg:hidden h-5 w-5 cursor-pointer"
-          aria-label="Open menu"
-        />
+          aria-label="Open navigation menu"
+        >
+          <MenuIcon className="h-5 w-5" aria-hidden="true" />
+        </button>
       </SheetTrigger>
       <SheetContent side="left" className="w-[280px] sm:w-[350px] lg:hidden">
         <SheetHeader className="px-8 pt-4">
@@ -164,16 +166,21 @@ export const MobileMenu = ({ session, logo }: MobileMenuProps) => {
 
                     return (
                       <div key={`menu-theme-item-${label}`}>
-                        <div
+                        <button
                           onClick={onClick}
                           className={cn(
                             'flex items-center gap-6 py-2 pl-3 text-md font-medium text-text-secondary hover:bg-background-tertiary transition-colors',
                             isActive && 'bg-background-tertiary',
                           )}
+                          aria-pressed={isActive}
+                          aria-label={`Set theme to ${label.toLowerCase()}`}
                         >
-                          <Icon className="size-5 text-icon-primary" />
+                          <Icon
+                            className="size-5 text-icon-primary"
+                            aria-hidden="true"
+                          />
                           {label}
-                        </div>
+                        </button>
                         {!isLastItem && <Separator />}
                       </div>
                     );

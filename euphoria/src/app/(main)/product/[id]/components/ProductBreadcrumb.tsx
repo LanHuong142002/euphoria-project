@@ -19,11 +19,18 @@ export const ProductBreadcrumb = ({ categoryName }: ProductBreadcrumbProps) => (
   <Breadcrumb className="mb-4 lg:mb-8">
     <BreadcrumbList>
       <BreadcrumbItem>
-        <BreadcrumbLink href={ROUTES.HOME}>Shop</BreadcrumbLink>
+        <BreadcrumbLink
+          href={ROUTES.HOME}
+          aria-label="Navigate to Shop homepage"
+        >
+          Shop
+        </BreadcrumbLink>
       </BreadcrumbItem>
       <BreadcrumbSeparator />
       <BreadcrumbItem>
-        <BreadcrumbPage>{categoryName}</BreadcrumbPage>
+        <BreadcrumbPage aria-label={`Current category: ${categoryName}`}>
+          {categoryName}
+        </BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   </Breadcrumb>

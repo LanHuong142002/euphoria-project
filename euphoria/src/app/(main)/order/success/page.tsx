@@ -27,16 +27,19 @@ const OrderSuccessPage = async ({ searchParams }: Props) => {
 
   return (
     <div className="flex flex-1 items-center justify-center bg-background-primary">
-      <div
+      {/* Desktop */}
+      <section
         className={cn(
           'relative overflow-hidden flex-shrink-0',
           'w-[500px] h-[364px] md:w-[715px] md:h-[520px]',
           'hidden sm:block',
         )}
+        aria-labelledby="order-success-title"
       >
         <Image
           src={IMAGE_DETAILS.ORDER_SUCCESS.src}
-          alt={IMAGE_DETAILS.ORDER_SUCCESS.alt}
+          alt=""
+          role="presentation"
           className="object-cover"
           classNameWrapper="w-full h-full"
           priority
@@ -49,6 +52,7 @@ const OrderSuccessPage = async ({ searchParams }: Props) => {
           )}
         >
           <Typography
+            id="order-success-title"
             as="h1"
             fontFamily="coreSans"
             fontWeight="bold"
@@ -68,10 +72,14 @@ const OrderSuccessPage = async ({ searchParams }: Props) => {
             </Button>
           </Link>
         </div>
-      </div>
+      </section>
 
+      {/* Mobile */}
       <div className="flex flex-col items-center justify-center max-w-[195px] gap-[30px] sm:hidden">
-        <CircleCheckBig className="size-30 text-icon-success" />
+        <CircleCheckBig
+          className="size-30 text-icon-success"
+          aria-hidden="true"
+        />
         <Typography
           as="h1"
           fontFamily="coreSans"

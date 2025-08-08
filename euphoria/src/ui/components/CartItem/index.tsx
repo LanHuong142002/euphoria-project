@@ -36,21 +36,27 @@ export const CartItem = ({
   const { name, color, size, price, images } = product;
 
   return (
-    <div
+    <article
       className={cn(
         'relative grid grid-cols-1 md:grid-cols-6 items-start md:items-center gap-4 py-12.5 px-4 md:pr-6.5 md:pl-2',
         hasBorder && 'border-b border-cart-item-border',
         disabled && 'opacity-50',
         className,
       )}
+      role="group"
+      aria-label={`Cart item: ${name}, Color: ${color}, Size: ${size}`}
       {...props}
     >
       {/* Product Details */}
-      <div className="col-span-1 md:col-span-2 flex items-start gap-4">
+      <div
+        className="col-span-1 md:col-span-2 flex items-start gap-4"
+        role="cell"
+        aria-colindex={1}
+      >
         <div className="relative w-20 h-20 md:w-[105px] md:h-[120px] rounded-xl overflow-hidden flex-shrink-0">
           <Image
             src={images[0]}
-            alt={name}
+            alt={`${name} product image`}
             className="object-cover"
             classNameWrapper="w-full h-full"
           />
@@ -92,7 +98,11 @@ export const CartItem = ({
       </div>
 
       {/* Price */}
-      <div className="hidden md:block text-center">
+      <div
+        className="hidden md:block text-center"
+        role="cell"
+        aria-colindex={2}
+      >
         <Typography
           fontWeight="bold"
           fontSize="lg"
@@ -103,7 +113,11 @@ export const CartItem = ({
       </div>
 
       {/* Quantity - Desktop only */}
-      <div className="hidden md:flex justify-center">
+      <div
+        className="hidden md:flex justify-center"
+        role="cell"
+        aria-colindex={3}
+      >
         <QuantitySelector
           defaultValue={quantity}
           min={1}
@@ -114,7 +128,11 @@ export const CartItem = ({
       </div>
 
       {/* Subtotal */}
-      <div className="hidden md:block text-center">
+      <div
+        className="hidden md:block text-center"
+        role="cell"
+        aria-colindex={4}
+      >
         <Typography
           fontWeight="bold"
           fontSize="lg"
@@ -124,16 +142,20 @@ export const CartItem = ({
         </Typography>
       </div>
 
-      <div className="absolute top-1/2 -translate-y-1/2 right-6 md:static md:flex md:justify-end md:items-center md:mt-2">
+      <div
+        role="cell"
+        aria-colindex={5}
+        className="absolute top-1/2 -translate-y-1/2 right-6 md:static md:flex md:justify-end md:items-center md:mt-2"
+      >
         <button
           onClick={onRemove}
           disabled={disabled}
           aria-label="Remove item from cart"
           className="cursor-pointer"
         >
-          <TrashIcon />
+          <TrashIcon aria-hidden="true" />
         </button>
       </div>
-    </div>
+    </article>
   );
 };

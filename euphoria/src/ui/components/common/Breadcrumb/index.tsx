@@ -81,7 +81,7 @@ const BreadcrumbSeparator = ({
     className={cn('text-breadcrumb-primary', className)}
     {...props}
   >
-    {children ?? <ChevronRight className="size-4" />}
+    {children ?? <ChevronRight className="size-4" aria-hidden="true" />}
   </li>
 );
 
@@ -97,7 +97,7 @@ const BreadcrumbEllipsis = ({
     className={cn('flex size-9 items-center justify-center', className)}
     {...props}
   >
-    <MoreHorizontal className="size-4" />
+    <MoreHorizontal className="size-4" aria-hidden="true" />
     <Typography as="span" className="sr-only">
       More
     </Typography>

@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { Metadata } from 'next';
 
 // Constants
-import { IMAGES } from '@/constants';
+import { IMAGE_DETAILS } from '@/constants';
 
 // Components
 import { Form } from './components/Form';
@@ -18,17 +18,21 @@ export const metadata: Metadata = {
 
 const LoginPage = () => (
   <div className="w-full flex-1 flex gap-[10px] xl:gap-[77px]">
-    <div className="xl:w-1/2 flex-1 flex hidden xl:block">
+    <aside className="xl:w-1/2 flex-1 flex hidden xl:block">
       <Image
-        src={IMAGES.ONBOARDING}
-        alt="logo"
+        src={IMAGE_DETAILS.ONBOARDING.src}
+        alt={IMAGE_DETAILS.ONBOARDING.alt}
         className="object-cover"
         classNameWrapper="w-full h-full"
       />
-    </div>
-    <div className="container mx-auto xl:w-1/2 pt-15 pb-15 lg:pb-0">
+    </aside>
+    <section
+      className="container mx-auto xl:w-1/2 pt-15 pb-15 lg:pb-0"
+      aria-labelledby="login-title"
+    >
       <div className="w-[300px] md:w-[400px] lg:w-[568px] mx-auto">
         <Typography
+          id="login-title"
           as="h1"
           fontFamily="coreSans"
           fontWeight="bold"
@@ -44,7 +48,7 @@ const LoginPage = () => (
           </Suspense>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 );
 

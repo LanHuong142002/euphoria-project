@@ -1,4 +1,7 @@
+// Constants
 import { ROUTES } from '@/constants';
+
+// Components
 import {
   Breadcrumb,
   BreadcrumbPage,
@@ -12,13 +15,13 @@ export const CartBreadcrumb = () => (
   <Breadcrumb>
     <BreadcrumbList>
       <BreadcrumbItem>
-        <BreadcrumbLink href={ROUTES.HOME}>Home</BreadcrumbLink>
+        <BreadcrumbLink href={ROUTES.HOME} aria-label="Navigate to Home page">
+          Home
+        </BreadcrumbLink>
       </BreadcrumbItem>
       <BreadcrumbSeparator />
       <BreadcrumbItem>
-        <BreadcrumbPage>
-          <h1>Add To Cart</h1>
-        </BreadcrumbPage>
+        <BreadcrumbPage aria-label="Current page: Cart">Cart</BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   </Breadcrumb>

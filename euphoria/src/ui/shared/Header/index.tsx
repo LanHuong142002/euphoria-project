@@ -8,7 +8,7 @@ import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 
 // Constants
-import { IMAGES, LOGO_URL, ROUTES } from '@/constants';
+import { BRAND, IMAGES, LOGO_URL, ROUTES } from '@/constants';
 
 // Components
 import { HeaderAuth } from './HeaderAuth';
@@ -45,25 +45,39 @@ export const Header = ({ session: serverSession }: HeaderProps) => {
 
   return (
     <header className="border-b border-border-primary">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-button-primary text-button-tertiary px-4 py-2 rounded z-50"
+      >
+        Skip to main content
+      </a>
       <div className="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-0 py-4 sm:py-6 lg:py-[34px]">
         <div className="flex items-center gap-3 sm:gap-4 lg:gap-22.5">
           <Link
             href={ROUTES.HOME}
             className="w-[60px] h-[30px] sm:w-[75px] sm:h-[38px] lg:w-[90px] lg:h-[45px]"
+            aria-label={`${BRAND.name} logo`}
           >
-            <Image src={logo} alt="logo" classNameWrapper="w-full h-full" />
+            <Image
+              src={logo}
+              alt={`${BRAND.name} logo`}
+              classNameWrapper="w-full h-full"
+            />
           </Link>
-          <Link
-            href={ROUTES.HOME}
-            className={cn(
-              'font-medium text-base sm:text-lg lg:text-[22px] transition-colors duration-300 hover:opacity-70 hidden lg:block',
-              pathname === ROUTES.HOME
-                ? 'text-text-secondary'
-                : 'text-text-primary',
-            )}
-          >
-            Shop
-          </Link>
+          <nav role="navigation" aria-label="Main navigation">
+            <Link
+              href={ROUTES.HOME}
+              className={cn(
+                'font-medium text-base sm:text-lg lg:text-[22px] transition-colors duration-300 hover:opacity-70 hidden lg:block',
+                pathname === ROUTES.HOME
+                  ? 'text-text-secondary'
+                  : 'text-text-primary',
+              )}
+              aria-current={pathname === ROUTES.HOME ? 'page' : undefined}
+            >
+              Shop
+            </Link>
+          </nav>
         </div>
         <HeaderAuth user={session} logo={logo} />
       </div>

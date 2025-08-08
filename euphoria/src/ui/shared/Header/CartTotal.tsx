@@ -25,6 +25,7 @@ export const CartTotal = () => {
         size="icon"
         variant="primary"
         className="w-8 h-8 lg:w-11 lg:h-11 p-2"
+        aria-label="Click to navigate to the cart page"
       >
         <ShoppingCartIcon />
       </Button>
