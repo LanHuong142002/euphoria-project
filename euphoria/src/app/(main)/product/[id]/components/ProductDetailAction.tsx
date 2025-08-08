@@ -4,7 +4,7 @@ import { KeyboardEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 // Constants
-import { ROUTES } from '@/constants';
+import { PRODUCT_BADGES, ROUTES } from '@/constants';
 
 // Components
 import { SelectSize } from './SelectSize';
@@ -14,13 +14,9 @@ import { Image } from '@/ui/components/common/Image';
 import { Button } from '@/ui/components/common/Button';
 import { ProductBreadcrumb } from './ProductBreadcrumb';
 import { Separator } from '@/ui/components/common/Separator';
+import { Typography } from '@/ui/components/common/Typography';
 
 // Icons
-import { CardIcon } from '@/ui/icons/CardIcon';
-import { ShirtIcon } from '@/ui/icons/ShirtIcon';
-import { TruckIcon } from '@/ui/icons/TruckIcon';
-import { ReturnIcon } from '@/ui/icons/ReturnIcon';
-import { Typography } from '@/ui/components/common/Typography';
 import { ShoppingCartIcon } from '@/ui/icons/ShoppingCartIcon';
 
 // Contexts
@@ -28,25 +24,6 @@ import { useCart } from '@/contexts';
 
 // Utils
 import { cn } from '@/utils';
-
-const PRODUCT_BADGES = [
-  {
-    name: 'Secure payment',
-    icon: <CardIcon />,
-  },
-  {
-    name: 'Size & Fit',
-    icon: <ShirtIcon />,
-  },
-  {
-    name: 'Free shipping',
-    icon: <TruckIcon />,
-  },
-  {
-    name: 'Free Shipping & Returns',
-    icon: <ReturnIcon />,
-  },
-];
 
 interface ProductDetailActionProps {
   price: number;
@@ -231,32 +208,28 @@ export const ProductDetailAction = ({
         </div>
 
         <Separator aria-hidden="true" />
-        <section aria-labelledby="product-features-heading">
-          <h3 id="product-features-heading" className="sr-only">
-            Product Features
-          </h3>
-          <div className="grid grid-cols-2 gap-4" role="list">
-            {PRODUCT_BADGES.map(({ icon, name }) => (
-              <div
-                key={`${name}-${icon}`}
-                className="flex items-center gap-[15px]"
-                role="listitem"
+
+        <div className="grid grid-cols-2 gap-4" role="list">
+          {PRODUCT_BADGES.map(({ icon: Icon, name }) => (
+            <div
+              key={`${name}-badge`}
+              className="flex items-center gap-[15px]"
+              role="listitem"
+            >
+              <Badge variant="icon" aria-hidden="true">
+                <Icon />
+              </Badge>
+              <Typography
+                as="span"
+                fontSize="sm"
+                className="lg:text-lg leading-none"
+                color="secondary"
               >
-                <Badge variant="icon" aria-hidden="true">
-                  {icon}
-                </Badge>
-                <Typography
-                  as="span"
-                  fontSize="sm"
-                  className="lg:text-lg leading-none"
-                  color="secondary"
-                >
-                  {name}
-                </Typography>
-              </div>
-            ))}
-          </div>
-        </section>
+                {name}
+              </Typography>
+            </div>
+          ))}
+        </div>
       </section>
     </div>
   );

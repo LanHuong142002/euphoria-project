@@ -1,22 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  MenuIcon,
-  LogOutIcon,
-  HomeIcon,
-  LogInIcon,
-  Sun,
-  Moon,
-  Cog,
-} from 'lucide-react';
+import { MenuIcon, LogOutIcon, LogInIcon, Sun, Moon, Cog } from 'lucide-react';
 import Link from 'next/link';
 import type { Session } from 'next-auth';
 import { signOut } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
 
 // Constants
-import { ROUTES } from '@/constants';
+import { ROUTES, MENU_ITEMS } from '@/constants';
 
 // Components
 import {
@@ -43,14 +35,6 @@ import { useChangeTheme } from '@/hooks';
 
 // Utils
 import { cn } from '@/utils';
-
-const MENU_ITEMS = [
-  {
-    label: 'Shop',
-    href: ROUTES.HOME,
-    icon: HomeIcon,
-  },
-];
 
 interface MobileMenuProps {
   logo: string;
