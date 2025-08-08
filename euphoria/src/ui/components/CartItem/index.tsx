@@ -4,6 +4,7 @@ import { ComponentProps } from 'react';
 
 // Components
 import { Image } from '../common/Image';
+import { Typography } from '../common/Typography';
 import { QuantitySelector } from '../QuantitySelector';
 
 // Icons
@@ -57,15 +58,27 @@ export const CartItem = ({
           />
         </div>
         <div className="flex-1 min-w-0">
-          <p className="font-bold font-causten text-cart-item-text text-base md:text-lg mb-1 truncate">
+          <Typography
+            fontWeight="bold"
+            fontSize="base"
+            className="text-cart-item-text md:text-lg mb-1 truncate"
+          >
             {name}
-          </p>
-          <p className="font-medium font-causten text-cart-item-placeholder text-xs md:text-sm mb-1">
+          </Typography>
+          <Typography
+            fontWeight="medium"
+            fontSize="xs"
+            className="text-cart-item-placeholder md:text-sm mb-1"
+          >
             Color: {color}
-          </p>
-          <p className="font-medium font-causten text-cart-item-placeholder text-xs md:text-sm mb-2">
+          </Typography>
+          <Typography
+            fontWeight="medium"
+            fontSize="xs"
+            className="text-cart-item-placeholder md:text-sm mb-2"
+          >
             Size: {size}
-          </p>
+          </Typography>
 
           {/* Quantity */}
           <div className="md:hidden">
@@ -82,9 +95,13 @@ export const CartItem = ({
 
       {/* Price */}
       <div className="hidden md:block text-center">
-        <p className="font-bold font-causten text-cart-item-text pl-5 text-lg">
+        <Typography
+          fontWeight="bold"
+          fontSize="lg"
+          className="text-cart-item-text pl-5"
+        >
           {formatPrice(price)}
-        </p>
+        </Typography>
       </div>
 
       {/* Quantity - Desktop only */}
@@ -100,9 +117,13 @@ export const CartItem = ({
 
       {/* Subtotal */}
       <div className="hidden md:block text-center">
-        <p className="font-bold font-causten text-cart-item-text pl-5 text-lg">
+        <Typography
+          fontWeight="bold"
+          fontSize="lg"
+          className="text-cart-item-text pl-5"
+        >
           {formatPrice(price * quantity)}
-        </p>
+        </Typography>
       </div>
 
       <div className="absolute top-1/2 -translate-y-1/2 right-6 md:static md:flex md:justify-end md:items-center md:mt-2">

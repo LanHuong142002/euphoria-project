@@ -1,8 +1,9 @@
 import Link from 'next/link';
 
 // Components
-import { Button } from '@/ui/components/common/Button';
 import { Image } from '@/ui/components/common/Image';
+import { Button } from '@/ui/components/common/Button';
+import { Typography } from '@/ui/components/common/Typography';
 
 // Constants
 import {
@@ -33,13 +34,24 @@ export const NotFound = () => (
           classNameWrapper="w-full h-full"
         />
       </div>
-      <h1 className="font-core-sans-c text-[34px] text-text-quaternary font-bold pt-3.5 pb-2.5">
-        Oops<span className="font-causten">!</span> Page not found
-      </h1>
-      <p className="font-causten text-center text-md text-text-primary font-medium">
+      <Typography
+        as="h1"
+        fontFamily="coreSans"
+        fontWeight="bold"
+        fontSize="34px"
+        color="quaternary"
+        className="pt-3.5 pb-2.5"
+      >
+        Oops
+        <Typography as="span" fontFamily="causten">
+          !
+        </Typography>{' '}
+        Page not found
+      </Typography>
+      <Typography fontWeight="medium" className="text-center">
         The page you are looking for might have been removed or temporarily
         unavailable.
-      </p>
+      </Typography>
       <Link href={ROUTES.HOME} className="pt-10.5">
         <Button
           color="primary"

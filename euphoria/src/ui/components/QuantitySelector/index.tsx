@@ -5,6 +5,7 @@ import { ComponentProps, useState } from 'react';
 
 // Components
 import { Button } from '../common/Button';
+import { Typography } from '../common/Typography';
 
 // Utils
 import { cn } from '@/utils';
@@ -65,9 +66,14 @@ export const QuantitySelector = ({
         <Minus size={12} className="text-quantity-selector-secondary" />
       </Button>
 
-      <span className="min-w-[2rem] text-center font-medium text-quantity-selector-secondary text-xs">
+      <Typography
+        as="span"
+        fontWeight="medium"
+        fontSize="xs"
+        className="min-w-[2rem] text-center text-quantity-selector-secondary"
+      >
         {quantity}
-      </span>
+      </Typography>
 
       <Button
         onClick={handleIncrease}

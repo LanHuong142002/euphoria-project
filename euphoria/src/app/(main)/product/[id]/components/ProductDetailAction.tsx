@@ -20,6 +20,7 @@ import { CardIcon } from '@/ui/icons/CardIcon';
 import { ShirtIcon } from '@/ui/icons/ShirtIcon';
 import { TruckIcon } from '@/ui/icons/TruckIcon';
 import { ReturnIcon } from '@/ui/icons/ReturnIcon';
+import { Typography } from '@/ui/components/common/Typography';
 import { ShoppingCartIcon } from '@/ui/icons/ShoppingCartIcon';
 
 // Contexts
@@ -161,9 +162,15 @@ export const ProductDetailAction = ({
           <ProductBreadcrumb categoryName={categoryName} />
         </div>
 
-        <h1 className="text-[34px] font-bold text-text-secondary font-core-sans-c">
+        <Typography
+          as="h1"
+          fontFamily="coreSans"
+          fontWeight="bold"
+          fontSize="34px"
+          color="secondary"
+        >
           {name}
-        </h1>
+        </Typography>
 
         <SelectSize
           sizes={sizes}
@@ -194,15 +201,20 @@ export const ProductDetailAction = ({
 
         <Separator />
         <div className="grid grid-cols-2 gap-4">
-          {PRODUCT_BADGES.map((badge) => (
+          {PRODUCT_BADGES.map(({ icon, name }) => (
             <div
-              key={`${badge.name}-${badge.icon}`}
+              key={`${name}-${icon}`}
               className="flex items-center gap-[15px]"
             >
-              <Badge variant="icon">{badge.icon}</Badge>
-              <span className="font-causten text-sm lg:text-lg font-normal text-text-secondary leading-none">
-                {badge.name}
-              </span>
+              <Badge variant="icon">{icon}</Badge>
+              <Typography
+                as="span"
+                fontSize="sm"
+                className="lg:text-lg leading-none"
+                color="secondary"
+              >
+                {name}
+              </Typography>
             </div>
           ))}
         </div>

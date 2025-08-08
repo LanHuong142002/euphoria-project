@@ -1,5 +1,6 @@
 // Components
 import { Toggle } from '@/ui/components/common/Toggle';
+import { Typography } from '@/ui/components/common/Typography';
 
 interface SelectSizeProps {
   sizes: string[];
@@ -13,9 +14,9 @@ export const SelectSize = ({
   onSizeChange,
 }: SelectSizeProps) => (
   <div className="space-y-[25px]">
-    <p className="text-lg font-semibold font-causten text-text-secondary">
+    <Typography fontWeight="semibold" fontSize="lg" color="secondary">
       Select Size
-    </p>
+    </Typography>
 
     <div className="flex gap-5">
       {sizes.map((size: string) => {

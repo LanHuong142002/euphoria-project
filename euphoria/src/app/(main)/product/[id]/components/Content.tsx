@@ -5,9 +5,7 @@ import { getProductById } from '@/actions';
 
 // Components
 import { ProductDetailAction } from './ProductDetailAction';
-
-// Utils
-import { cn } from '@/utils';
+import { Typography } from '@/ui/components/common/Typography';
 
 interface ContentProps {
   id: string;
@@ -58,24 +56,27 @@ export const Content = async ({ id, isAuthenticated }: ContentProps) => {
       <div className="pl-4 lg:pl-0 container mx-auto mt-5 lg:mt-[100px]">
         <div className="flex items-stretch gap-[15px] mb-7.5">
           <div className="w-[6px] bg-background-quaternary rounded-xl" />
-          <p className="text-[28px] font-bold text-text-secondary font-core-sans-c">
+          <Typography
+            fontFamily="coreSans"
+            fontWeight="bold"
+            fontSize="28px"
+            color="secondary"
+          >
             Product Description
-          </p>
+          </Typography>
         </div>
 
         <div className="space-y-7.5">
-          <p
-            className={cn(
-              'text-lg font-causten font-medium text-text-secondary',
-              'underline decoration-border-primary decoration-[1.4px] underline-offset-[18px]',
-            )}
+          <Typography
+            fontWeight="medium"
+            fontSize="lg"
+            color="secondary"
+            className="underline decoration-border-primary decoration-[1.4px] underline-offset-[18px]"
           >
             Description
-          </p>
+          </Typography>
 
-          <p className="text-text-primary font-causten font-light">
-            {description}
-          </p>
+          <Typography fontWeight="light">{description}</Typography>
         </div>
       </div>
     </div>

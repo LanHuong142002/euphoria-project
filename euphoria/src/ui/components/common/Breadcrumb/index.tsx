@@ -2,6 +2,10 @@ import { ComponentProps } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { ChevronRight, MoreHorizontal } from 'lucide-react';
 
+// Components
+import { Typography } from '../Typography';
+
+// Utils
 import { cn } from '@/utils';
 
 const Breadcrumb = ({ ...props }: ComponentProps<'nav'>) => (
@@ -92,7 +96,9 @@ const BreadcrumbEllipsis = ({
     {...props}
   >
     <MoreHorizontal className="size-4" />
-    <span className="sr-only">More</span>
+    <Typography as="span" className="sr-only">
+      More
+    </Typography>
   </span>
 );
 

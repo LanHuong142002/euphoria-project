@@ -10,6 +10,7 @@ import { Image } from '@/ui/components/common/Image';
 import { FormSkeleton } from './components/FormSkeleton';
 import { ExternalLogin } from './components/ExternalLogin';
 import { Separator } from '@/ui/components/common/Separator';
+import { Typography } from '@/ui/components/common/Typography';
 
 export const metadata: Metadata = {
   title: 'Login',
@@ -27,7 +28,14 @@ const LoginPage = () => (
     </div>
     <div className="container mx-auto xl:w-1/2 pt-15 pb-15 lg:pb-0">
       <div className="w-[300px] md:w-[400px] lg:w-[568px] mx-auto">
-        <h1 className="font-core-sans-c text-[34px] font-bold">Sign In Page</h1>
+        <Typography
+          as="h1"
+          fontFamily="coreSans"
+          fontWeight="bold"
+          fontSize="34px"
+        >
+          Sign In Page
+        </Typography>
         <div className="pt-[56px] space-y-[50px]">
           <ExternalLogin />
           <Separator text="Or" />
