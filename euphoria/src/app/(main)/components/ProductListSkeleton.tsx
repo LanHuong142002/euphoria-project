@@ -1,7 +1,7 @@
 import { Skeleton } from '@/ui/components/common/Skeleton';
 
 export const ProductListSkeleton = () => (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-12.5 max-w-4xl mx-auto justify-items-center">
+  <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6 pt-12.5 max-w-4xl mx-auto justify-items-center">
     {Array.from({ length: 6 }, (_, index) => index).map((index) => (
       <div key={index} className="w-full max-w-[282px] flex-shrink-0">
         <Skeleton className="w-full h-[370px] rounded-xl" />

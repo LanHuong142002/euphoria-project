@@ -30,7 +30,7 @@ export const addToCart = async (body: CartPayload) =>
   safeHttpRequest<Cart[]>(
     (token) =>
       httpClient.post<ListCartResponse, { data: CartPayload }>({
-        endpoint: API_ENDPOINT.CART,
+        endpoint: `${API_ENDPOINT.CART}?populate[product][fields]=*`,
         body: { data: body },
         token,
       }),
